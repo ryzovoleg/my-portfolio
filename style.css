@@ -139,6 +139,13 @@ input:focus, textarea:focus {
 .nav-menu a {
   text-decoration: none;
   color: #333333;
+  transition: 0.3s; /* 1. Додали плавність для посилань шапки */
+}
+
+/* 2. Додаємо сам ефект: що станеться, коли ми наведемо мишку */
+.nav-menu a:hover {
+  color: blue; /* Колір тексту плавно зміниться на синій */
+  text-decoration: underline; /* З'явиться акуратне підкреслення */
 }
 
 .main-footer {
