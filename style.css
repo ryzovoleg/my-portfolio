@@ -201,3 +201,33 @@ input:focus, textarea:focus {
     text-align: center;
   }
 }
+/* Стилі для темної теми */
+body.dark-theme {
+    background-color: #121212; /* Темний фон сайту */
+    color: #ffffff; /* Білий текст */
+}
+
+body.dark-theme h2 {
+    background-color: #1e1e1e;
+    color: #4caf50; /* Зелений заголовок у темній темі */
+}
+
+body.dark-theme .profile-card,
+body.dark-theme .brand-card,
+body.dark-theme form {
+    background-color: #1e1e1e; /* Темно-сірі картки та форма */
+    color: #ffffff;
+}
+
+body.dark-theme p, 
+body.dark-theme li,
+body.dark-theme .nav-menu a {
+    color: #bbbbbb; /* Світло-сірий текст для опису та посилань */
+}
+
+body.dark-theme input, 
+body.dark-theme textarea {
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border-color: #555555;
+}
