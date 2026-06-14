@@ -334,3 +334,16 @@ body.dark-theme textarea {
     color: #ffffff;
     border-color: #555555;
 }
+/* Адаптація переваг під темну тему */
+body.dark-theme .advantage-icon {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-theme .advantage-item h3 {
+    color: #4caf50;
+}
+
+body.dark-theme .advantage-item p {
+    color: #bbbbbb;
+}
