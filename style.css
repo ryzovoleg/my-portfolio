@@ -187,6 +187,44 @@ input:focus, textarea:focus {
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.12);
     background-color: #fcfcfcfc;
 }
+.services-section {
+    margin: 50px 0;
+}
+
+.services-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.service-card {
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card h3 {
+    color: darkblue;
+    margin-bottom: 12px;
+    font-size: 20px;
+}
+
+.service-card p {
+    color: #555555;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
 
 /* Адаптивні стилі для смартфонів */
 @media (max-width: 768px) {
@@ -210,6 +248,19 @@ body.dark-theme {
 body.dark-theme h2 {
     background-color: #1e1e1e;
     color: #4caf50; /* Зелений заголовок у темній темі */
+}
+
+body.dark-theme .service-card {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-theme .service-card h3 {
+    color: #4caf50;
+}
+
+body.dark-theme .service-card p {
+    color: #bbbbbb;
 }
 
 body.dark-theme .profile-card,
