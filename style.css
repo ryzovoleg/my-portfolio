@@ -11,7 +11,8 @@ html {
 body {
   padding: 20px;
   background-color: lightgrey;
-  font-family: sans-serif;
+  font-family: 'Montserrat', sans-serif; /* Тепер увесь сайт матиме солідний шрифт */
+    /* твої інші стилі для body, якщо вони там були */
 }
 
 h1 {
@@ -280,6 +281,43 @@ input:focus, textarea:focus {
 /* Ефект для іконки: при наведенні на весь блок, іконка красиво прокрутиться навколо своєї осі */
 .advantage-item:hover .advantage-icon {
     transform: rotate(360deg);
+}
+
+/* 4. НОВИЙ СТИЛЬНИЙ БІГУНОК (Scrollbar) */
+::-webkit-scrollbar {
+    width: 10px; /* Ширина смуги прокрутки */
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Тло смуги */
+}
+::-webkit-scrollbar-thumb {
+    background: darkblue; /* Колір самого бігунка */
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #0000aa;
+}
+
+/* 5. КНОПКА ВГОРУ (Back to Top) */
+#back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: none; /* Схована за замовчуванням, покажемо через JS */
+    background-color: darkblue;
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+#back-to-top:hover {
+    transform: scale(1.1); /* Злегка збільшується при наведенні */
 }
 
 /* Адаптивні стилі для смартфонів */
