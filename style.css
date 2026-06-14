@@ -152,6 +152,41 @@ input:focus, textarea:focus {
   text-align: center;
   padding: 15px 0px;
 }
+.brands-section {
+    margin: 40px 0;
+}
+
+.brands-grid {
+    display: flex;
+    flex-wrap: wrap; /* Дозволяє карткам автоматично переноситися на новий рядок на смартфонах */
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.brand-card {
+    background-color: white;
+    padding: 15px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    min-width: 140px;
+    transition: 0.3s ease;
+}
+
+.brand-card p {
+    color: darkblue;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 0; /* Прибираємо зайві відступи у тексту всередині картки */
+}
+
+/* Ефект при наведенні мишки на картку бренда */
+.brand-card:hover {
+    transform: scale(1.08); /* Картка плавно збільшиться на 8% */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.12);
+    background-color: #fcfcfcfc;
+}
 
 /* Адаптивні стилі для смартфонів */
 @media (max-width: 768px) {
