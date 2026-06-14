@@ -16,3 +16,4 @@ themeButton.addEventListener('click', () => {
         // Якщо повернулися до світлої — видаляємо запис або пишемо 'light'
         localStorage.setItem('theme', 'light');
     }
+    });
