@@ -65,7 +65,7 @@ if (animElements.length > 0) {
     // Запускаємо спостерігач для кожної картки
     animElements.forEach(el => observer.observe(el));
 }
-// --- БЛОК 5: МОДАЛЬНЕ ВІКНО (ПОПАП) ---
+// --- БЛОК 5: МОДАЛЬНЕ ВІКНО (ПОПАП) — ЗАХИЩЕНА ВЕРСІЯ ---
 const modal = document.getElementById('service-modal');
 const serviceCards = document.querySelectorAll('.service-card');
 const modalCloseBtn = document.querySelector('.modal-close-btn');
@@ -73,35 +73,37 @@ const modalTitle = document.getElementById('modal-title');
 const modalText = document.getElementById('modal-text');
 
 if (modal && serviceCards.length > 0) {
-    // 1. Слідкуємо за кліком на кожну картку послуг
     serviceCards.forEach(card => {
         card.addEventListener('click', () => {
-            // Беремо заголовок і текст саме з тієї картки, на яку клікнули
-            const cardTitle = card.querySelector('h3').innerText;
-            const cardText = card.querySelector('p').innerText;
+            // Безпечно шукаємо заголовок та текст всередині картки
+            const h3Element = card.querySelector('h3');
+            const pElement = card.querySelector('p');
             
-            // Підставляємо ці дані всередину попапу
-            modalTitle.innerText = cardTitle;
-            modalText.innerText = cardText + " Ми пропонуємо індивідуальні умови співпраці, повний супровід та гарантію якості для кожного замовлення в нашому регіоні.";
+            // Якщо знайшли — беремо текст, якщо ні — ставимо стандартний
+            const cardTitle = h3Element ? h3Element.innerText : "Послуга";
+            const cardText = pElement ? pElement.innerText : "";
             
-            // Відкриваємо попап
+            if (modalTitle && modalText) {
+                modalTitle.innerText = cardTitle;
+                modalText.innerText = cardText + " Ми пропонуємо індивідуальні умови співпраці, повний супровід та гарантію якості для кожного замовлення в нашому регіоні.";
+            }
+            
+            // Показуємо попап
             modal.classList.add('active');
         });
     });
 
-    // 2. Закриваємо попап при кліку на хрестик
+    // Закриття на хрестик
     if (modalCloseBtn) {
         modalCloseBtn.addEventListener('click', () => {
             modal.classList.remove('active');
         });
     }
 
-    // 3. Закриваємо попап при кліку на темне тло навколо вікна
+    // Закриття на темне тло
     modal.addEventListener('click', (event) => {
         if (event.target === modal) {
             modal.classList.remove('active');
         }
     });
-}
-    greetingElement.textContent = greetingString; // Міняємо текст на сторінці
 }
