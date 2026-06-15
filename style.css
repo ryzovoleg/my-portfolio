@@ -111,9 +111,11 @@ input:focus, textarea:focus {
   width: 100%;
 }
 
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 2px 8px 12px gray;
+@media (hover: hover) {
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 2px 8px 12px gray;
+    }
 }
 
 .profile-card h3 {
@@ -180,11 +182,13 @@ input:focus, textarea:focus {
     margin: 0; /* Прибираємо зайві відступи у тексту всередині картки */
 }
 
-/* Ефект при наведенні мишки на картку бренда */
-.brand-card:hover {
-    transform: scale(1.08); /* Картка плавно збільшиться на 8% */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.12);
-    background-color: #fcfcfcfc;
+/* Ефект hover для брендів тільки для комп'ютерів */
+@media (hover: hover) {
+    .brand-card:hover {
+        transform: scale(1.08);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.12);
+        background-color: #fcfcfcfc;
+    }
 }
 .services-section {
     margin: 50px 0;
@@ -220,9 +224,12 @@ input:focus, textarea:focus {
     line-height: 1.6;
 }
 
-.service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+/* Ефект hover для послуг тільки для комп'ютерів */
+@media (hover: hover) {
+    .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
 }
 
 .advantages-section {
