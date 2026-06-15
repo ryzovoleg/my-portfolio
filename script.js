@@ -104,7 +104,8 @@ if (modal && serviceCards.length > 0) {
             modal.classList.remove('active');
         }
     });
-} // <-- ОЦЯ ДУЖКА МАЄ БУТИ ТУТ! Вона закриває весь Блок 5.
+}
+
 // =======================================================
 // БЛОК 6: ІНТЕРАКТИВНИЙ ФІЛЬТР БРЕНДІВ
 // =======================================================
@@ -114,22 +115,19 @@ const brandCards = document.querySelectorAll('.brand-card');
 if (filterButtons.length > 0 && brandCards.length > 0) {
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // 1. Перемикаємо активний клас між кнопками
+            // Перемикаємо активну кнопку (вона тепер зафіксується зеленим/синім кольором)
             filterButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
 
-            // 2. Отримуємо категорію, за якою треба фільтрувати
             const filterValue = button.getAttribute('data-filter');
 
-            // 3. Перебираємо всі картки брендів
             brandCards.forEach(card => {
                 const cardCategory = card.getAttribute('data-category');
 
-                // Якщо вибрано "Усі" або категорія картки збігається з кнопкою — показуємо, інакше ховаємо
                 if (filterValue === 'all' || filterValue === cardCategory) {
-                    card.classList.remove('hide-card');
+                    card.classList.remove('hide-card'); // Показуємо
                 } else {
-                    card.classList.add('hide-card');
+                    card.classList.add('hide-card'); // Ховаємо
                 }
             });
         });
