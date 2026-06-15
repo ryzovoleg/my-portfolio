@@ -65,6 +65,43 @@ if (animElements.length > 0) {
     // Запускаємо спостерігач для кожної картки
     animElements.forEach(el => observer.observe(el));
 }
+// --- БЛОК 5: МОДАЛЬНЕ ВІКНО (ПОПАП) ---
+const modal = document.getElementById('service-modal');
+const serviceCards = document.querySelectorAll('.service-card');
+const modalCloseBtn = document.querySelector('.modal-close-btn');
+const modalTitle = document.getElementById('modal-title');
+const modalText = document.getElementById('modal-text');
 
+if (modal && serviceCards.length > 0) {
+    // 1. Слідкуємо за кліком на кожну картку послуг
+    serviceCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // Беремо заголовок і текст саме з тієї картки, на яку клікнули
+            const cardTitle = card.querySelector('h3').innerText;
+            const cardText = card.querySelector('p').innerText;
+            
+            // Підставляємо ці дані всередину попапу
+            modalTitle.innerText = cardTitle;
+            modalText.innerText = cardText + " Ми пропонуємо індивідуальні умови співпраці, повний супровід та гарантію якості для кожного замовлення в нашому регіоні.";
+            
+            // Відкриваємо попап
+            modal.classList.add('active');
+        });
+    });
+
+    // 2. Закриваємо попап при кліку на хрестик
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+    }
+
+    // 3. Закриваємо попап при кліку на темне тло навколо вікна
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.classList.remove('active');
+        }
+    });
+}
     greetingElement.textContent = greetingString; // Міняємо текст на сторінці
 }
