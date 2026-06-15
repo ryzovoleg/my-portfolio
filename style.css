@@ -224,6 +224,40 @@ input:focus, textarea:focus {
     line-height: 1.6;
 }
 
+/* 9. ІНТЕРАКТИВНИЙ ФІЛЬТР БРЕНДІВ */
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    flex-wrap: wrap; /* Щоб кнопки красиво переносилися на мобілках */
+}
+
+.filter-btn {
+    background-color: #f4f4f4;
+    color: #333333;
+    border: 1px solid #cccccc;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Стиль для активної кнопки або коли наводимо мишку */
+.filter-btn:hover, .filter-btn.active {
+    background-color: darkblue;
+    color: white;
+    border-color: darkblue;
+    box-shadow: 0 4px 10px rgba(0, 0, 139, 0.2);
+}
+
+/* Хитруй клас для ховання карток */
+.brand-card.hide-card {
+    display: none !important;
+}
+
 /* Ефект hover для послуг тільки для комп'ютерів */
 @media (hover: hover) {
     .service-card:hover {
