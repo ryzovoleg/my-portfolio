@@ -245,12 +245,21 @@ input:focus, textarea:focus {
     transition: all 0.3s ease;
 }
 
-/* Стиль для активної кнопки або коли наводимо мишку */
-.filter-btn:hover, .filter-btn.active {
+/* Колір кнопки, коли вона РЕАЛЬНО активована через JavaScript */
+.filter-btn.active {
     background-color: darkblue;
     color: white;
     border-color: darkblue;
     box-shadow: 0 4px 10px rgba(0, 0, 139, 0.2);
+}
+
+/* Ефект наведення мишки ТІЛЬКИ для комп'ютерів */
+@media (hover: hover) {
+    .filter-btn:hover {
+        background-color: darkblue;
+        color: white;
+        border-color: darkblue;
+    }
 }
 
 /* Хитруй клас для ховання карток */
