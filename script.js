@@ -1,4 +1,6 @@
-// --- БЛОК 1: ТЕМНА ТЕМА ---
+// =======================================================
+// БЛОК 1: ТЕМНА ТЕМА
+// =======================================================
 const themeButton = document.getElementById('theme-toggle');
 if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-theme');
@@ -14,7 +16,9 @@ if (themeButton) {
     });
 }
 
-// --- БЛОК 2: КНОПКА ВГОРУ ---
+// =======================================================
+// БЛОК 2: КНОПКА ВГОРУ (Back to Top)
+// =======================================================
 const backToTopBtn = document.getElementById('back-to-top');
 if (backToTopBtn) {
     window.addEventListener('scroll', () => {
@@ -29,12 +33,13 @@ if (backToTopBtn) {
     });
 }
 
-// --- БЛОК 3: РОЗУМНЕ ПРИВІТАННЯ ---
+// =======================================================
+// БЛОК 3: РОЗУМНЕ ПРИВІТАННЯ
+// =======================================================
 const greetingElement = document.getElementById('greeting-text');
 if (greetingElement) {
-    const currentHour = new Date().getHours(); // Отримуємо поточну годину (від 0 до 23)
+    const currentHour = new Date().getHours();
     let greetingString = "Привіт, я Олег!";
-
     if (currentHour >= 5 && currentHour < 12) {
         greetingString = "Доброго ранку, я Олег! 🌅";
     } else if (currentHour >= 12 && currentHour < 18) {
@@ -44,28 +49,28 @@ if (greetingElement) {
     } else {
         greetingString = "Доброї ночі, я Олег! 🌙";
     }
+    greetingElement.textContent = greetingString;
+}
 
-    // --- БЛОК 4: АНІМАЦІЯ ПРИ СКРОЛІ ---
+// =======================================================
+// БЛОК 4: АНІМАЦІЯ ПОЯВИ ПРИ СКРОЛІ
+// =======================================================
 const animElements = document.querySelectorAll('.scroll-anim');
-
 if (animElements.length > 0) {
-    // Створюємо "спостерігач", який стежить за появою елементів
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            // Якщо елемент з'явився в полі зору хоча б трохи
             if (entry.isIntersecting) {
-                entry.target.classList.add('scroll-visible'); // Додаємо клас появи
-                observer.unobserve(entry.target); // Вимикаємо стеження за цим елементом, щоб анімація не повторювалася щоразу
+                entry.target.classList.add('scroll-visible');
+                observer.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0.15 // Анімація спрацює, коли елемент покажеться на 15%
-    });
-
-    // Запускаємо спостерігач для кожної картки
+    }, { threshold: 0.15 });
     animElements.forEach(el => observer.observe(el));
 }
-// --- БЛОК 5: МОДАЛЬНЕ ВІКНО (ПОПАП) — ЗАХИЩЕНА ВЕРСІЯ ---
+
+// =======================================================
+// БЛОК 5: МОДАЛЬНЕ ВІКНО (ПОПАП)
+// =======================================================
 const modal = document.getElementById('service-modal');
 const serviceCards = document.querySelectorAll('.service-card');
 const modalCloseBtn = document.querySelector('.modal-close-btn');
@@ -75,35 +80,28 @@ const modalText = document.getElementById('modal-text');
 if (modal && serviceCards.length > 0) {
     serviceCards.forEach(card => {
         card.addEventListener('click', () => {
-            // Безпечно шукаємо заголовок та текст всередині картки
             const h3Element = card.querySelector('h3');
             const pElement = card.querySelector('p');
-            
-            // Якщо знайшли — беремо текст, якщо ні — ставимо стандартний
             const cardTitle = h3Element ? h3Element.innerText : "Послуга";
             const cardText = pElement ? pElement.innerText : "";
             
             if (modalTitle && modalText) {
                 modalTitle.innerText = cardTitle;
-                modalText.innerText = cardText + " Ми пропонуємо індивідуальні умови співпраці, повний супровід та гарантію якості для кожного замовлення в нашому регіоні.";
+                modalText.innerText = cardText + " Ми пропонуємо індивідуальні умови співпраці, повний супровід та гарантію якості для кожного замовлення.";
             }
-            
-            // Показуємо попап
             modal.classList.add('active');
         });
     });
 
-    // Закриття на хрестик
     if (modalCloseBtn) {
         modalCloseBtn.addEventListener('click', () => {
             modal.classList.remove('active');
         });
     }
 
-    // Закриття на темне тло
     modal.addEventListener('click', (event) => {
         if (event.target === modal) {
             modal.classList.remove('active');
         }
     });
-}
+} // <-- ОЦЯ ДУЖКА МАЄ БУТИ ТУТ! Вона закриває весь Блок 5.
