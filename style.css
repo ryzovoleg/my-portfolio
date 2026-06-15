@@ -314,6 +314,67 @@ input:focus, textarea:focus {
     transform: scale(1.1); /* Злегка збільшується при наведенні */
 }
 
+/* 6. ПЛАВАЮЧИЙ ВІДЖЕТ МЕСЕНДЖЕРІВ */
+.messenger-widget {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.messenger-main-btn {
+    background-color: #0088cc;
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.messenger-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+/* Магія CSS: коли наводимо на весь віджет — посилання плавно з'являються */
+.messenger-widget:hover .messenger-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.messenger-links a {
+    text-decoration: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.tg-link { background-color: #24A1DE; }
+.viber-link { background-color: #7360F2; }
+
+.messenger-widget:hover .messenger-main-btn {
+    transform: scale(1.1) rotate(15deg);
+}
+
+
 /* Адаптивні стилі для смартфонів */
 @media (max-width: 768px) {
   .main-header {
