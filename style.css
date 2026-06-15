@@ -194,34 +194,70 @@ input:focus, textarea:focus {
     margin: 50px 0;
 }
 
+/* =======================================================
+   НОВА СЕСІЯ: APPLE BENTO GRID ДЛЯ ПОСЛУГ
+   ======================================================= */
+.services-section {
+    margin: 60px 0;
+}
+
 .services-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
+    display: grid;
+    /* Створюємо 3 однакові за шириною стовпчики */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; /* Відступи між коробками "бенто" */
     margin-top: 25px;
 }
 
 .service-card {
     background-color: white;
-    padding: 30px 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    width: 300px;
-    text-align: center;
+    padding: 30px;
+    border-radius: 16px; /* Більш закруглені кути в стилі Apple */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    text-align: left; /* У Bento Grid текст краще виглядає ліворуч */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%; /* Тепер шириною керує сітка, а не фіксовані 300px */
+    min-height: 180px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* МАГІЯ BENTO: змушуємо картку розтягуватися на 2 стовпчики з 3-х */
+.bento-wide {
+    grid-column: span 2;
 }
 
 .service-card h3 {
     color: darkblue;
     margin-bottom: 12px;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .service-card p {
     color: #555555;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.6;
+}
+
+/* Ефект підстрибування при наведенні (тільки для комп'ютерів) */
+@media (hover: hover) {
+    .service-card:hover {
+        transform: scale(1.02); /* Акуратне збільшення в стилі Apple */
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+}
+
+/* АДАПТИВНІСТЬ: на телефонах Bento перетворюється на звичайний зручний стовпчик */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* Лише 1 стовпчик на мобільних */
+        gap: 15px;
+    }
+    
+    .bento-wide {
+        grid-column: span 1; /* Скасовуємо розтягування на телефонах */
+    }
 }
 
 /* 9. ІНТЕРАКТИВНИЙ ФІЛЬТР БРЕНДІВ */
