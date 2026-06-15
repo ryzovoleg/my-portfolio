@@ -45,5 +45,26 @@ if (greetingElement) {
         greetingString = "Доброї ночі, я Олег! 🌙";
     }
 
+    // --- БЛОК 4: АНІМАЦІЯ ПРИ СКРОЛІ ---
+const animElements = document.querySelectorAll('.scroll-anim');
+
+if (animElements.length > 0) {
+    // Створюємо "спостерігач", який стежить за появою елементів
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // Якщо елемент з'явився в полі зору хоча б трохи
+            if (entry.isIntersecting) {
+                entry.target.classList.add('scroll-visible'); // Додаємо клас появи
+                observer.unobserve(entry.target); // Вимикаємо стеження за цим елементом, щоб анімація не повторювалася щоразу
+            }
+        });
+    }, {
+        threshold: 0.15 // Анімація спрацює, коли елемент покажеться на 15%
+    });
+
+    // Запускаємо спостерігач для кожної картки
+    animElements.forEach(el => observer.observe(el));
+}
+
     greetingElement.textContent = greetingString; // Міняємо текст на сторінці
 }
