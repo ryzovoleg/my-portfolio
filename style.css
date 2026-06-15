@@ -549,17 +549,19 @@ body.dark-theme form {
     color: #ffffff;
 }
 
-/* Адаптація кнопок фільтра під темну тему */
-body.dark-theme .filter-btn {
-    background-color: #2d2d2d;
-    color: #ffffff;
-    border-color: #555555;
-}
-body.dark-theme .filter-btn:hover, 
+/* Адаптація активної кнопки під темну тему */
 body.dark-theme .filter-btn.active {
     background-color: #4caf50;
     border-color: #4caf50;
     box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+}
+
+/* Ефект наведення для темної теми ТІЛЬКИ на комп'ютерах */
+@media (hover: hover) {
+    body.dark-theme .filter-btn:hover {
+        background-color: #4caf50;
+        border-color: #4caf50;
+    }
 }
 
 /* Адаптація попапу під темну тему */
