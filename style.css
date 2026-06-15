@@ -40,12 +40,6 @@ li {
   color: grey;
 }
 
-div {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
 .btn {
   background-color: darkblue;
   color: white;
@@ -327,11 +321,6 @@ input:focus, textarea:focus {
     gap: 10px;
   }
   
-  /* Додаємо цей блок, щоб картинка і список хобі встали один під одним */
-  div {
-    flex-direction: column;
-    text-align: center;
-  }
 }
 /* Стилі для темної теми */
 body.dark-theme {
