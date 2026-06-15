@@ -374,6 +374,19 @@ input:focus, textarea:focus {
     transform: scale(1.1) rotate(15deg);
 }
 
+/* 7. АНІМАЦІЯ ПОЯВИ ПРИ СКРОЛІ */
+.scroll-anim {
+    opacity: 0;
+    transform: translateY(50px); /* Початково картка опущена на 50 пікселів вниз */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform; /* Підказка для браузера, щоб анімація не сіпалася */
+}
+
+/* Клас, який JavaScript додасть автоматично при догортанні */
+.scroll-anim.scroll-visible {
+    opacity: 1;
+    transform: translateY(0); /* Картка плавно повертається на своє законне місце */
+}
 
 /* Адаптивні стилі для смартфонів */
 @media (max-width: 768px) {
