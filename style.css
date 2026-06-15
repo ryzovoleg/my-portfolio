@@ -254,6 +254,10 @@ input:focus, textarea:focus {
         grid-template-columns: 1fr; /* Лише 1 стовпчик на мобільних */
         gap: 15px;
     }
+  
+  body {
+        padding-bottom: 90px; /* Додає порожній простір в самому низу сторінки, щоб кнопки нічого не перекривали */
+    }
     
     .bento-wide {
         grid-column: span 1; /* Скасовуємо розтягування на телефонах */
