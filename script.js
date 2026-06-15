@@ -1,19 +1,37 @@
+// --- БЛОК 1: ТЕМНА ТЕМА ---
 const themeButton = document.getElementById('theme-toggle');
 
-// 1. При завантаженні сторінки перевіряємо, чи вмикав користувач темну тему раніше
 if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-theme');
 }
 
 themeButton.addEventListener('click', () => {
-    // 2. Перемикаємо клас як і раніше
     document.body.classList.toggle('dark-theme');
-    
-    // 3. Якщо після кліку тема стала темною — записуємо це в пам'ять браузера
     if (document.body.classList.contains('dark-theme')) {
         localStorage.setItem('theme', 'dark');
     } else {
-        // Якщо повернулися до світлої — видаляємо запис або пишемо 'light'
         localStorage.setItem('theme', 'light');
     }
+});
+
+
+// --- БЛОК 2: КНОПКА ВГОРУ ---
+const backToTopBtn = document.getElementById('back-to-top');
+
+// Слідкуємо за гортанням сторінки
+window.addEventListener('scroll', () => {
+    // Якщо прокрутили більше ніж 400 пікселів — показуємо кнопку, інакше — ховаємо
+    if (window.scrollY > 400) {
+        backToTopBtn.style.display = 'block';
+    } else {
+        backToTopBtn.style.display = 'none';
+    }
+});
+
+// При кліку на кнопку — плавно котимося на самий верх
+backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
     });
+});
