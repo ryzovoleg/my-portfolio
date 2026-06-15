@@ -1,12 +1,10 @@
 // --- БЛОК 1: ТЕМНА ТЕМА ---
 const themeButton = document.getElementById('theme-toggle');
 
-// Перевіряємо пам'ять при завантаженні сторінки
 if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-theme');
 }
 
-// ПЕРЕВІРКА: Якщо кнопка теми є на цій сторінці — вмикаємо її логіку
 if (themeButton) {
     themeButton.addEventListener('click', () => {
         document.body.classList.toggle('dark-theme');
@@ -18,22 +16,20 @@ if (themeButton) {
     });
 }
 
-
 // --- БЛОК 2: КНОПКА ВГОРУ ---
 const backToTopBtn = document.getElementById('back-to-top');
 
-// PЕРЕВІРКА: Якщо кнопка "Вгору" є на цій сторінці — вмикаємо її логіку
 if (backToTopBtn) {
-    // Слідкуємо за гортанням
     window.addEventListener('scroll', () => {
+        // Якщо прокрутили більше 400px — показуємо кнопку, інакше ховаємо
         if (window.scrollY > 400) {
-            backToTopBtn.style.style.display = 'block'; // Якщо скрол більше 400px — показуємо
+            backToTopBtn.style.display = 'block'; 
         } else {
-            backToTopBtn.style.style.display = 'none'; // Інакше ховаємо
+            backToTopBtn.style.display = 'none'; 
         }
     });
 
-    // Клік по кнопці
+    // Клік по кнопці плавно повертає наверх
     backToTopBtn.addEventListener('click', () => {
         window.scrollTo({
             top: 0,
