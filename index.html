@@ -53,23 +53,30 @@
     <li>CSS</li>
     <li>JavaScript</li>
   </ul>
-  <section class="brands-section">
-    <h2>Бренди, з якими я працюю</h2>
+  <!-- Розділ Брендів на Tailwind -->
+<section class="py-16 bg-transparent">
+    
+    <!-- Заголовок -->
+    <h2 class="text-3xl font-extrabold text-center text-blue-900 dark:text-green-500 mb-8 tracking-tight">
+        Бренди, з якими я працюю
+    </h2>
 
-    <div class="filter-buttons">
-        <button class="filter-btn active" data-filter="all">Усі</button>
-        <button class="filter-btn" data-filter="glass">Скло & Кришталь</button>
-        <button class="filter-btn" data-filter="porcelain">Порцеляна</button>
-        <button class="filter-btn" data-filter="cookware">Кухонний посуд</button>
+    <!-- Кнопки фільтрації (флекс-ряд з відступами) -->
+    <div class="filter-buttons flex flex-wrap justify-center gap-3 mb-10 px-4">
+        <button class="filter-btn active px-5 py-2 rounded-full text-sm font-bold border border-gray-300 dark:border-zinc-700 bg-gray-100 text-gray-700 dark:bg-zinc-800 dark:text-zinc-300 transition-all duration-300 cursor-pointer" data-filter="all">Усі</button>
+        <button class="filter-btn px-5 py-2 rounded-full text-sm font-bold border border-gray-300 dark:border-zinc-700 bg-gray-100 text-gray-700 dark:bg-zinc-800 dark:text-zinc-300 transition-all duration-300 cursor-pointer" data-filter="glass">Скло & Кришталь</button>
+        <button class="filter-btn px-5 py-2 rounded-full text-sm font-bold border border-gray-300 dark:border-zinc-700 bg-gray-100 text-gray-700 dark:bg-zinc-800 dark:text-zinc-300 transition-all duration-300 cursor-pointer" data-filter="porcelain">Порцеляна</button>
+        <button class="filter-btn px-5 py-2 rounded-full text-sm font-bold border border-gray-300 dark:border-zinc-700 bg-gray-100 text-gray-700 dark:bg-zinc-800 dark:text-zinc-300 transition-all duration-300 cursor-pointer" data-filter="cookware">Кухонний посуд</button>
     </div>
 
-    <div class="brands-grid">
-        <div class="brand-card scroll-anim" data-category="glass"><p>Luminarc</p></div>
-        <div class="brand-card scroll-anim" data-category="porcelain"><p>Wilmax</p></div>
-        <div class="brand-card scroll-anim" data-category="glass"><p>Bohemia</p></div>
-        <div class="brand-card scroll-anim" data-category="cookware"><p>Lesner</p></div>
-        <div class="brand-card scroll-anim" data-category="cookware"><p>Vincent</p></div>
-        <div class="brand-card scroll-anim" data-category="glass"><p>Milika</p></div>
+    <!-- Сітка брендів: 2 колонки на мобілці (grid-cols-2), 3 колонки на комп'ютері (md:grid-cols-3) -->
+    <div class="brands-grid grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto px-4">
+        <div class="brand-card scroll-anim bg-white dark:bg-zinc-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-800 text-center flex items-center justify-center font-bold text-lg text-blue-900 dark:text-zinc-200 min-h-[80px] transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer" data-category="glass"><p>Luminarc</p></div>
+        <div class="brand-card scroll-anim bg-white dark:bg-zinc-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-800 text-center flex items-center justify-center font-bold text-lg text-blue-900 dark:text-zinc-200 min-h-[80px] transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer" data-category="porcelain"><p>Wilmax</p></div>
+        <div class="brand-card scroll-anim bg-white dark:bg-zinc-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-800 text-center flex items-center justify-center font-bold text-lg text-blue-900 dark:text-zinc-200 min-h-[80px] transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer" data-category="glass"><p>Bohemia</p></div>
+        <div class="brand-card scroll-anim bg-white dark:bg-zinc-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-800 text-center flex items-center justify-center font-bold text-lg text-blue-900 dark:text-zinc-200 min-h-[80px] transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer" data-category="cookware"><p>Lesner</p></div>
+        <div class="brand-card scroll-anim bg-white dark:bg-zinc-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-800 text-center flex items-center justify-center font-bold text-lg text-blue-900 dark:text-zinc-200 min-h-[80px] transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer" data-category="cookware"><p>Vincent</p></div>
+        <div class="brand-card scroll-anim bg-white dark:bg-zinc-900 p-6 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-800 text-center flex items-center justify-center font-bold text-lg text-blue-900 dark:text-zinc-200 min-h-[80px] transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer" data-category="glass"><p>Milika</p></div>
     </div>
 </section>
     
