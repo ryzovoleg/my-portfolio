@@ -23,6 +23,7 @@
     <div class="fixed top-10 left-[-10%] w-[500px] h-[500px] bg-blue-400/20 dark:bg-green-500/10 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse"></div>
 <div class="fixed bottom-10 right-[-10%] w-[600px] h-[600px] bg-indigo-400/20 dark:bg-blue-500/10 rounded-full blur-[150px] pointer-events-none -z-10 animate-pulse duration-[6000ms]"></div>
 
+    
   <header class="main-header">
   <div class="logo">Портфоліо</div>
   <nav class="nav-menu">
@@ -46,6 +47,7 @@
         Вивчаю HTML, CSS та Tailwind
     </p>
 </div>
+    
   <h1>Oleg</h1>
   <p>Я вчусь писати гіпертекстову розмітку.</p>
 
@@ -82,7 +84,8 @@
     </div>
 </section>
     
-    <section class="py-16 bg-transparent" id="services">
+    <!-- Розділ Послуг з ефектом GLASSMORPHISM (Матове скло) -->
+<section class="py-16 bg-transparent" id="services">
     
     <h2 class="text-3xl font-extrabold text-center text-blue-900 dark:text-green-500 mb-10 tracking-tight">
         Що я пропоную
@@ -90,37 +93,40 @@
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto px-4">
         
-        <div class="service-card scroll-anim md:col-span-2 bg-white dark:bg-zinc-900 p-6 md:p-8 rounded-2xl shadow-md border border-gray-100 dark:border-zinc-800 flex flex-col justify-center min-h-[180px] transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl cursor-pointer">
+        <!-- Картка 1: ШИРОКА БЕНТО (Скляна) -->
+        <div class="service-card scroll-anim md:col-span-2 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-md border border-white/40 dark:border-zinc-800/60 flex flex-col justify-center min-h-[180px] transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl cursor-pointer">
             <h3 class="text-xl font-bold text-blue-900 dark:text-green-500 mb-3">📦 Оптові постачання посуду</h3>
-            <p class="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed">
+            <p class="text-gray-800 dark:text-gray-200 text-sm md:text-base leading-relaxed">
                 Великий вибір якісного посуду відомих брендів для вашого бізнесу на вигідних умовах. Повний асортимент від Luminarc, Wilmax та Bohemia завжди в наявності на складі.
             </p>
         </div>
 
-        <div class="service-card scroll-anim bg-white dark:bg-zinc-900 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-zinc-800 flex flex-col justify-center min-h-[180px] transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl cursor-pointer">
+        <!-- Картка 2: СТАНДАРТНА БЕНТО (Скляна) -->
+        <div class="service-card scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 rounded-2xl shadow-md border border-white/40 dark:border-zinc-800/60 flex flex-col justify-center min-h-[180px] transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl cursor-pointer">
             <h3 class="text-xl font-bold text-blue-900 dark:text-green-500 mb-3">📋 Під замовлення</h3>
-            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                Швидке формування ексклюзивних партій товару під конкретні потреби клієнта.
+            <p class="text-gray-800 dark:text-gray-200 text-sm leading-relaxed">
+                Швидке формування ексклюзивних партій товару под конкретні потреби клієнта.
             </p>
         </div>
 
-        <div class="service-card scroll-anim bg-white dark:bg-zinc-900 p-6 rounded-2xl shadow-md border border-gray-100 dark:border-zinc-800 flex flex-col justify-center min-h-[180px] transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl cursor-pointer">
+        <!-- Картка 3: СТАНДАРТНА БЕНТО (Скляна) -->
+        <div class="service-card scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 rounded-2xl shadow-md border border-white/40 dark:border-zinc-800/60 flex flex-col justify-center min-h-[180px] transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl cursor-pointer">
             <h3 class="text-xl font-bold text-blue-900 dark:text-green-500 mb-3">🤝 Партнерство</h3>
-            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            <p class="text-gray-800 dark:text-gray-200 text-sm leading-relaxed">
                 Прозорий контроль документації, регулярні звірки та гнучкі умови для постійних клієнтів.
             </p>
         </div>
 
-        <div class="service-card scroll-anim md:col-span-2 bg-white dark:bg-zinc-900 p-6 md:p-8 rounded-2xl shadow-md border border-gray-100 dark:border-zinc-800 flex flex-col justify-center min-h-[180px] transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl cursor-pointer">
+        <!-- Картка 4: ШИРОКА БЕНТО (Скляна) -->
+        <div class="service-card scroll-anim md:col-span-2 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-md border border-white/40 dark:border-zinc-800/60 flex flex-col justify-center min-h-[180px] transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl cursor-pointer">
             <h3 class="text-xl font-bold text-blue-900 dark:text-green-500 mb-3">🌍 Прямий імпорт та логістика</h3>
-            <p class="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed">
+            <p class="text-gray-800 dark:text-gray-200 text-sm md:text-base leading-relaxed">
                 Прямі поставки з фабрик Європи та світу. Гарантуємо оригінальність продукції Lessner, Vincent, Milika та забезпечуємо чітку логістику по Волині без посередників.
             </p>
         </div>
 
     </div>
 </section>
-
   <section class="py-16 bg-transparent">
     
     <h2 class="text-3xl font-extrabold text-center text-blue-900 dark:text-green-500 mb-12 tracking-tight">
