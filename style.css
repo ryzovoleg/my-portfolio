@@ -1,717 +1,162 @@
-html {
-  scroll-behavior: smooth;
-}
+/* =======================================================
+   ОПТИМІЗОВАНИЙ СТИЛЬ САЙТУ (ФІНАЛЬНА ВЕРСІЯ)
+   ======================================================= */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* 1. БАЗОВІ НАЛАШТУВАННЯ ТА ПЛАВНИЙ СКРОЛ */
+html {
+    scroll-behavior: smooth; /* Змушує сайт плавно гортатися при кліку на меню */
 }
 
 body {
-  padding: 20px;
-  background-color: lightgrey;
-  font-family: 'Montserrat', sans-serif; /* Тепер увесь сайт матиме солідний шрифт */
-  cursor: none; /* Ховає стандартний курсор миші на комп'ютерах */ 
-    /* твої інші стилі для body, якщо вони там були */
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc; /* Світлий фон за замовчуванням */
+    color: #0f172a;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden; /* Захист від випадкового бокового скролу на мобілках */
+    padding-bottom: 90px; /* Зона безпеки внизу, щоб плаваючі кнопки нічого не закривали */
 }
 
-
-h1 {
-  color: blue;
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
-
-p {
-  color: grey;
-}
-
-h2 {
-  color: green;
-  background-color: white;
-  text-align: center;
-}
-
-img {
-  margin-bottom: 20px;
-  border-radius: 15px;
-}
-
-li {
-  color: grey;
-}
-
-.btn {
-  background-color: darkblue;
-  color: white;
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background-color: blue;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 350px;
-  margin: auto;
-  padding: 20px;
-  background-color: white;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-}
-
-input, textarea {
-  border: 1px solid darkblue;
-  padding: 8px;
-  border-radius: 5px;
-  transition: 0.3s;
-}
-
-input:focus, textarea:focus {
-  border-color: blue;
-}
-
-.profile-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f4f4f4;
-  padding: 20px;
-  border-radius: 10px;
-  gap: 15px;
-}
-
-.profile-card img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.gallery {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
-.project-card {
-  width: 250px;
-  padding: 15px;
-  border: 1px solid gray;
-  box-shadow: 2px 4px 5px gray;
-  transition: transform 0.3s ease;
-}
-
-.project-card img {
-  width: 100%;
-}
-
-@media (hover: hover) {
-    .project-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 2px 8px 12px gray;
-    }
-}
-
-.profile-card h3 {
-  font-size: 22px;
-}
-
-.profile-card p {
-  color: #555555;
-}
-
-.main-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-menu {
-  display: flex;
-  gap: 20px;
-}
-
-.nav-menu a {
-  text-decoration: none;
-  color: #333333;
-  transition: 0.3s; /* 1. Додали плавність для посилань шапки */
-}
-
-/* 2. Додаємо сам ефект: що станеться, коли ми наведемо мишку */
-.nav-menu a:hover {
-  color: blue; /* Колір тексту плавно зміниться на синій */
-  text-decoration: underline; /* З'явиться акуратне підкреслення */
-}
-
-.main-footer {
-  text-align: center;
-  padding: 15px 0px;
-}
-.brands-section {
-    margin: 40px 0;
-}
-
-.brands-grid {
-    display: flex;
-    flex-wrap: wrap; /* Дозволяє карткам автоматично переноситися на новий рядок на смартфонах */
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.brand-card {
-    background-color: white;
-    padding: 15px 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    text-align: center;
-    min-width: 140px;
-    transition: 0.3s ease;
-}
-
-.brand-card p {
-    color: darkblue;
-    font-weight: bold;
-    font-size: 16px;
-    margin: 0; /* Прибираємо зайві відступи у тексту всередині картки */
-}
-
-/* Ефект hover для брендів тільки для комп'ютерів */
-@media (hover: hover) {
-    .brand-card:hover {
-        transform: scale(1.08);
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.12);
-        background-color: #fcfcfcfc;
-    }
-}
-.services-section {
-    margin: 50px 0;
-}
-
-/* =======================================================
-   НОВА СЕСІЯ: APPLE BENTO GRID ДЛЯ ПОСЛУГ
-   ======================================================= */
-.services-section {
-    margin: 60px 0;
-}
-
-.services-grid {
-    display: grid;
-    /* Створюємо 3 однакові за шириною стовпчики */
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 20px; /* Відступи між коробками "бенто" */
-    margin-top: 25px;
-}
-
-.service-card {
-    background-color: white;
-    padding: 30px;
-    border-radius: 16px; /* Більш закруглені кути в стилі Apple */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
-    text-align: left; /* У Bento Grid текст краще виглядає ліворуч */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%; /* Тепер шириною керує сітка, а не фіксовані 300px */
-    min-height: 180px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* МАГІЯ BENTO: змушуємо картку розтягуватися на 2 стовпчики з 3-х */
-.bento-wide {
-    grid-column: span 2;
-}
-
-.service-card h3 {
-    color: darkblue;
-    margin-bottom: 12px;
-    font-size: 22px;
-}
-
-.service-card p {
-    color: #555555;
-    font-size: 15px;
-    line-height: 1.6;
-}
-
-/* Ефект підстрибування при наведенні (тільки для комп'ютерів) */
-@media (hover: hover) {
-    .service-card:hover {
-        transform: scale(1.02); /* Акуратне збільшення в стилі Apple */
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-    }
-}
-
-/* АДАПТИВНІСТЬ: на телефонах Bento перетворюється на звичайний зручний стовпчик */
-@media (max-width: 768px) {
-    .services-grid {
-        grid-template-columns: 1fr; /* Лише 1 стовпчик на мобільних */
-        gap: 15px;
-    }
-  
-  body {
-        padding-bottom: 90px; /* Додає порожній простір в самому низу сторінки, щоб кнопки нічого не перекривали */
-    }
-    
-    .bento-wide {
-        grid-column: span 1; /* Скасовуємо розтягування на телефонах */
-    }
-}
-
-/* 9. ІНТЕРАКТИВНИЙ ФІЛЬТР БРЕНДІВ */
-.filter-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 30px;
-    flex-wrap: wrap; /* Щоб кнопки красиво переносилися на мобілках */
-}
-
-.filter-btn {
-    background-color: #f4f4f4;
-    color: #333333;
-    border: 1px solid #cccccc;
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-/* Колір кнопки, коли вона РЕАЛЬНО активована через JavaScript */
-.filter-btn.active {
-    background-color: darkblue;
-    color: white;
-    border-color: darkblue;
-    box-shadow: 0 4px 10px rgba(0, 0, 139, 0.2);
-}
-
-/* Ефект наведення мишки ТІЛЬКИ для комп'ютерів */
-@media (hover: hover) {
-    .filter-btn:hover {
-        background-color: darkblue;
-        color: white;
-        border-color: darkblue;
-    }
-}
-
-/* Хитруй клас для ховання карток */
-.brand-card.hide-card {
-    display: none !important;
-}
-
-/* Ефект hover для послуг тільки для комп'ютерів */
-@media (hover: hover) {
-    .service-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-    }
-}
-
-.advantages-section {
-    margin: 60px 0;
-    text-align: center;
-}
-.advantage-item h3 {
-    color: darkblue;
-    font-size: 18px;
-    margin-bottom: 10px;
+/* Налаштування фону для темної теми */
+html.dark body {
+    background-color: #09090b; /* Глибокий темний фон */
+    color: #f4f4f5;
 }
-
-.advantage-item p {
-    color: #666666;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-/* Ефект для іконки: при наведенні на весь блок, іконка красиво прокрутиться навколо своєї осі */
-.advantage-item:hover .advantage-icon {
-    transform: rotate(360deg);
-}
-
-/* 4. НОВИЙ СТИЛЬНИЙ БІГУНОК (Scrollbar) */
-::-webkit-scrollbar {
-    width: 10px; /* Ширина смуги прокрутки */
-}
-::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Тло смуги */
-}
-::-webkit-scrollbar-thumb {
-    background: darkblue; /* Колір самого бігунка */
-    border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #0000aa;
-}
-
-/* 5. КНОПКА ВГОРУ (Back to Top) */
-#back-to-top {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    display: none; /* Схована за замовчуванням, покажемо через JS */
-    background-color: darkblue;
-    color: white;
-    border: none;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 18px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 999;
-    transition: transform 0.2s ease, background-color 0.3s ease;
-}
-#back-to-top:hover {
-    transform: scale(1.1); /* Злегка збільшується при наведенні */
-}
-
-/* 6. ПЛАВАЮЧИЙ ВІДЖЕТ МЕСЕНДЖЕРІВ */
-.messenger-widget {
-    position: fixed;
-    bottom: 25px;
-    left: 25px;
-    z-index: 999;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-}
-
-.messenger-main-btn {
-    background-color: #0088cc;
-    color: white;
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    font-size: 22px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
-}
-
-.messenger-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 15px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-}
-
-/* Магія CSS: коли наводимо на весь віджет — посилання плавно з'являються */
-.messenger-widget:hover .messenger-links {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.messenger-links a {
-    text-decoration: none;
-    color: white;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    text-align: center;
-}
-
-.tg-link { background-color: #24A1DE; }
-.viber-link { background-color: #7360F2; }
-
-.messenger-widget:hover .messenger-main-btn {
-    transform: scale(1.1) rotate(15deg);
-}
-
-/* 7. АНІМАЦІЯ ПОЯВИ ПРИ СКРОЛІ */
-.scroll-anim {
-    opacity: 1;
-    transform: translateY(0); /* Початково картка опущена на 50 пікселів вниз */
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    will-change: opacity, transform; /* Підказка для браузера, щоб анімація не сіпалася */
-}
-
-/* Клас, який JavaScript додасть автоматично при догортанні */
-.scroll-anim.scroll-visible {
-    opacity: 1;
-    transform: translateY(0); /* Картка плавно повертається на своє законне місце */
-}
-
-/* 8. МОДАЛЬНЕ ВІКНО (ПОПАП) */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Напівпрозорий темний фон */
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-/* Коли попап відкритий, додаємо цей клас через JS */
-.modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-content {
-    background-color: white;
-    padding: 40px 30px;
-    border-radius: 15px;
-    max-width: 500px;
-    width: 90%;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transform: scale(0.7); /* Початково вікно трохи зменшене */
-    transition: transform 0.3s ease;
-}
-
-/* Ефект красивого збільшення вікна при відкритті */
-.modal-overlay.active .modal-content {
-    transform: scale(1);
-}
-
-.modal-close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    background: none;
-    border: none;
-    font-size: 30px;
-    cursor: pointer;
-    color: #999;
-    transition: color 0.2s;
-}
-
-.modal-close-btn:hover {
-    color: #333;
-}
-
-.modal-content h2 {
-    margin-bottom: 15px;
-    font-size: 24px;
-}
-
-.modal-content p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 25px;
-}
-
-.modal-action-btn {
-    width: 100%;
-}
-
-/* Адаптивні стилі для смартфонів */
-@media (max-width: 768px) {
-  .main-header {
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-}
-/* Стилі для темної теми */
-body.dark-theme {
-    background-color: #121212; /* Темний фон сайту */
-    color: #ffffff; /* Білий текст */
-}
-
-body.dark-theme h2 {
-    background-color: #1e1e1e;
-    color: #4caf50; /* Зелений заголовок у темній темі */
-}
-
-body.dark-theme .service-card {
-    background-color: #1e1e1e;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-}
-
-body.dark-theme .service-card h3 {
-    color: #4caf50;
-}
-
-body.dark-theme .service-card p {
-    color: #bbbbbb;
-}
-
-body.dark-theme .profile-card,
-body.dark-theme .brand-card,
-body.dark-theme form {
-    background-color: #1e1e1e; /* Темно-сірі картки та форма */
-    color: #ffffff;
-}
-
-/* Адаптація активної кнопки під темну тему */
-body.dark-theme .filter-btn.active {
-    background-color: #4caf50;
-    border-color: #4caf50;
-    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
-}
-
-/* Ефект наведення для темної теми ТІЛЬКИ на комп'ютерах */
-@media (hover: hover) {
-    body.dark-theme .filter-btn:hover {
-        background-color: #4caf50;
-        border-color: #4caf50;
-    }
-}
-
-/* Адаптація попапу під темну тему */
-body.dark-theme .modal-content {
-    background-color: #1e1e1e;
-    color: white;
-}
-body.dark-theme .modal-content h2 {
-    background-color: transparent;
-    color: #4caf50;
-}
-body.dark-theme .modal-content p {
-    color: #bbbbbb;
-}
-body.dark-theme .modal-close-btn {
-    color: #777;
-}
-body.dark-theme .modal-close-btn:hover {
-    color: #fff;
-}
-
-body.dark-theme p, 
-body.dark-theme li,
-body.dark-theme .nav-menu a {
-    color: #bbbbbb; /* Світло-сірий текст для опису та посилань */
-}
-/* Адаптація бігунка та кнопки під темну тему */
-body.dark-theme::-webkit-scrollbar-track {
-    background: #1e1e1e;
-}
-body.dark-theme::-webkit-scrollbar-thumb {
-    background: #4caf50;
-}
-body.dark-theme #back-to-top {
-    background-color: #4caf50;
-}
-
-body.dark-theme input, 
-body.dark-theme textarea {
-    background-color: #2d2d2d;
-    color: #ffffff;
-    border-color: #555555;
-}
-/* Адаптація переваг під темну тему */
-body.dark-theme .advantage-icon {
-    background-color: #1e1e1e;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-}
-
-body.dark-theme .advantage-item h3 {
-    color: #4caf50;
-}
-
-body.dark-theme .advantage-item p {
-    color: #bbbbbb;
-}
-// =======================================================
-// БЛОК 8: КАСТОМНИЙ КУРСОР ТА МІКРОІНТЕРАКЦІЇ
-// =======================================================
-const cursor = document.getElementById('custom-cursor');
-const cursorDot = document.getElementById('custom-cursor-dot');
-
-if (cursor && cursorDot) {
-    // 1. Слідкуємо за рухом мишки
-    document.addEventListener('mousemove', (e) => {
-        cursorDot.style.left = e.clientX + 'px';
-        cursorDot.style.top = e.clientY + 'px';
-        
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
-
-    // 2. Шукаємо всі елементи, на які можна натиснути
-    const interactiveElements = document.querySelectorAll('a, button, .service-card, .brand-card, input, textarea');
-    
-    interactiveElements.forEach(el => {
-        // Коли мишка заходить на елемент — курсор збільшується і підсвічується
-        el.addEventListener('mouseenter', () => {
-            cursor.classList.add('scale-150', 'bg-blue-500/10', 'dark:bg-green-500/10', 'border-blue-700', 'dark:border-green-400');
-        });
-        
-        // Коли мишка йде геть — курсор повертається до звичайного стану
-        el.addEventListener('mouseleave', () => {
-            cursor.classList.remove('scale-150', 'bg-blue-500/10', 'dark:bg-green-500/10', 'border-blue-700', 'dark:border-green-400');
-        });
-    });
-}
-
-          /* =======================================================
-   ПРОФЕСІЙНИЙ КАСТОМНИЙ КУРСОР
-   ======================================================= */
 
-/* 1. Сховуємо СТАНДАРТНИЙ курсор Windows абсолютно всюди, навіть на кнопках і посиланнях */
+/* 2. ЗАЛІЗОБЕТОННЕ ВИМКНЕННЯ СТАНДАРТНОЇ МИШКИ */
 body, a, button, input, textarea, .brand-card, .service-card, [class*="cursor-pointer"] {
     cursor: none !important;
 }
 
-/* 2. Стилізуємо зовнішнє коло нашого курсора */
+/* 3. СТИЛІ КАСТОМНОГО КУРСОРУ */
 #custom-cursor {
     position: fixed;
     top: 0;
     left: 0;
     width: 32px;
     height: 32px;
-    border: 2px solid #2563eb; /* Синій колір для світлої теми */
-    border-radius: 50%;
-    pointer-events: none; /* Щоб курсор не заважав клікати */
-    transform: translate(-50%, -50%);
-    transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
-    z-index: 999999; /* Найвищий шар у браузері */
-    display: none; /* За замовчуванням сховано на телефонах */
+    border: 3px solid #22c55e !important; /* Неоновий зелений */
+    border-radius: 50% !important;
+    pointer-events: none !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 999999 !important;
+    display: block !important;
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
 }
 
-/* 3. Стилізуємо центральну точку курсора */
 #custom-cursor-dot {
     position: fixed;
     top: 0;
     left: 0;
-    width: 6px;
-    height: 6px;
-    background-color: #2563eb;
-    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    background-color: #22c55e !important;
+    border-radius: 50% !important;
+    pointer-events: none !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 999999 !important;
+    display: block !important;
+}
+
+/* 4. АНІМАЦІЯ ПОЯВИ ЕЛЕМЕНТІВ ПРИ СКРОЛІ (Яку запускає JS) */
+.scroll-anim {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.scroll-anim.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ХОВАНИЙ СТАН ДЛЯ ФІЛЬТРА БРЕНДІВ */
+.brand-card.hide-card {
+    display: none !important;
+}
+
+/* 5. СТИЛІ ДЛЯ ПОПАП ВІКОН (Modal) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100000;
+    opacity: 0;
     pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 999999;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    max-w: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+html.dark .modal-content {
+    background: #18181b;
+    border: 1px solid #27272a;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: #a1a1aa;
+}
+
+/* 6. ПЛАВАЮЧИЙ ВІДЖЕТ МЕСЕНДЖЕРІВ ТА КНОПКА "НАВЕРХ" */
+.messenger-widget {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    z-index: 9990;
+}
+
+.messenger-main-btn {
+    width: 55px;
+    height: 55px;
+    background: #2563eb;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    color: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+#back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    font-size: 20px;
+    z-index: 9990;
     display: none;
 }
 
-/* 4. Магія темної теми: робимо курсор зеленим (неоновим) */
-.dark #custom-cursor {
-    border-color: #22c55e; /* Зелений Tailwind */
-}
-.dark #custom-cursor-dot {
-    background-color: #22c55e;
-}
-
-/* 5. Показуємо кастомний курсор ТІЛЬКИ на комп'ютерах (екрани від 768px) */
-@media (min-width: 768px) {
-    #custom-cursor, #custom-cursor-dot {
-        display: block;
-    }
+html.dark #back-to-top {
+    background: rgba(36, 36, 40, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
