@@ -12,8 +12,10 @@ body {
   padding: 20px;
   background-color: lightgrey;
   font-family: 'Montserrat', sans-serif; /* Тепер увесь сайт матиме солідний шрифт */
+  cursor: none; /* Ховає стандартний курсор миші на комп'ютерах */ 
     /* твої інші стилі для body, якщо вони там були */
 }
+
 
 h1 {
   color: blue;
