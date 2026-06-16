@@ -144,8 +144,8 @@ if (contactForm) {
         event.preventDefault();
 
         // ОСОБЛИВЕ МІСЦЕ: Заміни цей текст всередині лапок на свої дані з Телеграму
-        const TELEGRAM_TOKEN = 'СЮДИ_ВСТАВ_ТОКЕН_ВІД_BOTFATHER';
-        const TELEGRAM_CHAT_ID = 'СЮДИ_ВСТАВ_СВІЙ_CHAT_ID';
+        const TELEGRAM_TOKEN = '8621731043:AAEY4KZi6ioCEDeG-aTfZBNOs2Q6cBaknTo';
+        const TELEGRAM_CHAT_ID = '706355653';
 
         // Збираємо текст із полів форми
         const name = document.getElementById('user-name').value;
