@@ -660,3 +660,58 @@ if (cursor && cursorDot) {
         });
     });
 }
+
+          /* =======================================================
+   ПРОФЕСІЙНИЙ КАСТОМНИЙ КУРСОР
+   ======================================================= */
+
+/* 1. Сховуємо СТАНДАРТНИЙ курсор Windows абсолютно всюди, навіть на кнопках і посиланнях */
+body, a, button, input, textarea, .brand-card, .service-card, [class*="cursor-pointer"] {
+    cursor: none !important;
+}
+
+/* 2. Стилізуємо зовнішнє коло нашого курсора */
+#custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border: 2px solid #2563eb; /* Синій колір для світлої теми */
+    border-radius: 50%;
+    pointer-events: none; /* Щоб курсор не заважав клікати */
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
+    z-index: 999999; /* Найвищий шар у браузері */
+    display: none; /* За замовчуванням сховано на телефонах */
+}
+
+/* 3. Стилізуємо центральну точку курсора */
+#custom-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background-color: #2563eb;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 999999;
+    display: none;
+}
+
+/* 4. Магія темної теми: робимо курсор зеленим (неоновим) */
+.dark #custom-cursor {
+    border-color: #22c55e; /* Зелений Tailwind */
+}
+.dark #custom-cursor-dot {
+    background-color: #22c55e;
+}
+
+/* 5. Показуємо кастомний курсор ТІЛЬКИ на комп'ютерах (екрани від 768px) */
+@media (min-width: 768px) {
+    #custom-cursor, #custom-cursor-dot {
+        display: block;
+    }
+}
