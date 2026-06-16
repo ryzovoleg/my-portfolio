@@ -627,3 +627,34 @@ body.dark-theme .advantage-item h3 {
 body.dark-theme .advantage-item p {
     color: #bbbbbb;
 }
+// =======================================================
+// БЛОК 8: КАСТОМНИЙ КУРСОР ТА МІКРОІНТЕРАКЦІЇ
+// =======================================================
+const cursor = document.getElementById('custom-cursor');
+const cursorDot = document.getElementById('custom-cursor-dot');
+
+if (cursor && cursorDot) {
+    // 1. Слідкуємо за рухом мишки
+    document.addEventListener('mousemove', (e) => {
+        cursorDot.style.left = e.clientX + 'px';
+        cursorDot.style.top = e.clientY + 'px';
+        
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+
+    // 2. Шукаємо всі елементи, на які можна натиснути
+    const interactiveElements = document.querySelectorAll('a, button, .service-card, .brand-card, input, textarea');
+    
+    interactiveElements.forEach(el => {
+        // Коли мишка заходить на елемент — курсор збільшується і підсвічується
+        el.addEventListener('mouseenter', () => {
+            cursor.classList.add('scale-150', 'bg-blue-500/10', 'dark:bg-green-500/10', 'border-blue-700', 'dark:border-green-400');
+        });
+        
+        // Коли мишка йде геть — курсор повертається до звичайного стану
+        el.addEventListener('mouseleave', () => {
+            cursor.classList.remove('scale-150', 'bg-blue-500/10', 'dark:bg-green-500/10', 'border-blue-700', 'dark:border-green-400');
+        });
+    });
+}
