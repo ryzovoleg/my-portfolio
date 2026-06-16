@@ -133,3 +133,57 @@ if (filterButtons.length > 0 && brandCards.length > 0) {
         });
     });
 }
+// =======================================================
+// БЛОК 7: ВІДПРАВКА ЗАЯВОК В TELEGRAM
+// =======================================================
+const contactForm = document.getElementById('contact-form');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(event) {
+        // Зупиняємо стандартне перезавантаження сторінки
+        event.preventDefault();
+
+        // ОСОБЛИВЕ МІСЦЕ: Заміни цей текст всередині лапок на свої дані з Телеграму
+        const TELEGRAM_TOKEN = 'СЮДИ_ВСТАВ_ТОКЕН_ВІД_BOTFATHER';
+        const TELEGRAM_CHAT_ID = 'СЮДИ_ВСТАВ_СВІЙ_CHAT_ID';
+
+        // Збираємо текст із полів форми
+        const name = document.getElementById('user-name').value;
+        const contact = document.getElementById('user-contact').value;
+        const message = document.getElementById('user-message').value;
+
+        // Формуємо повідомлення
+        const textMessage = `
+🔔 NEW LEAD FROM WEBSITE!
+👤 Ім'я: ${name}
+📞 Контакт: ${contact}
+✉️ Повідомлення: ${message}
+        `;
+
+        const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
+
+        // Відправляємо дані на сервери Telegram
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                chat_id: TELEGRAM_CHAT_ID,
+                text: textMessage
+            })
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Дякую! Вашу заявку успішно надіслано. Я зв\'яжуся з вами найближчим часом. 👋');
+                contactForm.reset(); // Очищаємо поля
+            } else {
+                alert('Ой, щось пішло не так. Спробуйте ще раз.');
+            }
+        })
+        .catch(error => {
+            console.error('Помилка:', error);
+            alert('Помилка з\'єднання із сервером.');
+        });
+    });
+}
