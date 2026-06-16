@@ -187,3 +187,44 @@ if (contactForm) {
         });
     });
 }
+
+// =======================================================
+// БЛОК 8: КАСТОМНИЙ КУРСОР ТА МІКРОІНТЕРАКЦІЇ
+// =======================================================
+const cursor = document.getElementById('custom-cursor');
+const cursorDot = document.getElementById('custom-cursor-dot');
+
+if (cursor && cursorDot) {
+    // Змушуємо кола бігати за координатами мишки
+    document.addEventListener('mousemove', (e) => {
+        cursorDot.style.left = e.clientX + 'px';
+        cursorDot.style.top = e.clientY + 'px';
+        
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+
+    // Знаходимо всі інтерактивні елементи на сайті
+    const interactiveElements = document.querySelectorAll('a, button, .service-card, .brand-card, input, textarea, .filter-btn');
+    
+    interactiveElements.forEach(el => {
+        // При наведенні курсор красиво розширюється і злегка зафарбовується в залежності від теми
+        el.addEventListener('mouseenter', () => {
+            cursor.style.width = '48px';
+            cursor.style.height = '48px';
+            // Перевіряємо, яка тема зараз активна, щоб підібрати колір заливки
+            if (document.documentElement.classList.contains('dark')) {
+                cursor.style.backgroundColor = 'rgba(34, 197, 94, 0.1)'; // Зелений з прозорістю
+            } else {
+                cursor.style.backgroundColor = 'rgba(37, 99, 235, 0.1)'; // Синій з прозорістю
+            }
+        });
+        
+        // Коли мишка йде геть — повертаємо початковий мінімалізм
+        el.addEventListener('mouseleave', () => {
+            cursor.style.width = '32px';
+            cursor.style.height = '32px';
+            cursor.style.backgroundColor = 'transparent';
+        });
+    });
+}
