@@ -156,18 +156,30 @@
 </section>
     
   <h2 id="contacts">Зворотній зв'язок</h2>
-  <form action="https://api.web3forms.com/submit" method="POST">
+ <form id="contact-form" class="bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-xl border border-white/40 dark:border-zinc-800/60 space-y-6">
     
-    <!-- Твій невидимий ключ, який каже серверу надсилати листи саме тобі -->
-    <input type="hidden" name="access_key" value="982245e8-bd84-4761-a357-036ee0b33e00">
+    <div>
+        <label class="block text-sm font-bold text-blue-900 dark:text-zinc-300 mb-2">Ваше ім'я</label>
+        <input type="text" id="user-name" placeholder="Введіть ім'я" required
+               class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-green-500 focus:bg-white dark:focus:bg-zinc-900 transition-all duration-300">
+    </div>
 
-    <!-- Поля для заповнення користувачем -->
-    <input type="text" name="name" placeholder="Введіть своє ім'я" required>
-    <input type="email" name="email" placeholder="Введіть свій email" required>
-    <textarea name="message" placeholder="Ваше повідомлення" required></textarea>
+    <div>
+        <label class="block text-sm font-bold text-blue-900 dark:text-zinc-300 mb-2">Телефон або Email</label>
+        <input type="text" id="user-contact" placeholder="+380... або example@mail.com" required
+               class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-green-500 focus:bg-white dark:focus:bg-zinc-900 transition-all duration-300">
+    </div>
 
-    <!-- Кнопка відправки з твоїм CSS-класом -->
-    <button type="submit" class="btn">Надіслати</button>
+    <div>
+        <label class="block text-sm font-bold text-blue-900 dark:text-zinc-300 mb-2">Ваше повідомлення</label>
+        <textarea id="user-message" rows="4" placeholder="Опишіть ваше питання або деталі замовлення..." required
+                  class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-green-500 focus:bg-white dark:focus:bg-zinc-900 transition-all duration-300 resize-none"></textarea>
+    </div>
+
+    <button type="submit" 
+            class="w-full bg-gradient-to-r from-blue-700 to-indigo-800 dark:from-green-600 dark:to-emerald-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-md hover:shadow-xl transform transition hover:-translate-y-0.5 active:translate-y-0 duration-150 cursor-pointer text-center">
+        Надіслати запит 🚀
+    </button>
 </form>
 
   <!-- Фінальний підвал сайту (Footer) на Tailwind -->
