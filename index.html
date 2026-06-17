@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html lang="uk" class="dark"> <head>
+<html lang="uk" class="dark">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
+    <!-- БЛОК SEO ТА КАРТКА ДЛЯ МЕСЕНДЖЕРІВ (OPEN GRAPH) -->
     <title>Оптові постачання посуду в Луцьку та Волині — Олег Рижов</title>
     <meta name="description" content="Прямий імпорт та оптовий продаж якісного посуду відомих брендів: Luminarc, Wilmax, Bohemia, Lessner. Гнучкі умови для партнерства на Волині без посередників.">
     <meta name="keywords" content="посуд оптом, Луцьк, Волинь, Luminarc опт, Wilmax, Bohemia, постачальник посуду, Олег Рижов">
 
     <meta property="og:type" content="website">
-    <meta property="og:url" content="СЮДИ_ВСТАВ_СВОЄ_ПОСИЛАННЯ_З_GITHUB">
+    <meta property="og:url" content="https://ryzovoleg.github.io/my-portfolio/">
     <meta property="og:title" content="Оптові постачання посуду — Олег Рижов">
     <meta property="og:description" content="Великий вибір якісного посуду відомих брендів для вашого бізнесу на вигідних умовах з доставкою по Волині.">
-    <meta property="og:image" content="СЮДИ_ВСТАВ_СВОЄ_ПОСИЛАННЯ_З_GITHUB/preview.jpg">
+    <meta property="og:image" content="https://ryzovoleg.github.io/my-portfolio/preview.jpg">
     <meta name="theme-color" content="#09090b">
 
+    <!-- КРИТИЧНО ВАЖЛИВІ ПІДКЛЮЧЕННЯ -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <script>
         tailwind.config = {
             darkMode: 'class'
         }
     </script>
-
     <link rel="stylesheet" href="style.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,63 +30,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="bg-slate-50 dark:bg-zinc-950 transition-colors duration-300">
-    
- <div class="fixed top-10 left-[-10%] w-[500px] h-[500px] bg-blue-400/30 dark:bg-green-500/20 rounded-full blur-[120px] pointer-events-none z-0 animate-pulse"></div>
+
+<!-- Неонові бліки фону -->
+<div class="fixed top-10 left-[-10%] w-[500px] h-[500px] bg-blue-400/30 dark:bg-green-500/20 rounded-full blur-[120px] pointer-events-none z-0 animate-pulse"></div>
 <div class="fixed bottom-10 right-[-10%] w-[600px] h-[600px] bg-indigo-400/30 dark:bg-blue-500/20 rounded-full blur-[150px] pointer-events-none z-0 animate-pulse duration-[6000ms]"></div>
-    <!-- Навігація в стилі Apple (Sticky Glass Header) -->
+
+<!-- Навігація в стилі Apple (Sticky Glass Header) -->
 <header class="sticky top-0 z-50 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-md border-b border-white/20 dark:border-zinc-800/40 transition-all duration-300">
     <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-        
-        <!-- Логотип / Ім'я -->
         <a href="#" class="text-lg md:text-xl font-extrabold text-blue-900 dark:text-green-500 tracking-tight transition-transform hover:scale-105">
             Олег Рижов
         </a>
-        
-        <!-- Навігаційні посилання (Клікнув — і сайт сам плавно скролить куди треба) -->
         <nav class="flex items-center space-x-6 text-sm font-bold text-gray-700 dark:text-zinc-300">
-    <a href="#services" class="hover:text-blue-700 dark:hover:text-green-400 transition-colors duration-200">Що я пропоную</a>
-    <a href="#brands" class="hover:text-blue-700 dark:hover:text-green-400 transition-colors duration-200">Бренди</a>
-    <a href="#contacts" class="hover:text-blue-700 dark:hover:text-green-400 transition-colors duration-200">Контакти</a>
-</nav>
-        
+            <a href="#services" class="hover:text-blue-700 dark:hover:text-green-400 transition-colors duration-200">Що я пропоную</a>
+            <a href="#brands" class="hover:text-blue-700 dark:hover:text-green-400 transition-colors duration-200">Бренди</a>
+            <a href="#contacts" class="hover:text-blue-700 dark:hover:text-green-400 transition-colors duration-200">Контакти</a>
+        </nav>
     </div>
 </header>
-    
-  <header class="main-header">
-  <div class="logo">Портфоліо</div>
-  <nav class="nav-menu">
-    <a href="index.html">Головна</a>
-    <a href="about.html">Про мене</a>
-    <a href="#contacts">Контакти</a>
-    
-    <button id="theme-toggle" class="btn" style="padding: 5px 10px; font-size: 14px;">🌓 Тема</button>
-  </nav>
-</header>
 
-  <div class="bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-8 rounded-2xl shadow-xl max-w-sm mx-auto text-center border border-white/40 dark:border-zinc-850/50 transition-all duration-300 transform hover:-translate-y-2">
-    
+<!-- Картка Профілю -->
+<div class="bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-8 rounded-2xl shadow-xl max-w-sm mx-auto text-center border border-white/40 dark:border-zinc-850/50 transition-all duration-300 transform hover:-translate-y-2 mt-10">
     <img src="photo.jpg" alt="Олег" class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-white/60 dark:border-zinc-800/80 shadow-md mb-4 ring-4 ring-blue-500/20 dark:ring-green-500/20">
-    
     <h3 id="greeting-text" class="text-2xl font-extrabold text-blue-900 dark:text-green-500 mb-2">
         Привіт, я Олег!
     </h3> 
-    
     <p class="text-gray-700 dark:text-gray-300 font-medium tracking-wide text-sm">
         Вивчаю HTML, CSS та Tailwind
     </p>
 </div>
-    
-  <h1>Oleg</h1>
-  <p>Я вчусь писати гіпертекстову розмітку.</p>
 
-  <h2>Мої навички</h2>
-  <ul>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>JavaScript</li>
-  </ul>
-    
-  <!-- Розділ Брендів на Tailwind -->
+<!-- Розділ Брендів -->
 <section class="py-16 bg-transparent relative z-10" id="brands">
     <h2 class="text-3xl font-extrabold text-center text-blue-900 dark:text-green-500 mb-8 tracking-tight">
         Бренди, з якими я працюю
@@ -107,55 +82,13 @@
         <div class="brand-card scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 rounded-xl shadow-sm border border-white/40 dark:border-zinc-800/60 text-center flex items-center justify-center font-bold text-lg text-blue-900 dark:text-zinc-200 min-h-[80px] transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer" data-category="glass"><p>Milika</p></div>
     </div>
 </section>
-    <!-- Розділ Послуг з ефектом GLASSMORPHISM (Матове скло) -->
-<section class="py-16 bg-transparent" id="services">
-    
-    <h2 class="text-3xl font-extrabold text-center text-blue-900 dark:text-green-500 mb-10 tracking-tight">
-        Що я пропоную
-    </h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto px-4">
-        
-        <!-- Картка 1: ШИРОКА БЕНТО (Скляна) -->
-        <div class="service-card scroll-anim md:col-span-2 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-md border border-white/40 dark:border-zinc-800/60 flex flex-col justify-center min-h-[180px] transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl cursor-pointer">
-            <h3 class="text-xl font-bold text-blue-900 dark:text-green-500 mb-3">📦 Оптові постачання посуду</h3>
-            <p class="text-gray-800 dark:text-gray-200 text-sm md:text-base leading-relaxed">
-                Великий вибір якісного посуду відомих брендів для вашого бізнесу на вигідних умовах. Повний асортимент від Luminarc, Wilmax та Bohemia завжди в наявності на складі.
-            </p>
-        </div>
 
-        <!-- Картка 2: СТАНДАРТНА БЕНТО (Скляна) -->
-        <div class="service-card scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 rounded-2xl shadow-md border border-white/40 dark:border-zinc-800/60 flex flex-col justify-center min-h-[180px] transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl cursor-pointer">
-            <h3 class="text-xl font-bold text-blue-900 dark:text-green-500 mb-3">📋 Під замовлення</h3>
-            <p class="text-gray-800 dark:text-gray-200 text-sm leading-relaxed">
-                Швидке формування ексклюзивних партій товару под конкретні потреби клієнта.
-            </p>
-        </div>
-
-        <!-- Картка 3: СТАНДАРТНА БЕНТО (Скляна) -->
-        <div class="service-card scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 rounded-2xl shadow-md border border-white/40 dark:border-zinc-800/60 flex flex-col justify-center min-h-[180px] transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl cursor-pointer">
-            <h3 class="text-xl font-bold text-blue-900 dark:text-green-500 mb-3">🤝 Партнерство</h3>
-            <p class="text-gray-800 dark:text-gray-200 text-sm leading-relaxed">
-                Прозорий контроль документації, регулярні звірки та гнучкі умови для постійних клієнтів.
-            </p>
-        </div>
-
-        <!-- Картка 4: ШИРОКА БЕНТО (Скляна) -->
-        <div class="service-card scroll-anim md:col-span-2 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-md border border-white/40 dark:border-zinc-800/60 flex flex-col justify-center min-h-[180px] transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl cursor-pointer">
-            <h3 class="text-xl font-bold text-blue-900 dark:text-green-500 mb-3">🌍 Прямий імпорт та логістика</h3>
-            <p class="text-gray-800 dark:text-gray-200 text-sm md:text-base leading-relaxed">
-                Прямі поставки з фабрик Європи та світу. Гарантуємо оригінальність продукції Lessner, Vincent, Milika та забезпечуємо чітку логістику по Волині без посередників.
-            </p>
-        </div>
-
-    </div>
-</section>
- <section class="py-16 bg-transparent relative z-10">
+<!-- Розділ Переваг -->
+<section class="py-16 bg-transparent relative z-10">
     <h2 class="text-3xl font-extrabold text-center text-blue-900 dark:text-green-500 mb-12 tracking-tight">
         Чому варто працювати з нами
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto px-4">
-        
         <div class="advantage-item scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 rounded-2xl shadow-md border border-white/40 dark:border-zinc-800/60 text-center transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg">
             <div class="w-16 h-16 bg-blue-50/50 dark:bg-zinc-800/50 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">⚡</div>
             <h3 class="text-xl font-bold text-blue-900 dark:text-green-500 mb-2">Швидкість</h3>
@@ -163,7 +96,6 @@
                 Оперативно обробляємо замовлення та забезпечуємо чітку логістику по Волині без затримок.
             </p>
         </div>
-
         <div class="advantage-item scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 rounded-2xl shadow-md border border-white/40 dark:border-zinc-800/60 text-center transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg">
             <div class="w-16 h-16 bg-blue-50/50 dark:bg-zinc-800/50 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">💎</div>
             <h3 class="text-xl font-bold text-blue-900 dark:text-green-500 mb-2">Якість</h3>
@@ -171,7 +103,6 @@
                 Працюємо лише з перевіреними світовими брендами посуду та гарантуємо оригінальність продукції.
             </p>
         </div>
-
         <div class="advantage-item scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 rounded-2xl shadow-md border border-white/40 dark:border-zinc-800/60 text-center transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg">
             <div class="w-16 h-16 bg-blue-50/50 dark:bg-zinc-800/50 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">📉</div>
             <h3 class="text-xl font-bold text-blue-900 dark:text-green-500 mb-2">Вигода</h3>
@@ -179,46 +110,39 @@
                 Пропонуємо конкурентні оптові ціни, індивідуальні знижки та прозорі фінансові звірки.
             </p>
         </div>
-
     </div>
 </section>
-    
-  <h2 id="contacts">Зворотній зв'язок</h2>
- <form id="contact-form" class="bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-xl border border-white/40 dark:border-zinc-800/60 space-y-6">
-    
-    <div>
-        <label class="block text-sm font-bold text-blue-900 dark:text-zinc-300 mb-2">Ваше ім'я</label>
-        <input type="text" id="user-name" placeholder="Введіть ім'я" required
-               class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-green-500 focus:bg-white dark:focus:bg-zinc-900 transition-all duration-300">
-    </div>
 
-    <div>
-        <label class="block text-sm font-bold text-blue-900 dark:text-zinc-300 mb-2">Телефон або Email</label>
-        <input type="text" id="user-contact" placeholder="+380... або example@mail.com" required
-               class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-green-500 focus:bg-white dark:focus:bg-zinc-900 transition-all duration-300">
-    </div>
+<!-- Контакти -->
+<div class="max-w-xl mx-auto px-4 py-10">
+    <h2 id="contacts" class="text-3xl font-extrabold text-center text-blue-900 dark:text-green-500 mb-6">Зворотній зв'язок</h2>
+    <form id="contact-form" class="bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-xl border border-white/40 dark:border-zinc-800/60 space-y-6">
+        <div>
+            <label class="block text-sm font-bold text-blue-900 dark:text-zinc-300 mb-2">Ваше ім'я</label>
+            <input type="text" id="user-name" placeholder="Введіть ім'я" required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-green-500 focus:bg-white dark:focus:bg-zinc-900 transition-all duration-300">
+        </div>
+        <div>
+            <label class="block text-sm font-bold text-blue-900 dark:text-zinc-300 mb-2">Телефон або Email</label>
+            <input type="text" id="user-contact" placeholder="+380... або example@mail.com" required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-green-500 focus:bg-white dark:focus:bg-zinc-900 transition-all duration-300">
+        </div>
+        <div>
+            <label class="block text-sm font-bold text-blue-900 dark:text-zinc-300 mb-2">Ваше повідомлення</label>
+            <textarea id="user-message" rows="4" placeholder="Опишіть ваше питання або деталі замовлення..." required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-green-500 focus:bg-white dark:focus:bg-zinc-900 transition-all duration-300 resize-none"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-gradient-to-r from-blue-700 to-indigo-800 dark:from-green-600 dark:to-emerald-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-md hover:shadow-xl transform transition hover:-translate-y-0.5 active:translate-y-0 duration-150 cursor-pointer text-center">
+            Надіслати запит 🚀
+        </button>
+    </form>
+</div>
 
-    <div>
-        <label class="block text-sm font-bold text-blue-900 dark:text-zinc-300 mb-2">Ваше повідомлення</label>
-        <textarea id="user-message" rows="4" placeholder="Опишіть ваше питання або деталі замовлення..." required
-                  class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-green-500 focus:bg-white dark:focus:bg-zinc-900 transition-all duration-300 resize-none"></textarea>
-    </div>
-
-    <button type="submit" 
-            class="w-full bg-gradient-to-r from-blue-700 to-indigo-800 dark:from-green-600 dark:to-emerald-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-md hover:shadow-xl transform transition hover:-translate-y-0.5 active:translate-y-0 duration-150 cursor-pointer text-center">
-        Надіслати запит 🚀
-    </button>
-</form>
-
-  <!-- Фінальний підвал сайту (Footer) на Tailwind -->
+<!-- Підвал сайту (Footer) -->
 <footer class="py-8 bg-white dark:bg-zinc-950 border-t border-gray-100 dark:border-zinc-900 text-center transition-all duration-300">
     <p class="text-sm text-gray-400 dark:text-zinc-500 font-medium tracking-wide">
         &copy; 2026 Моє Портфоліо. Всі права захищені.
     </p>
 </footer>
 
-    </div>
-
+<!-- Системні елементи -->
 <button id="back-to-top" title="Наверх">⬆️</button>
 
 <div id="service-modal" class="modal-overlay">
@@ -226,13 +150,14 @@
         <button class="modal-close-btn">&times;</button>
         <h2 id="modal-title">Назва послуги</h2>
         <p id="modal-text">Детальний опис послуги з'явиться тут...</p>
-        
         <button class="btn modal-action-btn">Зробити замовлення</button>
     </div>
 </div>
 
-    <div id="custom-cursor"></div>
+<!-- Кастомний курсор -->
+<div id="custom-cursor"></div>
 <div id="custom-cursor-dot"></div>
-    <script src="script.js"></script>
+
+<script src="script.js"></script>
 </body>
 </html>
