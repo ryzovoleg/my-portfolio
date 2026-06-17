@@ -254,3 +254,40 @@ if (themeToggleBtn) {
         }
     });
 }
+
+// =======================================================
+// БЛОК 10: ПРЕМІУМ-СПОВІЩЕННЯ (TOAST NOTIFICATIONS)
+// =======================================================
+function showPremiumToast(message) {
+    // 1. Створюємо елемент сповіщення
+    const toast = document.createElement('div');
+    
+    // Задаємо йому преміальні скляні класи Tailwind (ідеально під твій стиль)
+    toast.className = "fixed top-24 right-5 z-[100000] flex items-center gap-3 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 px-6 py-4 rounded-2xl shadow-2xl transform translate-x-[150%] transition-all duration-500 opacity-0 max-w-sm font-bold text-gray-800 dark:text-zinc-200 pointer-events-auto";
+    
+    // Внутрішній вміст: неонова ракета + текст
+    toast.innerHTML = `
+        <span class="text-2xl text-emerald-500 animate-pulse">🚀</span>
+        <div class="text-sm tracking-wide">${message}</div>
+    `;
+    
+    // 2. Додаємо його на сторінку
+    document.body.appendChild(toast);
+    
+    // 3. Через мікропаузу вмикаємо анімацію зальоту на екран
+    setTimeout(() => {
+        toast.classList.remove('translate-x-[150%]', 'opacity-0');
+        toast.classList.add('translate-x-0', 'opacity-100');
+    }, 50);
+    
+    // 4. Через 4 секунди плавно ховаємо і повністю видаляємо з коду
+    setTimeout(() => {
+        toast.classList.remove('translate-x-0', 'opacity-100');
+        toast.classList.add('translate-x-[150%]', 'opacity-0');
+        
+        // Видаляємо елемент з пам'яті після завершення анімації закриття
+        setTimeout(() => {
+            toast.remove();
+        }, 500);
+    }, 4000);
+}
