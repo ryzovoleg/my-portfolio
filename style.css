@@ -134,3 +134,32 @@ html.dark #back-to-top {
     background: rgba(36, 36, 40, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+/* =======================================================
+   КАСТОМНИЙ ПРЕМІАЛЬНИЙ СКРОЛБАР (БІГУНОК)
+   ======================================================= */
+/* 1. Ширина всього треку скролу */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* 2. Фон доріжки, по якій бігає повзунок */
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+html.dark ::-webkit-scrollbar-track {
+    background: #09090b; /* Темний фон у темній темі */
+}
+
+/* 3. Сам повзунок (бігунок) */
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+    border: 2px solid transparent;
+}
+
+/* Магія темної теми: бігунок стає неоново-зеленим */
+html.dark ::-webkit-scrollbar-thumb {
+    background: #22c55e !important;
+    box-shadow: 0 0 10px #22c55e;
+}
