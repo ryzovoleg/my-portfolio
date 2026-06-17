@@ -41,11 +41,16 @@
         <a href="#" class="text-lg md:text-xl font-extrabold text-blue-900 dark:text-green-500 tracking-tight transition-transform hover:scale-105">
             Олег Рижов
         </a>
-        <nav class="flex items-center space-x-6 text-sm font-bold text-gray-700 dark:text-zinc-300">
-            <a href="#services" class="hover:text-blue-700 dark:hover:text-green-400 transition-colors duration-200">Що я пропоную</a>
-            <a href="#brands" class="hover:text-blue-700 dark:hover:text-green-400 transition-colors duration-200">Бренди</a>
-            <a href="#contacts" class="hover:text-blue-700 dark:hover:text-green-400 transition-colors duration-200">Контакти</a>
-        </nav>
+        <!-- Навігаційні посилання -->
+<nav class="flex items-center space-x-6 text-sm font-bold text-gray-700 dark:text-zinc-300">
+    <a href="#services" class="hover:text-blue-700 dark:hover:text-green-400 transition-colors duration-200">Що я пропоную</a>
+    <a href="#brands" class="hover:text-blue-700 dark:hover:text-green-400 transition-colors duration-200">Бренди</a>
+    
+    <!-- ПОВЕРНУЛИ НАЗАД: Посилання на сторінку "Про мене" -->
+    <a href="about.html" class="hover:text-blue-700 dark:hover:text-green-400 transition-colors duration-200">Про мене</a>
+    
+    <a href="#contacts" class="hover:text-blue-700 dark:hover:text-green-400 transition-colors duration-200">Контакти</a>
+</nav>
     </div>
 </header>
 
@@ -59,6 +64,55 @@
         Вивчаю HTML, CSS та Tailwind
     </p>
 </div>
+
+    <!-- РОЗДІЛ ПОСЛУГ (BENTO GRID) -->
+<section class="py-16 bg-transparent relative z-10" id="services">
+    <h2 class="text-3xl font-extrabold text-center text-blue-900 dark:text-green-500 mb-12 tracking-tight">
+        Що я пропоную
+    </h2>
+    
+    <!-- Сітка БЕНТО -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto px-4">
+        
+        <!-- Картка 1 (Велика) -->
+        <div class="service-card bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-8 rounded-3xl border border-white/40 dark:border-zinc-800/60 shadow-md md:col-span-2 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl cursor-pointer" data-service="1">
+            <div class="text-3xl mb-4">🌐</div>
+            <h3 class="text-2xl font-bold text-blue-900 dark:text-green-500 mb-2">Веб-розробка та Інтерфейси</h3>
+            <p class="text-gray-700 dark:text-zinc-300 text-sm leading-relaxed">
+                Створення сучасних, адаптивних сайтів та лендінгів. Чистий код за стандартами HTML5, стилізація через сучасний фреймворк Tailwind CSS та динаміка на JavaScript.
+            </p>
+        </div>
+        
+        <!-- Картка 2 (Маленька) -->
+        <div class="service-card bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-8 rounded-3xl border border-white/40 dark:border-zinc-800/60 shadow-md transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl cursor-pointer" data-service="2">
+            <div class="text-3xl mb-4">📊</div>
+            <h3 class="text-xl font-bold text-blue-900 dark:text-green-500 mb-2">Оптові поставки</h3>
+            <p class="text-gray-700 dark:text-zinc-300 text-sm leading-relaxed">
+                Пряма дистриб'юція та налагодження логістичних ланцюжків для постачання посуду провідних світових брендів.
+            </p>
+        </div>
+
+        <!-- Картка 3 (Маленька) -->
+        <div class="service-card bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-8 rounded-3xl border border-white/40 dark:border-zinc-800/60 shadow-md transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl cursor-pointer" data-service="3">
+            <div class="text-3xl mb-4">🎨</div>
+            <h3 class="text-xl font-bold text-blue-900 dark:text-green-500 mb-2">Адаптивний Дизайн</h3>
+            <p class="text-gray-700 dark:text-zinc-300 text-sm leading-relaxed">
+                Ваш інтерфейс буде однаково розкішно виглядати як на великих 4К моніторах комп'ютерів, так і на екранах смартфонів.
+            </p>
+        </div>
+
+        <!-- Картка 4 (Велика) -->
+        <div class="service-card bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-8 rounded-3xl border border-white/40 dark:border-zinc-800/60 shadow-md md:col-span-2 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl cursor-pointer" data-service="4">
+            <div class="text-3xl mb-4">🛠️</div>
+            <h3 class="text-xl font-bold text-blue-900 dark:text-green-500 mb-2">Оптимізація та Інтеграції</h3>
+            <p class="text-gray-700 dark:text-zinc-300 text-sm leading-relaxed">
+                Очищення коду від застарілих стилів, прискорення завантаження сторінок (SEO-ready) та налаштування прямої відправки заявок клієнтів у Telegram-канали або особисті чати.
+            </p>
+        </div>
+        
+    </div>
+</section>
+    
 
 <!-- Розділ Брендів -->
 <section class="py-16 bg-transparent relative z-10" id="brands">
