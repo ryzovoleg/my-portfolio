@@ -228,3 +228,29 @@ if (cursor && cursorDot) {
         });
     });
 }
+
+// =======================================================
+// БЛОК 9: РОЗУМНИЙ ПЕРЕМИКАЧ ТЕМ (LIGHT / DARK LOGIC)
+// =======================================================
+const themeToggleBtn = document.getElementById('theme-toggle');
+
+// 1. ПЕРЕВІРКА ПРИ ЗАВАНТАЖЕННІ: Яка тема була збережена користувачем раніше?
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+    document.documentElement.classList.add('dark');
+} else if (savedTheme === 'light') {
+    document.documentElement.classList.remove('dark');
+}
+
+// 2. ЛОГІКА КЛІКУ: Перемикаємо тему по натисканню на кнопку 🌓
+if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('theme', 'light'); // Запам'ятовуємо світлу тему
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');  // Запам'ятовуємо темну тему
+        }
+    });
+}
