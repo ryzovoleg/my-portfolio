@@ -1,40 +1,38 @@
 /* =======================================================
-   ОПТИМІЗОВАНИЙ СТИЛЬ САЙТУ (ФІНАЛЬНА ВЕРСІЯ)
+   ЧИСТИЙ І ОПТИМІЗОВАНИЙ СТИЛЬ САЙТУ
    ======================================================= */
 
-/* 1. БАЗОВІ НАЛАШТУВАННЯ ТА ПЛАВНИЙ СКРОЛ */
 html {
-    scroll-behavior: smooth; /* Змушує сайт плавно гортатися при кліку на меню */
+    scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: #f8fafc; /* Світлий фон за замовчуванням */
+    background-color: #f8fafc;
     color: #0f172a;
     transition: background-color 0.3s ease, color 0.3s ease;
-    overflow-x: hidden; /* Захист від випадкового бокового скролу на мобілках */
-    padding-bottom: 90px; /* Зона безпеки внизу, щоб плаваючі кнопки нічого не закривали */
+    overflow-x: hidden;
+    padding-bottom: 90px;
 }
 
-/* Налаштування фону для темної теми */
 html.dark body {
-    background-color: #09090b; /* Глибокий темний фон */
+    background-color: #09090b;
     color: #f4f4f5;
 }
 
-/* 2. ЗАЛІЗОБЕТОННЕ ВИМКНЕННЯ СТАНДАРТНОЇ МИШКИ */
-body, a, button, input, textarea, .brand-card, .service-card, [class*="cursor-pointer"] {
+/* Примусове вимкнення стандартної мишки на ПК */
+body, a, button, input, textarea, .brand-card, .advantage-item {
     cursor: none !important;
 }
 
-/* 3. СТИЛІ КАСТОМНОГО КУРСОРУ */
+/* Координати та розмір великого неонового кола */
 #custom-cursor {
     position: fixed;
     top: 0;
     left: 0;
     width: 32px;
     height: 32px;
-    border: 3px solid #22c55e !important; /* Неоновий зелений */
+    border: 3px solid #22c55e !important;
     border-radius: 50% !important;
     pointer-events: none !important;
     transform: translate(-50%, -50%) !important;
@@ -43,6 +41,7 @@ body, a, button, input, textarea, .brand-card, .service-card, [class*="cursor-po
     transition: width 0.2s, height 0.2s, background-color 0.2s;
 }
 
+/* Центральна точка курсора */
 #custom-cursor-dot {
     position: fixed;
     top: 0;
@@ -57,23 +56,17 @@ body, a, button, input, textarea, .brand-card, .service-card, [class*="cursor-po
     display: block !important;
 }
 
-/* 4. АНІМАЦІЯ ПОЯВИ ЕЛЕМЕНТІВ (Зробили видимими за замовчуванням) */
+/* Робимо всі картки видимими за замовчуванням */
 .scroll-anim {
     opacity: 1 !important;
     transform: translateY(0) !important;
 }
 
-/* ХОВАНИЙ СТАН ДЛЯ ФІЛЬТРА БРЕНДІВ */
 .brand-card.hide-card {
     display: none !important;
 }
 
-/* ХОВАНИЙ СТАН ДЛЯ ФІЛЬТРА БРЕНДІВ */
-.brand-card.hide-card {
-    display: none !important;
-}
-
-/* 5. СТИЛІ ДЛЯ ПОПАП ВІКОН (Modal) */
+/* Стилі для попап вікон (Modal) */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -100,7 +93,7 @@ body, a, button, input, textarea, .brand-card, .service-card, [class*="cursor-po
     background: white;
     padding: 30px;
     border-radius: 20px;
-    max-w: 500px;
+    max-width: 500px;
     width: 90%;
     position: relative;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
@@ -121,25 +114,7 @@ html.dark .modal-content {
     color: #a1a1aa;
 }
 
-/* 6. ПЛАВАЮЧИЙ ВІДЖЕТ МЕСЕНДЖЕРІВ ТА КНОПКА "НАВЕРХ" */
-.messenger-widget {
-    position: fixed;
-    bottom: 25px;
-    left: 25px;
-    z-index: 9990;
-}
-
-.messenger-main-btn {
-    width: 55px;
-    height: 55px;
-    background: #2563eb;
-    border: none;
-    border-radius: 50%;
-    font-size: 24px;
-    color: white;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-}
-
+/* Кнопка "Наверх" */
 #back-to-top {
     position: fixed;
     bottom: 25px;
