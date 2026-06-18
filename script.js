@@ -287,3 +287,57 @@ function showPremiumToast(message) {
         }, 500);
     }, 4000);
 }
+
+// =======================================================
+// БЛОК 11: ЕФЕКТ ДРУКАРСЬКОЇ МАШИНКИ (TYPEWRITER EFFECT)
+// =======================================================
+const typewriterElement = document.getElementById('typewriter-text');
+
+// Фрази, які будуть змінювати одна одну
+const phrases = [
+    "Вивчаю HTML, CSS та Tailwind 💻",
+    "Оптові постачання посуду 📊",
+    "Прямий імпорт без посередників 💎",
+    "Дистриб'юція по всій Волині ⚡"
+];
+
+let phraseIndex = 0;
+let characterIndex = 0;
+let isDeleting = false;
+let typingSpeed = 100; // Швидкість друку однієї літери (в мілісекундах)
+
+function typeEffect() {
+    if (!typewriterElement) return;
+
+    const currentPhrase = phrases[phraseIndex];
+
+    if (isDeleting) {
+        // Якщо режим видалення — стираємо по одній літері
+        typewriterElement.textContent = currentPhrase.substring(0, characterIndex - 1);
+        characterIndex--;
+        typingSpeed = 40; // Стираємо швидше, ніж друкуємо
+    } else {
+        // Якщо режим друку — додаємо по одній літері
+        typewriterElement.textContent = currentPhrase.substring(0, characterIndex + 1);
+        characterIndex++;
+        typingSpeed = 90; // Звичайна швидкість друку
+    }
+
+    // Якщо фразу надруковано повністю
+    if (!isDeleting && characterIndex === currentPhrase.length) {
+        typingSpeed = 2500; // Пауза на 2.5 секунди, щоб користувач встиг прочитати
+        isDeleting = true;  // Вмикаємо режим стирання
+    } 
+    // Якщо фразу повністю стерто
+    else if (isDeleting && characterIndex === 0) {
+        isDeleting = false; // Вимикаємо стирання
+        phraseIndex = (phraseIndex + 1) % phrases.length; // Переходимо до наступної фрази
+        typingSpeed = 400;  // Невеличка пауза перед початком нової фрази
+    }
+
+    // Запускаємо функцію знову через вирахуваний час
+    setTimeout(typeEffect, typingSpeed);
+}
+
+// Запускаємо друкарську машинку відразу при завантаженні скрипта
+typeEffect();
