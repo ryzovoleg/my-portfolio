@@ -1,17 +1,24 @@
 // =======================================================
-// БЛОК 1: ТЕМНА ТЕМА
+// БЛОК 1: РОЗУМНА ТЕМНА ТЕМА (ТАЙЛВІНД-READY)
 // =======================================================
 const themeButton = document.getElementById('theme-toggle');
+
+// Перевірка теми при завантаженні сторінки
 if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark-theme');
+    document.documentElement.classList.add('dark');
+} else {
+    document.documentElement.classList.remove('dark');
 }
+
+// Логіка кліку на кнопку місяця/сонця
 if (themeButton) {
     themeButton.addEventListener('click', () => {
-        document.body.classList.toggle('dark-theme');
-        if (document.body.classList.contains('dark-theme')) {
-            localStorage.setItem('theme', 'dark');
-        } else {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
             localStorage.setItem('theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('theme', 'dark');
         }
     });
 }
@@ -173,15 +180,11 @@ if (contactForm) {
                 text: textMessage
             })
         })
-        .then(response => {
+.then(response => {
             if (response.ok) {
-    // 1. Запускаємо наше нове преміальне сповіщення
-    showPremiumToast("Запит успішно надіслано! На зв'язку! 👍");
-    
-    // 2. Очищаємо поля форми (один раз через твою змінну)
-    contactForm.reset(); 
-}
-            else {
+                showPremiumToast("Запит успішно надіслано! На зв'язку! 👍");
+                contactForm.reset(); 
+            } else {
                 alert('Ой, щось пішло не так. Спробуйте ще раз.');
             }
         })
@@ -189,8 +192,9 @@ if (contactForm) {
             console.error('Помилка:', error);
             alert('Помилка з\'єднання із сервером.');
         });
-    });
-}
+    }); // Закриває contactForm.addEventListener
+} // <-- ОЦЯ ОДНА САМОТНЯ ДУЖКА! Вона закриває "if (contactForm) {" і прибирає помилку внизу файлу!
+
 
 // =======================================================
 // БЛОК 8: КАСТОМНИЙ КУРСОР ТА МІКРОІНТЕРАКЦІЇ
@@ -212,19 +216,16 @@ if (cursor && cursorDot) {
     const interactiveElements = document.querySelectorAll('a, button, .service-card, .brand-card, input, textarea, .filter-btn');
     
     interactiveElements.forEach(el => {
-        // При наведенні курсор красиво розширюється і злегка зафарбовується в залежності від теми
         el.addEventListener('mouseenter', () => {
             cursor.style.width = '48px';
             cursor.style.height = '48px';
-            // Перевіряємо, яка тема зараз активна, щоб підібрати колір заливки
             if (document.documentElement.classList.contains('dark')) {
-                cursor.style.backgroundColor = 'rgba(34, 197, 94, 0.1)'; // Зелений з прозорістю
+                cursor.style.backgroundColor = 'rgba(34, 197, 94, 0.1)';
             } else {
-                cursor.style.backgroundColor = 'rgba(37, 99, 235, 0.1)'; // Синій з прозорістю
+                cursor.style.backgroundColor = 'rgba(37, 99, 235, 0.1)';
             }
         });
         
-        // Коли мишка йде геть — повертаємо початковий мінімалізм
         el.addEventListener('mouseleave', () => {
             cursor.style.width = '32px';
             cursor.style.height = '32px';
@@ -238,7 +239,6 @@ if (cursor && cursorDot) {
 // =======================================================
 const themeToggleBtn = document.getElementById('theme-toggle');
 
-// 1. ПЕРЕВІРКА ПРИ ЗАВАНТАЖЕННІ: Яка тема була збережена користувачем раніше?
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'dark') {
     document.documentElement.classList.add('dark');
@@ -246,15 +246,14 @@ if (savedTheme === 'dark') {
     document.documentElement.classList.remove('dark');
 }
 
-// 2. ЛОГІКА КЛІКУ: Перемикаємо тему по натисканню на кнопку 🌓
 if (themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
         if (document.documentElement.classList.contains('dark')) {
             document.documentElement.classList.remove('dark');
-            localStorage.setItem('theme', 'light'); // Запам'ятовуємо світлу тему
+            localStorage.setItem('theme', 'light');
         } else {
             document.documentElement.classList.add('dark');
-            localStorage.setItem('theme', 'dark');  // Запам'ятовуємо темну тему
+            localStorage.setItem('theme', 'dark');
         }
     });
 }
@@ -263,33 +262,26 @@ if (themeToggleBtn) {
 // БЛОК 10: ПРЕМІУМ-СПОВІЩЕННЯ (TOAST NOTIFICATIONS)
 // =======================================================
 function showPremiumToast(message) {
-    // 1. Створюємо елемент сповіщення
     const toast = document.createElement('div');
     
-    // Задаємо йому преміальні скляні класи Tailwind (ідеально під твій стиль)
     toast.className = "fixed top-24 right-5 z-[100000] flex items-center gap-3 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 px-6 py-4 rounded-2xl shadow-2xl transform translate-x-[150%] transition-all duration-500 opacity-0 max-w-sm font-bold text-gray-800 dark:text-zinc-200 pointer-events-auto";
     
-    // Внутрішній вміст: неонова ракета + текст
     toast.innerHTML = `
         <span class="text-2xl text-emerald-500 animate-pulse">🚀</span>
         <div class="text-sm tracking-wide">${message}</div>
     `;
     
-    // 2. Додаємо його на сторінку
     document.body.appendChild(toast);
     
-    // 3. Через мікропаузу вмикаємо анімацію зальоту на екран
     setTimeout(() => {
         toast.classList.remove('translate-x-[150%]', 'opacity-0');
         toast.classList.add('translate-x-0', 'opacity-100');
     }, 50);
     
-    // 4. Через 4 секунди плавно ховаємо і повністю видаляємо з коду
     setTimeout(() => {
         toast.classList.remove('translate-x-0', 'opacity-100');
         toast.classList.add('translate-x-[150%]', 'opacity-0');
         
-        // Видаляємо елемент з пам'яті після завершення анімації закриття
         setTimeout(() => {
             toast.remove();
         }, 500);
