@@ -114,32 +114,101 @@ if (modal && serviceCards.length > 0) {
 }
 
 // =======================================================
-// БЛОК 6: ІНТЕРАКТИВНИЙ ФІЛЬТР БРЕНДІВ
+// БЛОК 6: ДИНАМІЧНИЙ КАТАЛОГ ТА ФІЛЬТР БРЕНДІВ
 // =======================================================
-const filterButtons = document.querySelectorAll('.filter-btn');
-const brandCards = document.querySelectorAll('.brand-card');
 
-if (filterButtons.length > 0 && brandCards.length > 0) {
-    filterButtons.forEach(button => {
+// 1. НАША БАЗА ДАНИХ БРЕНДІВ (Тут ти можеш легко змінювати тексти або додавати нові бренди!)
+const brandsData = [
+    { 
+        name: "Luminarc", 
+        category: "glass", 
+        desc: "Французький бренд ударостійкого скла. Посуд Luminarc витримує різкі перепади температур, підходить для мікрохвильовок та посудомийних машин. Ідеальний вибір для щоденного використання та HoReCa." 
+    },
+    { 
+        name: "Wilmax", 
+        category: "porcelain", 
+        desc: "Англійський преміальний білий порцеляновий посуд. Вироби Wilmax мають витончений дизайн, глазуроване покриття, стійкі до сколів та відмінно утримують тепло страв." 
+    },
+    { 
+        name: "Bohemia", 
+        category: "glass", 
+        desc: "Легендарний чеський кришталь та богемське скло. Витончені келихи, фужери та вази, що славляться своєю ідеальною прозорістю, тонким дзвоном та розкішним огранюванням." 
+    },
+    { 
+        name: "Lessner", 
+        category: "cookware", 
+        desc: "Високоякісний кухонний посуд та кухонне приладдя з нержавіючої сталі. Каструлі, сковорідки та ножі Lessner — це ергономічність, довговічність та висока теплопровідність." 
+    },
+    { 
+        name: "Vincent", 
+        category: "cookware", 
+        desc: "Практичний та доступний кухонний посуд для кожної оселі. Надійні матеріали, сучасний дизайн та оптимальне співвідношення ціни та якості для комфортного приготування їжі." 
+    },
+    { 
+        name: "Milika", 
+        category: "glass", 
+        desc: "Сучасний бренд скляного посуду з яскравими дизайнерськими принтами. Салатники, чашки та тарілки Milika додадуть затишку та стильних акцентів будь-якому інтер'єру." 
+    }
+];
+
+const brandsGrid = document.getElementById('brands-grid');
+const filterBtns = document.querySelectorAll('.filter-btn');
+
+// 2. ФУНКЦІЯ РЕНДЕРУ (Генерація карток на екрані)
+function renderBrands(filterValue = 'all') {
+    if (!brandsGrid) return;
+    
+    // Очищаємо сітку перед новим виведенням
+    brandsGrid.innerHTML = '';
+    
+    // Фільтруємо масив брендів
+    const filteredBrands = brandsData.filter(brand => {
+        return filterValue === 'all' || brand.category === filterValue;
+    });
+    
+    // Створюємо HTML-код для кожного відфільтрованого бренду
+    filteredBrands.forEach(brand => {
+        const card = document.createElement('div');
+        
+        // Задаємо точно такі ж преміальні стилі Tailwind, які у нас були
+        card.className = "brand-card scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 rounded-xl shadow-sm border border-white/40 dark:border-zinc-800/60 text-center flex items-center justify-center font-bold text-lg text-blue-900 dark:text-zinc-200 min-h-[80px] transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer";
+        card.innerHTML = `<p>${brand.name}</p>`;
+        
+        // ПІДКЛЮЧАЄМО КЛІК: При натисканні на бренд відкриваємо наше модальне вікно
+        card.addEventListener('click', () => {
+            const modal = document.getElementById('service-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalText = document.getElementById('modal-text');
+            
+            if (modal && modalTitle && modalText) {
+                modalTitle.innerText = `Бренд ${brand.name}`;
+                modalText.innerText = brand.desc + " Ми пропонуємо найкращі оптові ціни на цей бренд, швидку логістику та повний пакет документів для вашого бізнесу на Волині.";
+                modal.classList.add('active');
+            }
+        });
+        
+        // Закидаємо готову картку в сітку сайту
+        brandsGrid.appendChild(card);
+    });
+}
+
+// 3. ПІДКЛЮЧЕННЯ КНОПОК ФІЛЬТРАЦІЇ
+if (filterBtns.length > 0) {
+    filterBtns.forEach(button => {
         button.addEventListener('click', () => {
-            // Перемикаємо активну кнопку (вона тепер зафіксується зеленим/синім кольором)
-            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Перемикаємо активний клас на кнопках
+            filterBtns.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-
+            
+            // Отримуємо значення фільтру та перерендерюємо картки
             const filterValue = button.getAttribute('data-filter');
-
-            brandCards.forEach(card => {
-                const cardCategory = card.getAttribute('data-category');
-
-                if (filterValue === 'all' || filterValue === cardCategory) {
-                    card.classList.remove('hide-card'); // Показуємо
-                } else {
-                    card.classList.add('hide-card'); // Ховаємо
-                }
-            });
+            renderBrands(filterValue);
         });
     });
 }
+
+// Запускаємо первинне виведення всіх брендів при першому завантаженні сайту
+renderBrands('all');
 // =======================================================
 // БЛОК 7: ВІДПРАВКА ЗАЯВОК В TELEGRAM
 // =======================================================
