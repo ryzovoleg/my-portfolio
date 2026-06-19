@@ -448,3 +448,82 @@ if (faqToggles.length > 0) {
         });
     });
 }
+
+// =======================================================
+// БЛОК 13: ПРЕМІАЛЬНА СКЛЯНА КАРУСЕЛЬ (SLIDER)
+// =======================================================
+const sliderSlides = document.querySelectorAll('.slide');
+const sliderDots = document.querySelectorAll('.dot');
+const prevSlideBtn = document.getElementById('prev-slide');
+const nextSlideBtn = document.getElementById('next-slide');
+
+let activeSlideIndex = 0;
+let autoSlideTimer;
+
+function updateSlider(targetIndex) {
+    if (sliderSlides.length === 0) return;
+
+    // Циклічність: якщо вийшли за межі, вертаємось на початок або кінець
+    if (targetIndex >= sliderSlides.length) activeSlideIndex = 0;
+    else if (targetIndex < 0) activeSlideIndex = sliderSlides.length - 1;
+    else activeSlideIndex = targetIndex;
+
+    // 1. Керуємо видимістю слайдів (плавний ефект Fade)
+    sliderSlides.forEach((slide, i) => {
+        if (i === activeSlideIndex) {
+            slide.classList.remove('opacity-0', 'pointer-events-none');
+            slide.classList.add('opacity-100');
+        } else {
+            slide.classList.remove('opacity-100');
+            slide.classList.add('opacity-0', 'pointer-events-none');
+        }
+    });
+
+    // 2. Оновлюємо крапочки (активна стає ширшою)
+    sliderDots.forEach((dot, i) => {
+        if (i === activeSlideIndex) {
+            dot.classList.remove('bg-white/40');
+            dot.classList.add('bg-white', 'w-6'); // Розтягуємо активну крапочку
+        } else {
+            dot.classList.remove('bg-white', 'w-6');
+            dot.classList.add('bg-white/40');
+        }
+    });
+}
+
+// Функція для запуску/перезапуску автоматичного гортання (кожні 5 сек)
+function startAutoCycle() {
+    clearInterval(autoSlideTimer);
+    autoSlideTimer = setInterval(() => {
+        updateSlider(activeSlideIndex + 1);
+    }, 5000);
+}
+
+// Вішаємо події на стрілочки
+if (nextSlideBtn) {
+    nextSlideBtn.addEventListener('click', () => {
+        updateSlider(activeSlideIndex + 1);
+        startAutoCycle(); // Скидаємо таймер при ручному кліку
+    });
+}
+
+if (prevSlideBtn) {
+    prevSlideBtn.addEventListener('click', () => {
+        updateSlider(activeSlideIndex - 1);
+        startAutoCycle();
+    });
+}
+
+// Вішаємо події на самі крапочки
+sliderDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        updateSlider(index);
+        startAutoCycle();
+    });
+});
+
+// Ініціалізація першої крапочки та старт автогортання
+if (sliderDots.length > 0) {
+    sliderDots[0].classList.add('w-6'); // Задаємо початкову ширину першій крапочці
+    startAutoCycle();
+}
