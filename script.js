@@ -410,3 +410,41 @@ function typeEffect() {
 
 // Запускаємо друкарську машинку відразу при завантаженні скрипта
 typeEffect();
+
+// =======================================================
+// БЛОК 12: ІНТЕРАКТИВНИЙ FAQ (АКОРДЕОН)
+// =======================================================
+const faqToggles = document.querySelectorAll('.faq-toggle');
+
+if (faqToggles.length > 0) {
+    faqToggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const currentItem = toggle.closest('.faq-item');
+            const currentContent = currentItem.querySelector('.faq-content');
+            const currentIcon = toggle.querySelector('.faq-icon');
+            
+            // Перевіряємо, чи відкрита саме ця плашка зараз
+            const isOpen = !currentContent.classList.contains('max-h-0');
+            
+            // 1. Спочатку закриваємо абсолютно всі інші плашки на сайті
+            document.querySelectorAll('.faq-content').forEach(content => {
+                content.classList.add('max-h-0', 'opacity-0');
+                content.classList.remove('max-h-96', 'opacity-100');
+            });
+            
+            document.querySelectorAll('.faq-icon').forEach(icon => {
+                icon.textContent = '➕';
+                icon.classList.remove('rotate-45');
+            });
+
+            // 2. Якщо плашка була закрита — плавно відкриваємо її
+            if (!isOpen) {
+                currentContent.classList.remove('max-h-0', 'opacity-0');
+                currentContent.classList.add('max-h-96', 'opacity-100');
+                currentIcon.textContent = '➖';
+                // Можна також додати крутий ефект повороту іконки через класи Tailwind
+                currentIcon.classList.add('rotate-45'); 
+            }
+        });
+    });
+}
