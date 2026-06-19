@@ -129,10 +129,10 @@
         
         <!-- Слайд 1: Скло / Кришталь -->
         <div class="slide absolute inset-0 opacity-100 transition-opacity duration-700 ease-in-out z-10">
-            <img src="https://images.unsplash.com/photo-1576016770956-debb63d90029?auto=format&fit=crop&w=1200&q=80" alt="Богемське скло" class="w-full h-full object-cover">
+            <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=1200&q=80" alt="Витонченість скла" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-6 md:p-10">
                 <div>
-                    <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Bohemia & Luminarc</span>
+                    <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Luminarc / Bohemia / Simax</span>
                     <h3 class="text-xl md:text-3xl font-bold text-white mt-2">Витонченість скла та кришталю</h3>
                     <p class="text-gray-300 text-xs md:text-sm mt-1">Преміальні келихи, фужери та салатники для вишуканих застіль.</p>
                 </div>
@@ -141,12 +141,12 @@
 
         <!-- Слайд 2: Порцеляна -->
         <div class="slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out z-10 pointer-events-none">
-            <img src="https://images.unsplash.com/photo-1610701596007-11502861afaa?auto=format&fit=crop&w=1200&q=80" alt="Преміум порцеляна" class="w-full h-full object-cover">
+            <img src="https://images.unsplash.com/photo-1577140917170-285929fb55b7?auto=format&fit=crop&w=1200&q=80" alt="Аристократична порцеляна" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-6 md:p-10">
                 <div>
-                    <span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Wilmax Porcelain</span>
+                    <span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Wilmax</span>
                     <h3 class="text-xl md:text-3xl font-bold text-white mt-2">Аристократична біла порцеляна</h3>
-                    <p class="text-gray-300 text-xs md:text-sm mt-1">Ресторанний шик, абсолютна білизна та стійкість до сколів.</p>
+                    <p class="text-gray-300 text-xs md:text-sm mt-1">Ресторанний шик, абсолютна білизна та виняткова стійкість до сколів.</p>
                 </div>
             </div>
         </div>
@@ -156,14 +156,14 @@
             <img src="https://images.unsplash.com/photo-1544984243-ec57ea16fe25?auto=format&fit=crop&w=1200&q=80" alt="Кухонний посуд" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-6 md:p-10">
                 <div>
-                    <span class="bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Lessner & Vincent</span>
+                    <span class="bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Lessner / Vincent</span>
                     <h3 class="text-xl md:text-3xl font-bold text-white mt-2">Ергономічний посуд для кулінарії</h3>
-                    <p class="text-gray-300 text-xs md:text-sm mt-1">Високоякісна нержавіюча сталь для професійного приготування.</p>
+                    <p class="text-gray-300 text-xs md:text-sm mt-1">Високоякісна нержавіюча сталь для професійного та комфортного приготування.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Скляні кнопки навігації (Стрілочки) -->
+        <!-- Скляні кнопки навігації -->
         <button id="prev-slide" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 dark:bg-black/20 backdrop-blur-md text-white border border-white/20 hover:bg-white/30 p-3 rounded-full transition-all duration-300 focus:outline-none select-none active:scale-95">
             ⬅️
         </button>
@@ -171,7 +171,7 @@
             ➡️
         </button>
         
-        <!-- Смарт-індикатори (Крапочки внизу) -->
+        <!-- Смарт-індикатори -->
         <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex space-x-2" id="slider-dots">
             <span class="dot w-3 h-3 rounded-full bg-white transition-all duration-300 cursor-pointer"></span>
             <span class="dot w-3 h-3 rounded-full bg-white/40 transition-all duration-300 cursor-pointer"></span>
@@ -179,56 +179,6 @@
         </div>
     </div>
 </div>
-
-    <div class="filter-buttons flex flex-wrap justify-center gap-3 mb-10 px-4">
-        <button class="filter-btn active px-5 py-2 rounded-full text-sm font-bold border border-gray-300 dark:border-zinc-700 bg-white/40 dark:bg-zinc-800/40 text-gray-700 dark:text-zinc-300 transition-all duration-300 cursor-pointer" data-filter="all">Усі</button>
-        <button class="filter-btn px-5 py-2 rounded-full text-sm font-bold border border-gray-300 dark:border-zinc-700 bg-white/40 dark:bg-zinc-800/40 text-gray-700 dark:text-zinc-300 transition-all duration-300 cursor-pointer" data-filter="glass">Скло & Кришталь</button>
-        <button class="filter-btn px-5 py-2 rounded-full text-sm font-bold border border-gray-300 dark:border-zinc-700 bg-white/40 dark:bg-zinc-800/40 text-gray-700 dark:text-zinc-300 transition-all duration-300 cursor-pointer" data-filter="porcelain">Порцеляна</button>
-        <button class="filter-btn px-5 py-2 rounded-full text-sm font-bold border border-gray-300 dark:border-zinc-700 bg-white/40 dark:bg-zinc-800/40 text-gray-700 dark:text-zinc-300 transition-all duration-300 cursor-pointer" data-filter="cookware">Кухонний посуд</button>
-    </div>
-
-    <div id="brands-grid" class="brands-grid grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto px-4"></div>
-</section>
-
-<!-- Розділ Переваг -->
-<!-- Розділ Переваг з ПОВНИМ КРУТІННЯМ ІКОНОК (360 градусів) -->
-<section class="py-16 bg-transparent relative z-10">
-    <h2 class="text-3xl font-extrabold text-center text-blue-900 dark:text-green-500 mb-12 tracking-tight">
-        Чому варто працювати з нами
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto px-4">
-        
-        <!-- Картка 1: Швидкість -->
-        <div class="advantage-item group bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 rounded-2xl shadow-md border border-white/40 dark:border-zinc-800/60 text-center transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg cursor-pointer">
-            <!-- Змінили duration-300 на duration-500 для плавності + додали rotate-[360deg] -->
-            <div class="w-16 h-16 bg-blue-50/50 dark:bg-zinc-800/50 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 transform transition-all duration-500 ease-in-out group-hover:scale-115 group-hover:rotate-[360deg] shadow-sm group-hover:bg-blue-100/50 dark:group-hover:bg-zinc-700/50">⚡</div>
-            <h3 class="text-xl font-bold text-blue-900 dark:text-green-500 mb-2">Швидкість</h3>
-            <p class="text-gray-800 dark:text-gray-200 text-sm leading-relaxed">
-                Оперативно обробляємо замовлення та забезпечуємо чітку логістику по Волині без затримок.
-            </p>
-        </div>
-
-        <!-- Картка 2: Якість -->
-        <div class="advantage-item group bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 rounded-2xl shadow-md border border-white/40 dark:border-zinc-800/60 text-center transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg cursor-pointer">
-            <div class="w-16 h-16 bg-blue-50/50 dark:bg-zinc-800/50 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 transform transition-all duration-500 ease-in-out group-hover:scale-115 group-hover:rotate-[360deg] shadow-sm group-hover:bg-blue-100/50 dark:group-hover:bg-zinc-700/50">💎</div>
-            <h3 class="text-xl font-bold text-blue-900 dark:text-green-500 mb-2">Якість</h3>
-            <p class="text-gray-800 dark:text-gray-200 text-sm leading-relaxed">
-                Працюємо лише з перевіреними світовими брендами посуду та гарантуємо оригінальність продукції.
-            </p>
-        </div>
-
-        <!-- Картка 3: Вигода -->
-        <div class="advantage-item group bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 rounded-2xl shadow-md border border-white/40 dark:border-zinc-800/60 text-center transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg cursor-pointer">
-            <div class="w-16 h-16 bg-blue-50/50 dark:bg-zinc-800/50 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 transform transition-all duration-500 ease-in-out group-hover:scale-115 group-hover:rotate-[360deg] shadow-sm group-hover:bg-blue-100/50 dark:group-hover:bg-zinc-700/50">📉</div>
-            <h3 class="text-xl font-bold text-blue-900 dark:text-green-500 mb-2">Вигода</h3>
-            <p class="text-gray-800 dark:text-gray-200 text-sm leading-relaxed">
-                Пропонуємо конкурентні оптові ціни, індивідуальні знижки та прозорі фінансові звірки.
-            </p>
-        </div>
-
-    </div>
-</section>
-
     <!-- ======================================================= -->
 <!-- БЛОК: ЧАСТІ ЗАПИТАННЯ (FAQ АКОРДЕОН)                    -->
 <!-- ======================================================= -->
