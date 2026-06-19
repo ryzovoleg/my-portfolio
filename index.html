@@ -120,6 +120,66 @@
         Бренди, з якими я працюю
     </h2>
 
+    <!-- ======================================================= -->
+<!-- БЛОК: ГАЛЕРЕЯ ТОПОВИХ ТОВАРІВ (PREMIUM FADE SLIDER)      -->
+<!-- ======================================================= -->
+<div class="max-w-4xl mx-auto px-4 mb-12 relative">
+    <!-- Головний контейнер слайдера з ефектом скла -->
+    <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-white/40 dark:border-zinc-800/60 aspect-[16/9] md:aspect-[21/9] bg-zinc-900">
+        
+        <!-- Слайд 1: Скло / Кришталь -->
+        <div class="slide absolute inset-0 opacity-100 transition-opacity duration-700 ease-in-out z-10">
+            <img src="https://images.unsplash.com/photo-1576016770956-debb63d90029?auto=format&fit=crop&w=1200&q=80" alt="Богемське скло" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-6 md:p-10">
+                <div>
+                    <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Bohemia & Luminarc</span>
+                    <h3 class="text-xl md:text-3xl font-bold text-white mt-2">Витонченість скла та кришталю</h3>
+                    <p class="text-gray-300 text-xs md:text-sm mt-1">Преміальні келихи, фужери та салатники для вишуканих застіль.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 2: Порцеляна -->
+        <div class="slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out z-10 pointer-events-none">
+            <img src="https://images.unsplash.com/photo-1610701596007-11502861afaa?auto=format&fit=crop&w=1200&q=80" alt="Преміум порцеляна" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-6 md:p-10">
+                <div>
+                    <span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Wilmax Porcelain</span>
+                    <h3 class="text-xl md:text-3xl font-bold text-white mt-2">Аристократична біла порцеляна</h3>
+                    <p class="text-gray-300 text-xs md:text-sm mt-1">Ресторанний шик, абсолютна білизна та стійкість до сколів.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Слайд 3: Кухонний посуд -->
+        <div class="slide absolute inset-0 opacity-0 transition-opacity duration-700 ease-in-out z-10 pointer-events-none">
+            <img src="https://images.unsplash.com/photo-1544984243-ec57ea16fe25?auto=format&fit=crop&w=1200&q=80" alt="Кухонний посуд" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-6 md:p-10">
+                <div>
+                    <span class="bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Lessner & Vincent</span>
+                    <h3 class="text-xl md:text-3xl font-bold text-white mt-2">Ергономічний посуд для кулінарії</h3>
+                    <p class="text-gray-300 text-xs md:text-sm mt-1">Високоякісна нержавіюча сталь для професійного приготування.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Скляні кнопки навігації (Стрілочки) -->
+        <button id="prev-slide" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 dark:bg-black/20 backdrop-blur-md text-white border border-white/20 hover:bg-white/30 p-3 rounded-full transition-all duration-300 focus:outline-none select-none active:scale-95">
+            ⬅️
+        </button>
+        <button id="next-slide" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 dark:bg-black/20 backdrop-blur-md text-white border border-white/20 hover:bg-white/30 p-3 rounded-full transition-all duration-300 focus:outline-none select-none active:scale-95">
+            ➡️
+        </button>
+        
+        <!-- Смарт-індикатори (Крапочки внизу) -->
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex space-x-2" id="slider-dots">
+            <span class="dot w-3 h-3 rounded-full bg-white transition-all duration-300 cursor-pointer"></span>
+            <span class="dot w-3 h-3 rounded-full bg-white/40 transition-all duration-300 cursor-pointer"></span>
+            <span class="dot w-3 h-3 rounded-full bg-white/40 transition-all duration-300 cursor-pointer"></span>
+        </div>
+    </div>
+</div>
+
     <div class="filter-buttons flex flex-wrap justify-center gap-3 mb-10 px-4">
         <button class="filter-btn active px-5 py-2 rounded-full text-sm font-bold border border-gray-300 dark:border-zinc-700 bg-white/40 dark:bg-zinc-800/40 text-gray-700 dark:text-zinc-300 transition-all duration-300 cursor-pointer" data-filter="all">Усі</button>
         <button class="filter-btn px-5 py-2 rounded-full text-sm font-bold border border-gray-300 dark:border-zinc-700 bg-white/40 dark:bg-zinc-800/40 text-gray-700 dark:text-zinc-300 transition-all duration-300 cursor-pointer" data-filter="glass">Скло & Кришталь</button>
