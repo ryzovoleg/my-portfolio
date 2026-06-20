@@ -578,3 +578,59 @@ if (sliderDots.length > 0) {
     sliderDots[0].classList.add('w-6'); // Задаємо початкову ширину першій крапочці
     startAutoCycle();
 }
+
+// =======================================================
+// БЛОК 14: ІНТЕРАКТИВНИЙ ОПТОВИЙ КОШИК
+// =======================================================
+let selectedBrandsList = []; // Масив для зберігання обраних брендів
+
+const floatingCart = document.getElementById('floating-cart');
+const cartCountElement = document.getElementById('cart-count');
+
+function toggleBrandInCart(brandName, buttonElement) {
+    const index = selectedBrandsList.indexOf(brandName);
+    
+    if (index === -1) {
+        // 1. Якщо бренду немає — додаємо його
+        selectedBrandsList.push(brandName);
+        buttonElement.textContent = "✓ Додано";
+        buttonElement.classList.remove('bg-blue-600', 'dark:bg-zinc-800');
+        buttonElement.classList.add('bg-emerald-600', 'dark:bg-emerald-600');
+        
+        // Використовуємо наше круте вчорашнє Toast-сповіщення!
+        showPremiumToast(`Бренд ${brandName} додано до вашого запиту! 🛒`);
+    } else {
+        // 2. Якщо клікнули ще раз — видаляємо з кошика
+        selectedBrandsList.splice(index, 1);
+        buttonElement.textContent = "+ Додати до запиту";
+        buttonElement.classList.remove('bg-emerald-600', 'dark:bg-emerald-600');
+        buttonElement.classList.add('bg-blue-600', 'dark:bg-zinc-800');
+        
+        showPremiumToast(`Бренд ${brandName} видалено із запиту.`);
+    }
+    
+    // 3. Оновлюємо лічильник та видимість плаваючого кошика
+    if (cartCountElement) cartCountElement.textContent = selectedBrandsList.length;
+    
+    if (floatingCart) {
+        if (selectedBrandsList.length > 0) {
+            // Плавно вилітає знизу
+            floatingCart.classList.remove('translate-y-24', 'opacity-0');
+            floatingCart.classList.add('translate-y-0', 'opacity-100');
+        } else {
+            // Плавно ховається вниз
+            floatingCart.classList.remove('translate-y-0', 'opacity-100');
+            floatingCart.classList.add('translate-y-24', 'opacity-0');
+        }
+    }
+}
+
+// Клік по плаваючому кошику плавно несе клієнта до форми замовлення
+if (floatingCart) {
+    floatingCart.addEventListener('click', () => {
+        const contactSection = document.getElementById('contacts');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+}
