@@ -154,9 +154,60 @@ const brandsData = [
 const brandsGrid = document.getElementById('brands-grid');
 const filterBtns = document.querySelectorAll('.filter-btn');
 
-// 2. ФУНКЦІЯ РЕНДЕРУ (Генерація карток на екрані)
+// 2. ФУНКЦІЯ РЕНДЕРУ (Генерація карток з кнопкою Кошика)
 function renderBrands(filterValue = 'all') {
     if (!brandsGrid) return;
+    
+    brandsGrid.innerHTML = '';
+    
+    const filteredBrands = brandsData.filter(brand => {
+        return filterValue === 'all' || brand.category === filterValue;
+    });
+    
+    filteredBrands.forEach(brand => {
+        const card = document.createElement('div');
+        
+        // Оновлені стилі картки (робимо її flex-col, щоб кнопка була знизу)
+        card.className = "brand-card scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-white/40 dark:border-zinc-800/60 text-center flex flex-col justify-between items-center font-bold text-blue-900 dark:text-zinc-200 min-h-[120px] transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer";
+        
+        // Внутрішній вміст: назва бренду зверху + кнопка "+ Додати" знизу
+        card.innerHTML = `
+            <p class="text-lg tracking-wide mt-2">${brand.name}</p>
+            <button class="add-to-cart-btn mt-3 text-xs bg-blue-600 dark:bg-zinc-800 hover:bg-blue-700 dark:hover:bg-green-600 text-white dark:text-zinc-300 dark:hover:text-white px-4 py-2 rounded-xl transition-all duration-200 shadow-sm font-medium active:scale-95">
+                + Додати до запиту
+            </button>
+        `;
+        
+        // КЛІК НА КАРТКУ: Відкриває модалку з описом бренду
+        card.addEventListener('click', () => {
+            const modal = document.getElementById('service-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalText = document.getElementById('modal-text');
+            
+            if (modal && modalTitle && modalText) {
+                modalTitle.innerText = `Бренд ${brand.name}`;
+                modalText.innerText = brand.desc + " Ми пропонуємо найкращі оптові ціни на цей бренд, швидку логістику та повний пакет документів для вашого бізнесу на Волині.";
+                modal.classList.add('active');
+            }
+        });
+        
+        // КЛІК НА КНОПКУ «+ ДОДАТИ»: Додає бренд в наш оптовий кошик
+        const addToCartBtn = card.querySelector('.add-to-cart-btn');
+        addToCartBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // СТОП! Цей рядок блокує відкриття модалки при кліку на плюс!
+            toggleBrandInCart(brand.name, addToCartBtn);
+        });
+        
+        // Перевіряємо, чи цей бренд вже в кошику, щоб зберегти зелений колір кнопки при перемиканні фільтрів
+        if (selectedBrandsList.includes(brand.name)) {
+            addToCartBtn.textContent = "✓ Додано";
+            addToCartBtn.classList.remove('bg-blue-600', 'dark:bg-zinc-800');
+            addToCartBtn.classList.add('bg-emerald-600', 'dark:bg-emerald-600');
+        }
+        
+        brandsGrid.appendChild(card);
+    });
+}
     
     // Очищаємо сітку перед новим виведенням
     brandsGrid.innerHTML = '';
