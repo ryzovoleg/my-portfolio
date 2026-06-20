@@ -117,7 +117,9 @@ if (modal && serviceCards.length > 0) {
 // БЛОК 6: ДИНАМІЧНИЙ КАТАЛОГ ТА ФІЛЬТР БРЕНДІВ
 // =======================================================
 
-// 1. НАША БАЗА ДАНИХ БРЕНДІВ (Тут ти можеш легко змінювати тексти або додавати нові бренди!)
+// КРИТИЧНИЙ ФІКС: Оголошуємо кошик НА САМОМУ ПОЧАТКУ, щоб браузер знав це слово!
+let selectedBrandsList = []; 
+
 const brandsData = [
     { 
         name: "Luminarc", 
@@ -154,7 +156,6 @@ const brandsData = [
 const brandsGrid = document.getElementById('brands-grid');
 const filterBtns = document.querySelectorAll('.filter-btn');
 
-// 2. ФУНКЦІЯ РЕНДЕРУ (Генерація карток з кнопкою Кошика)
 function renderBrands(filterValue = 'all') {
     if (!brandsGrid) return;
     
@@ -166,11 +167,8 @@ function renderBrands(filterValue = 'all') {
     
     filteredBrands.forEach(brand => {
         const card = document.createElement('div');
-        
-        // Оновлені стилі картки (робимо її flex-col, щоб кнопка була знизу)
         card.className = "brand-card scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-white/40 dark:border-zinc-800/60 text-center flex flex-col justify-between items-center font-bold text-blue-900 dark:text-zinc-200 min-h-[120px] transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer";
         
-        // Внутрішній вміст: назва бренду зверху + кнопка "+ Додати" знизу
         card.innerHTML = `
             <p class="text-lg tracking-wide mt-2">${brand.name}</p>
             <button class="add-to-cart-btn mt-3 text-xs bg-blue-600 dark:bg-zinc-800 hover:bg-blue-700 dark:hover:bg-green-600 text-white dark:text-zinc-300 dark:hover:text-white px-4 py-2 rounded-xl transition-all duration-200 shadow-sm font-medium active:scale-95">
@@ -178,7 +176,6 @@ function renderBrands(filterValue = 'all') {
             </button>
         `;
         
-        // КЛІК НА КАРТКУ: Відкриває модалку з описом бренду
         card.addEventListener('click', () => {
             const modal = document.getElementById('service-modal');
             const modalTitle = document.getElementById('modal-title');
@@ -191,14 +188,12 @@ function renderBrands(filterValue = 'all') {
             }
         });
         
-        // КЛІК НА КНОПКУ «+ ДОДАТИ»: Додає бренд в наш оптовий кошик
         const addToCartBtn = card.querySelector('.add-to-cart-btn');
         addToCartBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // СТОП! Цей рядок блокує відкриття модалки при кліку на плюс!
+            e.stopPropagation(); 
             toggleBrandInCart(brand.name, addToCartBtn);
         });
         
-        // Перевіряємо, чи цей бренд вже в кошику, щоб зберегти зелений колір кнопки при перемиканні фільтрів
         if (selectedBrandsList.includes(brand.name)) {
             addToCartBtn.textContent = "✓ Додано";
             addToCartBtn.classList.remove('bg-blue-600', 'dark:bg-zinc-800');
@@ -208,57 +203,30 @@ function renderBrands(filterValue = 'all') {
         brandsGrid.appendChild(card);
     });
 }
-    
-    // Очищаємо сітку перед новим виведенням
+
+function showCatalogSkeletons() {
+    if (!brandsGrid) return;
     brandsGrid.innerHTML = '';
-    
-    // Фільтруємо масив брендів
-    const filteredBrands = brandsData.filter(brand => {
-        return filterValue === 'all' || brand.category === filterValue;
-    });
-    
-    // Створюємо HTML-код для кожного відфільтрованого бренду
-    filteredBrands.forEach(brand => {
-        const card = document.createElement('div');
-        
-        // Задаємо точно такі ж преміальні стилі Tailwind, які у нас були
-        card.className = "brand-card scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 rounded-xl shadow-sm border border-white/40 dark:border-zinc-800/60 text-center flex items-center justify-center font-bold text-lg text-blue-900 dark:text-zinc-200 min-h-[80px] transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer";
-        card.innerHTML = `<p>${brand.name}</p>`;
-        
-        // ПІДКЛЮЧАЄМО КЛІК: При натисканні на бренд відкриваємо наше модальне вікно
-        card.addEventListener('click', () => {
-            const modal = document.getElementById('service-modal');
-            const modalTitle = document.getElementById('modal-title');
-            const modalText = document.getElementById('modal-text');
-            
-            if (modal && modalTitle && modalText) {
-                modalTitle.innerText = `Бренд ${brand.name}`;
-                modalText.innerText = brand.desc + " Ми пропонуємо найкращі оптові ціни на цей бренд, швидку логістику та повний пакет документів для вашого бізнесу на Волині.";
-                modal.classList.add('active');
-            }
-        });
-        
-        // Закидаємо готову картку в сітку сайту
-        brandsGrid.appendChild(card);
-    });
+    for (let i = 0; i < 3; i++) {
+        const skeleton = document.createElement('div');
+        skeleton.className = "bg-white/20 dark:bg-zinc-900/20 backdrop-blur-md p-6 rounded-xl border border-white/20 dark:border-zinc-800/40 min-h-[80px] animate-pulse flex justify-center items-center shadow-inner";
+        skeleton.innerHTML = `<div class="h-4 bg-gray-300/40 dark:bg-zinc-700/40 rounded-full w-28"></div>`;
+        brandsGrid.appendChild(skeleton);
+    }
 }
 
-// 3. ПІДКЛЮЧЕННЯ КНОПОК ФІЛЬТРАЦІЇ
 if (filterBtns.length > 0) {
     filterBtns.forEach(button => {
         button.addEventListener('click', () => {
-            // Перемикаємо активний клас на кнопках
+            if (button.classList.contains('active')) return;
             filterBtns.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-            
-            // Отримуємо значення фільтру та перерендерюємо картки
             const filterValue = button.getAttribute('data-filter');
-            renderBrands(filterValue);
+            showCatalogSkeletons();
+            setTimeout(() => { renderBrands(filterValue); }, 400);
         });
     });
 }
-
-// Запускаємо первинне виведення всіх брендів при першому завантаженні сайту
 renderBrands('all');
 // =======================================================
 // БЛОК 7: ВІДПРАВКА ЗАЯВОК В TELEGRAM
