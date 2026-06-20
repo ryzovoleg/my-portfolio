@@ -189,59 +189,17 @@ input, textarea {
 }
 
 /* ======================================================= */
-/* ОСТАТОЧНИЙ ФІКС КУРСОРУ (БЕЗ БЛОКУВАННЯ JAVASCRIPT)     */
+/* НАДІЙНИЙ ФІКС КУРСОРУ (БЕЗВРУЧНЕ ВТРУЧАННЯ В КООРДИНАТИ) */
 /* ======================================================= */
 
-/* 1. Повністю вимикаємо стандартну стрілку браузера скрізь */
-html, body, a, button, select, .brand-card, .faq-toggle, .service-card, .add-to-cart-btn {
+/* 1. Ховаємо стандартну стрілку браузера абсолютно скрізь, щоб вона не вилізала */
+html, body, a, button, select, input, textarea, .brand-card, .faq-toggle, .service-card, .add-to-cart-btn {
     cursor: none !important;
 }
 
-/* 2. Велике коло курсору */
-#custom-cursor {
-    width: 40px !important;
-    height: 40px !important;
-    border: 2px solid #3b82f6 !important; /* Синє коло */
-    border-radius: 50% !important;
-    position: fixed !important;
-    
-    /* УВАГА: Тут НЕМАЄ !important, щоб JavaScript міг вільно рухати коло! */
-    top: 0;
-    left: 0;
-    
-    transform: translate(-50%, -50%) !important;
-    pointer-events: none !important;
-    z-index: 999999 !important; /* ЛЕТИТЬ НАД УСІМА БЛОКАМИ ТА СКЛОМ */
-    display: block !important;
-}
-
-/* 3. Маленька центральна точка */
-#custom-cursor-dot {
-    width: 8px !important;
-    height: 8px !important;
-    background-color: #3b82f6 !important;
-    border-radius: 50% !important;
-    position: fixed !important;
-    
-    /* УВАГА: Тут теж НЕМАЄ !important для вільного руху! */
-    top: 0;
-    left: 0;
-    
-    transform: translate(-50%, -50%) !important;
-    pointer-events: none !important;
-    z-index: 999999 !important;
-    display: block !important;
-}
-
-/* 4. Розумна адаптація під Темну тему */
-.dark #custom-cursor {
-    border-color: #22c55e !important; /* Зелений неон */
-}
-.dark #custom-cursor-dot {
-    background-color: #22c55e !important;
-}
-
-/* 5. Повертаємо рідну паличку для введення тексту в полях форми */
-input, textarea {
-    cursor: text !important;
+/* 2. Тільки піднімаємо твій кастомний курсор над усім новим склом сайту */
+/* Жодних top, left чи position! Не заважаємо твоєму JavaScript рухати колайдери */
+#custom-cursor, #custom-cursor-dot {
+    pointer-events: none !important; /* Щоб кола не блокували кліки по кнопках */
+    z-index: 999999 !important;      /* Максимальний шар — тепер летить НАД брендами та FAQ */
 }
