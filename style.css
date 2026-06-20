@@ -189,7 +189,7 @@ input, textarea {
 }
 
 /* ======================================================= */
-/* АБСОЛЮТНИЙ ТА ЗАЛІЗОБЕТОННИЙ ФІКС КАСТОМНОГО КУРСОРУ    */
+/* ОСТАТОЧНИЙ ФІКС КУРСОРУ (БЕЗ БЛОКУВАННЯ JAVASCRIPT)     */
 /* ======================================================= */
 
 /* 1. Повністю вимикаємо стандартну стрілку браузера скрізь */
@@ -197,45 +197,51 @@ html, body, a, button, select, .brand-card, .faq-toggle, .service-card, .add-to-
     cursor: none !important;
 }
 
-/* 2. Повністю перевизначаємо велике коло курсору */
+/* 2. Велике коло курсору */
 #custom-cursor {
     width: 40px !important;
     height: 40px !important;
-    border: 2px solid #3b82f6 !important; /* Гарний синій преміум-контур */
+    border: 2px solid #3b82f6 !important; /* Синє коло */
     border-radius: 50% !important;
     position: fixed !important;
-    top: 0 !important;    /* КРИТИЧНО: обнуляємо точку старту в нуль! */
-    left: 0 !important;   /* КРИТИЧНО: обнуляємо точку старту в нуль! */
-    transform: translate(-50%, -50%) !important; /* Чітко центруємо коло по кінчику мишки */
-    pointer-events: none !important; /* Курсор не заважає клікати по кнопках */
-    z-index: 999999 !important;      /* Виносимо на самий верхній шар над усім сайтом */
-    display: block !important;       /* Примусово показуємо на екрані */
+    
+    /* УВАГА: Тут НЕМАЄ !important, щоб JavaScript міг вільно рухати коло! */
+    top: 0;
+    left: 0;
+    
+    transform: translate(-50%, -50%) !important;
+    pointer-events: none !important;
+    z-index: 999999 !important; /* ЛЕТИТЬ НАД УСІМА БЛОКАМИ ТА СКЛОМ */
+    display: block !important;
 }
 
-/* 3. Повністю перевизначаємо маленьку центральну точку */
+/* 3. Маленька центральна точка */
 #custom-cursor-dot {
     width: 8px !important;
     height: 8px !important;
-    background-color: #3b82f6 !important; /* Синя точка в центрі */
+    background-color: #3b82f6 !important;
     border-radius: 50% !important;
     position: fixed !important;
-    top: 0 !important;    /* КРИТИЧНО: обнуляємо точку старту! */
-    left: 0 !important;   /* КРИТИЧНО: обнуляємо точку старту! */
-    transform: translate(-50%, -50%) !important; /* Центруємо точку */
+    
+    /* УВАГА: Тут теж НЕМАЄ !important для вільного руху! */
+    top: 0;
+    left: 0;
+    
+    transform: translate(-50%, -50%) !important;
     pointer-events: none !important;
     z-index: 999999 !important;
     display: block !important;
 }
 
-/* 4. Розумна адаптація під Темну тему (Tailwind-style) */
+/* 4. Розумна адаптація під Темну тему */
 .dark #custom-cursor {
-    border-color: #22c55e !important; /* Змінюємо контур на зелений неон */
+    border-color: #22c55e !important; /* Зелений неон */
 }
 .dark #custom-cursor-dot {
-    background-color: #22c55e !important; /* Змінюємо точку на зелену */
+    background-color: #22c55e !important;
 }
 
-/* 5. Повертаємо рідну зручну паличку для введення тексту в полях форми */
+/* 5. Повертаємо рідну паличку для введення тексту в полях форми */
 input, textarea {
     cursor: text !important;
 }
