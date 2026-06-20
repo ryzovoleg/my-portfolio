@@ -280,14 +280,10 @@ if (contactForm) {
         const message = document.getElementById('user-message').value;
 
         // Формуємо повідомлення
-        const textMessage = `
-🔔 NEW LEAD FROM WEBSITE!
-👤 Ім'я: ${name}
-📞 Контакт: ${contact}
-✉️ Повідомлення: ${message}
-        `;
+       // Знайди у Блоці 7 рядок const text і заміни його на цей варіант:
+const cartContent = selectedBrandsList.length > 0 ? selectedBrandsList.join(', ') : 'Не вибрано (Загальний запит)';
 
-        const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
+const text = `🔔 Нова заявка!\n\n👤 Ім'я: ${name}\n📞 Контакт: ${contact}\n🛒 Сет брендів: ${cartContent}\n💬 Повідомлення: ${message}`;
 
         // Відправляємо дані на сервери Telegram
         fetch(url, {
