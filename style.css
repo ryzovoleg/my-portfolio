@@ -189,17 +189,50 @@ input, textarea {
 }
 
 /* ======================================================= */
-/* НАДІЙНИЙ ФІКС КУРСОРУ (БЕЗВРУЧНЕ ВТРУЧАННЯ В КООРДИНАТИ) */
+/* АБСОЛЮТНИЙ ТА НАДІЙНИЙ ФІКС КУРСОРУ ТА ШАРІВ            */
 /* ======================================================= */
 
-/* 1. Ховаємо стандартну стрілку браузера абсолютно скрізь, щоб вона не вилізала */
+/* 1. Ховаємо стандартну стрілку браузера абсолютно скрізь */
 html, body, a, button, select, input, textarea, .brand-card, .faq-toggle, .service-card, .add-to-cart-btn {
     cursor: none !important;
 }
 
-/* 2. Тільки піднімаємо твій кастомний курсор над усім новим склом сайту */
-/* Жодних top, left чи position! Не заважаємо твоєму JavaScript рухати колайдери */
-#custom-cursor, #custom-cursor-dot {
-    pointer-events: none !important; /* Щоб кола не блокували кліки по кнопках */
-    z-index: 999999 !important;      /* Максимальний шар — тепер летить НАД брендами та FAQ */
+/* 2. Велике коло курсору */
+#custom-cursor {
+    width: 40px !important;
+    height: 40px !important;
+    border: 2px solid #3b82f6 !important; /* Синє преміум-коло */
+    border-radius: 50% !important;
+    
+    position: fixed !important;      /* КРИТИЧНО: Без цього рядового z-index не працює! */
+    pointer-events: none !important; /* Дозволяє клікати КРІЗЬ курсор на будь-які кнопки */
+    z-index: 999999 !important;      /* Максимальний шар — летить НАД усім склом сайту */
+    display: block !important;
+}
+
+/* 3. Маленька центральна точка */
+#custom-cursor-dot {
+    width: 8px !important;
+    height: 8px !important;
+    background-color: #3b82f6 !important; /* Синя точка */
+    border-radius: 50% !important;
+    
+    position: fixed !important;      /* Теж фіксуємо в просторі */
+    pointer-events: none !important;
+    z-index: 999999 !important;      /* На самому верху */
+    display: block !important;
+}
+
+/* 4. Розумна адаптація під Темну тему (Tailwind-style) */
+.dark #custom-cursor {
+    border-color: #22c55e !important; /* Зелений неон для темної теми */
+}
+.dark #custom-cursor-dot {
+    background-color: #22c55e !important;
+}
+
+/* 5. Повертаємо рідну паличку для введення тексту в полях форми, 
+      але наше кастомне коло при цьому НЕ зникне! */
+input, textarea {
+    cursor: text !important;
 }
