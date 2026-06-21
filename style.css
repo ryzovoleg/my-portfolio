@@ -212,3 +212,14 @@ html, body, a, button, select, input, textarea, .brand-card, .faq-toggle, .servi
 input, textarea {
     cursor: text !important;
 }
+
+/* ======================================================= */
+/* БЛОК: НЕОНОВЕ СВІТІННЯ ДЛЯ ТРЕКЕРА СКРОЛУ               */
+/* ======================================================= */
+#scroll-progress {
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.7); /* Синє світіння для світлої теми */
+}
+
+.dark #scroll-progress {
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.7);  /* Зелений лазер для темної теми */
+}
