@@ -480,3 +480,46 @@ if (progressBar) {
         }
     });
 }
+
+
+// =======================================================
+// БЛОК 16: СКЛЯНИЙ ПЛАВАЮЧИЙ ВІДЖЕТ ЗВ'ЯЗКУ (MULTI-FAB)
+// =======================================================
+const fabMain = document.getElementById('fab-main');
+const fabOptions = document.getElementById('fab-options');
+const fabIcon = document.getElementById('fab-icon');
+
+if (fabMain && fabOptions && fabIcon) {
+    fabMain.addEventListener('click', () => {
+        // Перевіряємо, чи відкритий віджет зараз
+        const isOpen = fabOptions.classList.contains('opacity-100');
+
+        if (!isOpen) {
+            // ЕФЕКТНЕ ВІДКРИТТЯ: прибираємо прозорість, піднімаємо вгору та збільшуємо до 100%
+            fabOptions.classList.remove('translate-y-10', 'opacity-0', 'pointer-events-none', 'scale-75');
+            fabOptions.classList.add('translate-y-0', 'opacity-100', 'scale-100');
+            
+            // Міняємо іконку на хрестик та закручуємо її на 90 градусів
+            fabIcon.textContent = '❌';
+            fabIcon.style.transform = 'rotate(90deg)';
+        } else {
+            // ЕФЕКТНЕ ЗГОРТАННЯ: повертаємо в початковий схований стан
+            fabOptions.classList.remove('translate-y-0', 'opacity-100', 'scale-100');
+            fabOptions.classList.add('translate-y-10', 'opacity-0', 'pointer-events-none', 'scale-75');
+            
+            // Повертаємо назад хмаринку зв'язку
+            fabIcon.textContent = '💬';
+            fabIcon.style.transform = 'rotate(0deg)';
+        }
+    });
+
+    // РОЗУМНЕ ЗАКРИТТЯ: якщо клікнули повз віджет — ховаємо кнопки назад
+    document.addEventListener('click', (event) => {
+        if (!fabMain.contains(event.target) && !fabOptions.contains(event.target)) {
+            fabOptions.classList.remove('translate-y-0', 'opacity-100', 'scale-100');
+            fabOptions.classList.add('translate-y-10', 'opacity-0', 'pointer-events-none', 'scale-75');
+            fabIcon.textContent = '💬';
+            fabIcon.style.transform = 'rotate(0deg)';
+        }
+    });
+}
