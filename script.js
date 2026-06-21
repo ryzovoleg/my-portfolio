@@ -248,7 +248,7 @@ if (contactForm) {
         const message = document.getElementById('user-message').value;
 
         // Формуємо повідомлення
-       // Знайди у Блоці 7 рядок const text і заміни його на цей варіант:
+        // Знайди у Блоці 7 рядок const text і заміни його на цей варіант:
 const cartContent = selectedBrandsList.length > 0 ? selectedBrandsList.join(', ') : 'Не вибрано (Загальний запит)';
 
 const text = `🔔 Нова заявка!\n\n👤 Ім'я: ${name}\n📞 Контакт: ${contact}\n🛒 Сет брендів: ${cartContent}\n💬 Повідомлення: ${message}`;
@@ -371,7 +371,6 @@ function showPremiumToast(message) {
         }, 500);
     }, 4000);
 }
-
 // =======================================================
 // БЛОК 11: ЕФЕКТ ДРУКАРСЬКОЇ МАШИНКИ (TYPEWRITER EFFECT)
 // =======================================================
@@ -543,51 +542,51 @@ if (sliderDots.length > 0) {
     startAutoCycle();
 }
 
-/* ======================================================= */
-/* АБСОЛЮТНИЙ ТА НАДІЙНИЙ ФІКС КУРСОРУ ТА ШАРІВ            */
-/* ======================================================= */
+// =======================================================
+// БЛОК 14: ІНТЕРАКТИВНИЙ ОПТОВИЙ КОШИК
+// =======================================================
+// <-- ТУТ БУВ РЯДОК `let selectedBrandsList = [];` — МИ ЙОГО ПРОСТО ВИДАЛИЛИ!
 
-/* 1. Ховаємо стандартну стрілку браузера абсолютно скрізь */
-html, body, a, button, select, input, textarea, .brand-card, .faq-toggle, .service-card, .add-to-cart-btn {
-    cursor: none !important;
-}
+const floatingCart = document.getElementById('floating-cart');
+const cartCountElement = document.getElementById('cart-count');
 
-/* 2. Велике коло курсору */
-#custom-cursor {
-    width: 40px !important;
-    height: 40px !important;
-    border: 2px solid #3b82f6 !important; /* Синє преміум-коло */
-    border-radius: 50% !important;
+function toggleBrandInCart(brandName, buttonElement) {
+    const index = selectedBrandsList.indexOf(brandName);
     
-    position: fixed !important;      /* КРИТИЧНО: Без цього рядового z-index не працює! */
-    pointer-events: none !important; /* Дозволяє клікати КРІЗЬ курсор на будь-які кнопки */
-    z-index: 999999 !important;      /* Максимальний шар — летить НАД усім склом сайту */
-    display: block !important;
-}
-
-/* 3. Маленька центральна точка */
-#custom-cursor-dot {
-    width: 8px !important;
-    height: 8px !important;
-    background-color: #3b82f6 !important; /* Синя точка */
-    border-radius: 50% !important;
+    if (index === -1) {
+        selectedBrandsList.push(brandName);
+        buttonElement.textContent = "✓ Додано";
+        buttonElement.classList.remove('bg-blue-600', 'dark:bg-zinc-800');
+        buttonElement.classList.add('bg-emerald-600', 'dark:bg-emerald-600');
+        
+        showPremiumToast(`Бренд ${brandName} додано до вашого запиту! 🛒`);
+    } else {
+        selectedBrandsList.splice(index, 1);
+        buttonElement.textContent = "+ Додати до запиту";
+        buttonElement.classList.remove('bg-emerald-600', 'dark:bg-emerald-600');
+        buttonElement.classList.add('bg-blue-600', 'dark:bg-zinc-800');
+        
+        showPremiumToast(`Бренд ${brandName} видалено із запиту.`);
+    }
     
-    position: fixed !important;      /* Теж фіксуємо в просторі */
-    pointer-events: none !important;
-    z-index: 999999 !important;      /* На самому верху */
-    display: block !important;
+    if (cartCountElement) cartCountElement.textContent = selectedBrandsList.length;
+    
+    if (floatingCart) {
+        if (selectedBrandsList.length > 0) {
+            floatingCart.classList.remove('translate-y-24', 'opacity-0');
+            floatingCart.classList.add('translate-y-0', 'opacity-100');
+        } else {
+            floatingCart.classList.remove('translate-y-0', 'opacity-100');
+            floatingCart.classList.add('translate-y-24', 'opacity-0');
+        }
+    }
 }
 
-/* 4. Розумна адаптація під Темну тему (Tailwind-style) */
-.dark #custom-cursor {
-    border-color: #22c55e !important; /* Зелений неон для темної теми */
-}
-.dark #custom-cursor-dot {
-    background-color: #22c55e !important;
-}
-
-/* 5. Повертаємо рідну паличку для введення тексту в полях форми, 
-      але наше кастомне коло при цьому НЕ зникне! */
-input, textarea {
-    cursor: text !important;
+if (floatingCart) {
+    floatingCart.addEventListener('click', () => {
+        const contactSection = document.getElementById('contacts');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
 }
