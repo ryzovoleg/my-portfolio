@@ -460,3 +460,23 @@ if (floatingCart) {
         if (contactSection) { contactSection.scrollIntoView({ behavior: 'smooth' }); }
     });
 }
+
+// =======================================================
+// БЛОК 15: НЕОНОВИЙ ТРЕКЕР СКРОЛУ (PROGRESS BAR)
+// =======================================================
+const progressBar = document.getElementById('scroll-progress');
+
+if (progressBar) {
+    window.addEventListener('scroll', () => {
+        // Рахуємо, скільки всього пікселів можна прокрутити на сайті
+        const totalScrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+        
+        if (totalScrollableHeight > 0) {
+            // Вираховуємо відсоток поточного скролу від 0 до 100
+            const scrolledPercentage = (window.scrollY / totalScrollableHeight) * 100;
+            
+            // Змінюємо ширину лінії в CSS
+            progressBar.style.width = scrolledPercentage + '%';
+        }
+    });
+}
