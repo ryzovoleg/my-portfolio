@@ -559,3 +559,44 @@ if (fabMain && fabOptions && fabIcon) {
         }
     });
 }
+
+// =======================================================
+// БЛОК 17: МАГІЧНІ ЦИФРИ БІЗНЕСУ (ANIMATED COUNTERS)
+// =======================================================
+const businessCounters = document.querySelectorAll('.counter-num');
+
+if (businessCounters.length > 0) {
+    // Створюємо робота-спостерігача за екраном
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            // Якщо блок заїхав в поле зору користувача хоча б на половину
+            if (entry.isIntersecting) {
+                const counterElement = entry.target;
+                const targetValue = parseInt(counterElement.getAttribute('data-target'), 10);
+                
+                let currentValue = 0;
+                const duration = 1500; // Час крутіння в мілісекундах (1.5 секунди)
+                const frameRate = 1000 / 60; // 60 кадрів на секунду для ідеальної плавності
+                const totalSteps = duration / frameRate;
+                const increment = targetValue / totalSteps; // Розумний крок збільшення
+                
+                const animateScrollNumber = () => {
+                    currentValue += increment;
+                    
+                    if (currentValue < targetValue) {
+                        counterElement.textContent = Math.ceil(currentValue);
+                        setTimeout(animateScrollNumber, frameRate);
+                    } else {
+                        counterElement.textContent = targetValue; // Фіксуємо точне фінальне число
+                    }
+                };
+                
+                animateScrollNumber(); // Запускаємо магію крутіння
+                observer.unobserve(counterElement); // Кажемо роботу більше не стежити, щоб не крутити вдруге
+            }
+        });
+    }, { threshold: 0.4 }); // Спрацьовує, коли видно 40% плашки
+
+    // Вішаємо робота на кожну цифру
+    businessCounters.forEach(counter => counterObserver.observe(counter));
+}
