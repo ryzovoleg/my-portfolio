@@ -681,14 +681,12 @@ const priceForm = document.getElementById('price-form');
 const priceModalBody = document.getElementById('price-modal-body');
 
 if (openPriceBtn && priceModal && priceModalBody) {
-    // Відкриття модалки
     openPriceBtn.addEventListener('click', () => {
         priceModal.classList.remove('opacity-0', 'pointer-events-none');
         priceModalBody.classList.remove('scale-90');
         priceModalBody.classList.add('scale-100');
     });
 
-    // Закриття через хрестик
     if (closePriceBtn) {
         closePriceBtn.addEventListener('click', () => {
             priceModal.classList.add('opacity-0', 'pointer-events-none');
@@ -697,7 +695,6 @@ if (openPriceBtn && priceModal && priceModalBody) {
         });
     }
 
-    // Закриття кліком по темному тлу
     priceModal.addEventListener('click', (e) => {
         if (e.target === priceModal) {
             priceModal.classList.add('opacity-0', 'pointer-events-none');
@@ -707,7 +704,6 @@ if (openPriceBtn && priceModal && priceModalBody) {
     });
 }
 
-// Обробка надсилання контактів
 if (priceForm) {
     priceForm.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -715,9 +711,9 @@ if (priceForm) {
         const clientName = document.getElementById('price-name').value;
         const clientPhone = document.getElementById('price-phone').value;
 
-        // Впиши сюди свої реальні дані Телеграму (як у Блоці 7):
-        const token = '8621731043:AAEY4KZi6ioCEDeG-aTfZBNOs2Q6cBaknTo'; 
-        const chatId = '706355653';
+        // ⚠️ ВПИШИ СВОЇ ДАНІ ТЕЛЕГРАМУ СТРОГО ВСЕРЕДИНУ ОДИНАРНИХ ЛАПОК:
+        const token = '5739345242:AAEYH_YourActualTokenHere'; 
+        const chatId = '540321234';
 
         const text = `🔥 ГАРИЧИЙ ЛІД! Клієнт завантажує прайс!\n\n👤 Ім'я/Компанія: ${clientName}\n📞 Телефон: ${clientPhone}`;
 
@@ -727,11 +723,9 @@ if (priceForm) {
             body: JSON.stringify({ chat_id: chatId, text: text })
         })
         .then(response => {
-            // МИТТЄВИЙ ДОСТУП ДО ФАЙЛУ: Незалежно від швидкості інтернету, відкриваємо Excel!
-            // Заміни це посилання на свій реальний Google Диск з Excel-прайсом:
-            window.open(https://drive.google.com/drive/folders/1EVfvymVDZPVoTHhTu2lDQn1AkgbrJJ9t', '_blank');
+            // ⚠️ ВСТАВ СВОЄ ПОСИЛАННЯ НА GOOGLE ДИСК СТРОГО МІЖ ОДИНАРНИМИ ЛАПКАМИ:
+            window.open('8621731043:AAEY4KZi6ioCEDeG-aTfZBNOs2Q6cBaknTo', '_blank');
             
-            // Закриваємо модалку та очищаємо поля форми
             if (priceModal && priceModalBody) {
                 priceModal.classList.add('opacity-0', 'pointer-events-none');
                 priceModalBody.classList.remove('scale-100');
@@ -739,15 +733,14 @@ if (priceForm) {
             }
             priceForm.reset();
 
-            // Стріляємо красивим тоастом-ракетою
             if (typeof showPremiumToast === 'function') {
                 showPremiumToast("Прайс-лист успішно відкрито! 📊");
             }
         })
         .catch(error => {
             console.error('Помилка відправки ліда:', error);
-            // Навіть якщо сталася помилка мережі, клієнт все одно має отримати прайс:
-            window.open('https://drive.google.com/drive/folders/1EVfvymVDZPVoTHhTu2lDQn1AkgbrJJ9t', '_blank');
+            // ⚠️ СЮДИ ТЕЖ ДУБЛЮЄШ СВОЄ ПОСИЛАННЯ НА ТАБЛИЦЮ (ТЕЖ ВСЕРЕДИНІ ЛАПОК):
+            window.open('8621731043:AAEY4KZi6ioCEDeG-aTfZBNOs2Q6cBaknTo', '_blank');
         });
     });
 }
