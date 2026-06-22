@@ -724,7 +724,7 @@ if (priceForm) {
         })
         .then(response => {
             // ⚠️ ВСТАВ СВОЄ ПОСИЛАННЯ НА GOOGLE ДИСК СТРОГО МІЖ ОДИНАРНИМИ ЛАПКАМИ:
-            window.open('8621731043:AAEY4KZi6ioCEDeG-aTfZBNOs2Q6cBaknTo', '_blank');
+            window.open('https://drive.google.com/drive/folders/1EVfvymVDZPVoTHhTu2lDQn1AkgbrJJ9t', '_blank');
             
             if (priceModal && priceModalBody) {
                 priceModal.classList.add('opacity-0', 'pointer-events-none');
@@ -740,7 +740,7 @@ if (priceForm) {
         .catch(error => {
             console.error('Помилка відправки ліда:', error);
             // ⚠️ СЮДИ ТЕЖ ДУБЛЮЄШ СВОЄ ПОСИЛАННЯ НА ТАБЛИЦЮ (ТЕЖ ВСЕРЕДИНІ ЛАПОК):
-            window.open('8621731043:AAEY4KZi6ioCEDeG-aTfZBNOs2Q6cBaknTo', '_blank');
+            window.open('https://drive.google.com/drive/folders/1EVfvymVDZPVoTHhTu2lDQn1AkgbrJJ9t', '_blank');
         });
     });
 }
