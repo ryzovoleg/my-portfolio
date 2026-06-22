@@ -726,7 +726,7 @@ if (priceForm) {
         .then(response => {
             // МИТТЄВИЙ ДОСТУП ДО ФАЙЛУ: Незалежно від швидкості інтернету, відкриваємо Excel!
             // Заміни це посилання на свій реальний Google Диск з Excel-прайсом:
-            window.open('https://docs.google.com/spreadsheets/d/your-actual-excel-link/edit?usp=sharing', '_blank');
+            window.open(https://drive.google.com/drive/folders/1EVfvymVDZPVoTHhTu2lDQn1AkgbrJJ9t', '_blank');
             
             // Закриваємо модалку та очищаємо поля форми
             if (priceModal && priceModalBody) {
@@ -744,7 +744,7 @@ if (priceForm) {
         .catch(error => {
             console.error('Помилка відправки ліда:', error);
             // Навіть якщо сталася помилка мережі, клієнт все одно має отримати прайс:
-            window.open('https://docs.google.com/spreadsheets/d/your-actual-excel-link/edit?usp=sharing', '_blank');
+            window.open('https://drive.google.com/drive/folders/1EVfvymVDZPVoTHhTu2lDQn1AkgbrJJ9t', '_blank');
         });
     });
 }
