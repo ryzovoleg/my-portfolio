@@ -250,8 +250,8 @@ if (contactForm) {
         const message = document.getElementById('user-message').value;
 
         // Впиши сюди свої реальні дані Телеграму:
-        const token = '5739345242:AAEYH_YourActualTokenHere'; 
-        const chatId = '540321234';
+        const token = '8621731043:AAEY4KZi6ioCEDeG-aTfZBNOs2Q6cBaknTo'; 
+        const chatId = '706355653';
 
         const cartContent = selectedBrandsList.length > 0 ? selectedBrandsList.join(', ') : 'Не вибрано (Загальний запит)';
         const text = `🔔 Нова заявка!\n\n👤 Ім'я: ${name}\n📞 Контакт: ${contact}\n📦 Обраний бренд: ${brand}\n🛒 Сет брендів з кошика: ${cartContent}\n💬 Повідомлення: ${message}`;
@@ -713,8 +713,8 @@ if (priceForm) {
         const clientPhone = document.getElementById('price-phone').value;
 
         // Впиши сюди свої реальні дані Телеграму (як у Блоці 7):
-        const token = '5739345242:AAEYH_YourActualTokenHere'; 
-        const chatId = '540321234';
+        const token = '8621731043:AAEY4KZi6ioCEDeG-aTfZBNOs2Q6cBaknTo'; 
+        const chatId = '706355653';
 
         const text = `🔥 ГАРИЧИЙ ЛІД! Клієнт завантажує прайс!\n\n👤 Ім'я/Компанія: ${clientName}\n📞 Телефон: ${clientPhone}`;
 
