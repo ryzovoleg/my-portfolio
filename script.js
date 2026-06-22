@@ -112,9 +112,14 @@ if (modal && serviceCards.length > 0) {
 }
 
 // =======================================================
-// БЛОК 6: ДИНАМІЧНИЙ КАТАЛОГ ТА ФІЛЬТР БРЕНДІВ
+// БЛОК 6: ДИНАМІЧНИЙ КАТАЛОГ ТА ФІЛЬТР БРЕНДІВ (З ЖИВИМ ПОШУКОМ)
 // =======================================================
-let selectedBrandsList = []; 
+
+let selectedBrandsList = []; // Наш оптовий кошик
+
+// ТРЕКЕРИ СТАНУ: Запам'ятовуємо, що вибрав і що ввів користувач
+let currentFilter = 'all';
+let currentSearchQuery = '';
 
 const brandsData = [
     { name: "Luminarc", category: "glass", desc: "Французький бренд ударостійкого скла. Посуд Luminarc витримує різкі перепади температур, підходить для мікрохвильовок та посудомийних машин. Ідеальний вибір для щоденного використання та HoReCa." },
@@ -127,14 +132,29 @@ const brandsData = [
 
 const brandsGrid = document.getElementById('brands-grid');
 const filterBtns = document.querySelectorAll('.filter-btn');
+const searchInput = document.getElementById('brand-search'); // Наше нове поле пошуку
 
-function renderBrands(filterValue = 'all') {
+// ГОЛОВНА ФУНКЦІЯ РЕНДЕРУ (Враховує і фільтр кнопок, і пошуковий рядок)
+function renderBrands() {
     if (!brandsGrid) return;
     brandsGrid.innerHTML = '';
     
+    // Фільтруємо масив ОДНОЧАСНО за двома параметрами
     const filteredBrands = brandsData.filter(brand => {
-        return filterValue === 'all' || brand.category === filterValue;
+        const matchesCategory = currentFilter === 'all' || brand.category === currentFilter;
+        const matchesSearch = brand.name.toLowerCase().includes(currentSearchQuery.toLowerCase());
+        return matchesCategory && matchesSearch;
     });
+    
+    // Якщо нічого не знайдено — показуємо красиве скляне повідомлення
+    if (filteredBrands.length === 0) {
+        brandsGrid.innerHTML = `
+            <div class="col-span-2 md:col-span-3 text-center py-8 text-gray-500 dark:text-zinc-400 font-medium bg-white/20 dark:bg-zinc-900/20 backdrop-blur-sm rounded-2xl p-4 border border-white/20 dark:border-zinc-800/40">
+                🛸 Бренду з назвою "${currentSearchQuery}" у цій категорії не знайдено.
+            </div>
+        `;
+        return;
+    }
     
     filteredBrands.forEach(brand => {
         const card = document.createElement('div');
@@ -186,20 +206,36 @@ function showCatalogSkeletons() {
     }
 }
 
+// Події кліку на кнопки фільтрів
 if (filterBtns.length > 0) {
     filterBtns.forEach(button => {
         button.addEventListener('click', () => {
             if (button.classList.contains('active')) return;
             filterBtns.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
-            const filterValue = button.getAttribute('data-filter');
+            
+            // Оновлюємо поточний фільтр категорії
+            currentFilter = button.getAttribute('data-filter');
+            
             showCatalogSkeletons();
-            setTimeout(() => { renderBrands(filterValue); }, 400);
+            setTimeout(() => { renderBrands(); }, 400);
         });
     });
 }
-renderBrands('all');
 
+// НОВА ПОДІЯ: Живе відстеження введення тексту в пошук
+if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+        // Записуємо текст у наш трекер стану
+        currentSearchQuery = e.target.value;
+        
+        // Оновлюємо картки миттєво (без скелетонів, щоб інтерфейс не блимав при друку)
+        renderBrands();
+    });
+}
+
+// Стартовий запуск
+renderBrands();
 // =======================================================
 // БЛОК 7: ВІДПРАВКА ЗАЯВОК В TELEGRAM
 // =======================================================
