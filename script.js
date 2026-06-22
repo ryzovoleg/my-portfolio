@@ -600,3 +600,69 @@ if (businessCounters.length > 0) {
     // Вішаємо робота на кожну цифру
     businessCounters.forEach(counter => counterObserver.observe(counter));
 }
+
+// =======================================================
+// БЛОК 18: СКЛЯНА КАРУСЕЛЬ ВІДГУКІВ (TESTIMONIALS SLIDER)
+// =======================================================
+const reviewSlides = document.querySelectorAll('.review-slide');
+const reviewDots = document.querySelectorAll('.review-dot');
+const prevReviewBtn = document.getElementById('prev-review');
+const nextReviewBtn = document.getElementById('next-review');
+
+let activeReviewIndex = 0;
+
+function updateReviewSlider(targetIndex) {
+    if (reviewSlides.length === 0) return;
+
+    // Циклічність гортання
+    if (targetIndex >= reviewSlides.length) activeReviewIndex = 0;
+    else if (targetIndex < 0) activeReviewIndex = reviewSlides.length - 1;
+    else activeReviewIndex = targetIndex;
+
+    // 1. Перемикаємо видимість слайдів-відгуків
+    reviewSlides.forEach((slide, i) => {
+        if (i === activeReviewIndex) {
+            slide.classList.remove('opacity-0', 'pointer-events-none');
+            slide.classList.add('opacity-100');
+        } else {
+            slide.classList.remove('opacity-100');
+            slide.classList.add('opacity-0', 'pointer-events-none');
+        }
+    });
+
+    // 2. Керуємо активністю крапочок (активна стає довгою овальною)
+    reviewDots.forEach((dot, i) => {
+        if (i === activeReviewIndex) {
+            dot.classList.remove('bg-blue-900/30', 'dark:bg-white/20');
+            dot.classList.add('bg-blue-600', 'dark:bg-green-500', 'w-5'); // Розтягуємо активну крапку
+        } else {
+            dot.classList.remove('bg-blue-600', 'dark:bg-green-500', 'w-5');
+            dot.classList.add('bg-blue-900/30', 'dark:bg-white/20');
+        }
+    });
+}
+
+// Події кліку на стрілочки відгуків
+if (nextReviewBtn) {
+    nextReviewBtn.addEventListener('click', () => {
+        updateReviewSlider(activeReviewIndex + 1);
+    });
+}
+
+if (prevReviewBtn) {
+    prevReviewBtn.addEventListener('click', () => {
+        updateReviewSlider(activeReviewIndex - 1);
+    });
+}
+
+// Події кліку на самі крапочки відгуків
+reviewDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        updateReviewSlider(index);
+    });
+});
+
+// Ініціалізація першої крапочки відгуків при старті
+if (reviewDots.length > 0) {
+    reviewDots[0].classList.add('bg-blue-600', 'dark:bg-green-500', 'w-5');
+}
