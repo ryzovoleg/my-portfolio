@@ -61,13 +61,13 @@
     <h3 id="greeting-text" class="text-2xl font-extrabold text-blue-900 dark:text-green-500 mb-2">
         Привіт, я Олег!
     </h3> 
-    <p id="typewriter-text" class="text-gray-700 dark:text-gray-300 font-medium tracking-wide text-sm min-h-[20px]">
+<p id="typewriter-text" class="text-gray-700 dark:text-gray-300 font-medium tracking-wide text-sm min-h-[20px]">
     Вивчаю HTML, CSS та Tailwind
 </p>
-    
+
 </div>
 
-    <!-- РОЗДІЛ ПОСЛУГ (BENTO GRID) -->
+<!-- РОЗДІЛ ПОСЛУГ (BENTO GRID) -->
 <section class="py-16 bg-transparent relative z-10" id="services">
     <h2 class="text-3xl font-extrabold text-center text-blue-900 dark:text-green-500 mb-12 tracking-tight">
         Що я пропоную
@@ -127,7 +127,7 @@
                class="w-full pl-12 pr-4 py-3 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 rounded-2xl text-blue-900 dark:text-zinc-200 placeholder-gray-500 dark:placeholder-zinc-500 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-green-500 transition-all duration-300 shadow-sm cursor-text">
     </div>
 </div>
-    
+
 <section class="py-16 bg-transparent relative z-10" id="brands">
     <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-3xl font-extrabold text-center text-blue-900 dark:text-green-500 mb-8 tracking-tight">
@@ -222,7 +222,7 @@
     <div id="brands-grid" class="brands-grid grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto px-4"></div>
 </section>
 
-    <section class="py-16 bg-transparent relative z-10" id="testimonials">
+<section class="py-16 bg-transparent relative z-10" id="testimonials">
     <div class="max-w-4xl mx-auto px-4">
         <h2 class="text-3xl font-extrabold text-center text-blue-900 dark:text-green-500 mb-10 tracking-tight">
             Що говорять мої партнери
@@ -270,7 +270,7 @@
     </div>
 </section>
 
-    <!-- ======================================================= -->
+<!-- ======================================================= -->
 <!-- БЛОК: ЗАКЛИК ДО ДІЇ - ЗАВАНТАЖЕННЯ ПРАЙСУ (CTA BANNER)  -->
 <!-- ======================================================= -->
 <section class="py-12 bg-transparent relative z-10" id="price-section">
@@ -288,7 +288,7 @@
     </div>
 </section>
 
-    <!-- ======================================================= -->
+<!-- ======================================================= -->
 <!-- БЛОК: ІНТЕРАКТИВНИЙ ГРАФІК ДОСТАВКИ ПО ВОЛИНІ           -->
 <!-- ======================================================= -->
 <section class="py-16 bg-transparent relative z-10" id="logistics-section">
@@ -350,8 +350,62 @@
         </div>
     </div>
 </section>
-    
-    <!-- ======================================================= -->
+
+<section class="py-16 bg-transparent relative z-10" id="logistics-section">
+    <div class="max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-extrabold text-center text-blue-900 dark:text-green-500 mb-4 tracking-tight">
+            Логістика та доставка по Волині
+        </h2>
+        <p class="text-center text-gray-600 dark:text-zinc-400 text-sm max-w-md mx-auto mb-10">
+            Оберіть ваше місто, щоб миттєво дізнатися регулярні дні доставки гуртових замовлень.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+            
+            <div class="flex flex-col gap-3 md:col-span-1">
+                <button class="city-btn active flex items-center justify-between p-4 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 rounded-2xl text-left text-blue-900 dark:text-zinc-200 font-bold transition-all duration-300 shadow-sm hover:scale-[1.02] focus:outline-none" data-city="lutsk">
+                    <span>📍 Луцьк & передмістя</span>
+                    <span class="text-xs bg-blue-600 dark:bg-green-600 text-white px-2.5 py-1 rounded-full">Щодня</span>
+                </button>
+                <button class="city-btn flex items-center justify-between p-4 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 rounded-2xl text-left text-blue-900 dark:text-zinc-200 font-bold transition-all duration-300 shadow-sm hover:scale-[1.02] focus:outline-none" data-city="kovel">
+                    <span>📍 Ковель</span>
+                    <span class="text-xs bg-gray-400 dark:bg-zinc-700 text-white px-2.5 py-1 rounded-full">Вт, Чт</span>
+                </button>
+                <button class="city-btn flex items-center justify-between p-4 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 rounded-2xl text-left text-blue-900 dark:text-zinc-200 font-bold transition-all duration-300 shadow-sm hover:scale-[1.02] focus:outline-none" data-city="volodymyr">
+                    <span>📍 Володимир</span>
+                    <span class="text-xs bg-gray-400 dark:bg-zinc-700 text-white px-2.5 py-1 rounded-full">Ср, Пт</span>
+                </button>
+                <button class="city-btn flex items-center justify-between p-4 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 rounded-2xl text-left text-blue-900 dark:text-zinc-200 font-bold transition-all duration-300 shadow-sm hover:scale-[1.02] focus:outline-none" data-city="novovolynsk">
+                    <span>📍 Нововолинськ</span>
+                    <span class="text-xs bg-gray-400 dark:bg-zinc-700 text-white px-2.5 py-1 rounded-full">Ср, Пт</span>
+                </button>
+            </div>
+
+            <div class="md:col-span-2 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 p-6 md:p-8 rounded-3xl shadow-xl min-h-[250px] flex flex-col justify-between transition-all duration-300 transform" id="logistic-details-card">
+                <div id="logistic-content" class="transition-opacity duration-300 opacity-100">
+                    <div class="flex items-center gap-3 border-b border-gray-200 dark:border-zinc-800 pb-4 mb-4">
+                        <span class="text-3xl">🚚</span>
+                        <div>
+                            <h3 class="text-xl font-black text-blue-950 dark:text-white" id="logistic-city-title">Луцьк & передмістя</h3>
+                            <p class="text-xs text-gray-500 dark:text-zinc-400">Власна кур'єрська служба доставки</p>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-700 dark:text-zinc-300 font-medium">
+                        <li class="flex items-center gap-2">🗓️ <span class="font-bold text-blue-900 dark:text-green-500">Дні доставки:</span> Понеділок – Субота</li>
+                        <li class="flex items-center gap-2">⏰ <span class="font-bold text-blue-900 dark:text-green-500">Час прибуття:</span> З 09:00 до 18:00 (узгоджується індивідуально)</li>
+                        <li class="flex items-center gap-2">📦 <span class="font-bold text-blue-900 dark:text-green-500">Умови:</span> Безкоштовна доставка до дверей вашого магазину чи закладу при замовленні від 1500 грн.</li>
+                    </ul>
+                </div>
+                <div class="mt-6 pt-4 border-t border-gray-200 dark:border-zinc-800 text-xs text-gray-500 dark:text-zinc-400">
+                    🔄 Графік стабільний та залізобетонний. Під замовлення клієнта возимо індивідуально.
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ======================================================= -->
 <!-- БЛОК: ЧАСТІ ЗАПИТАННЯ (FAQ АКОРДЕОН)                    -->
 <!-- ======================================================= -->
 <section class="py-16 bg-transparent relative z-10" id="faq">
@@ -400,7 +454,7 @@
         </div>
     </div>
 </section>
-    
+
 <!-- Контакти -->
 <div class="max-w-xl mx-auto px-4 py-10">
     <h2 id="contacts" class="text-3xl font-extrabold text-center text-blue-900 dark:text-green-500 mb-6">Зворотній зв'язок</h2>
@@ -409,10 +463,23 @@
             <label class="block text-sm font-bold text-blue-900 dark:text-zinc-300 mb-2">Ваше ім'я</label>
             <input type="text" id="user-name" placeholder="Введіть ім'я" required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-green-500 focus:bg-white dark:focus:bg-zinc-900 transition-all duration-300">
         </div>
-        <div>
+        <>
             <label class="block text-sm font-bold text-blue-900 dark:text-zinc-300 mb-2">Телефон або Email</label>
             <input type="text" id="user-contact" placeholder="+380... або example@mail.com" required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-green-500 focus:bg-white dark:focus:bg-zinc-900 transition-all duration-300">
         </div>
+        <div>
+    <label class="block text-sm font-bold text-blue-900 dark:text-zinc-300 mb-2">Який бренд вас цікавить?</label>
+    <select id="user-brand" required
+            class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-green-500 focus:bg-white dark:focus:bg-zinc-900 transition-all duration-300 cursor-pointer">
+        <option value="Загальне питання" selected>Загальне питання (Усі бренди)</option>
+        <option value="Luminarc">Luminarc (Скло)</option>
+        <option value="Wilmax">Wilmax (Порцеляна)</option>
+        <option value="Bohemia">Bohemia (Кришталь)</option>
+        <option value="Lessner">Lessner (Кухонний посуд)</option>
+        <option value="Vincent">Vincent (Кухонний посуд)</option>
+        <option value="Milika">Milika (Дизайнерське скло)</option>
+    </select>
+</div>
         <div>
             <label class="block text-sm font-bold text-blue-900 dark:text-zinc-300 mb-2">Ваше повідомлення</label>
             <textarea id="user-message" rows="4" placeholder="Опишіть ваше питання або деталі замовлення..." required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-green-500 focus:bg-white dark:focus:bg-zinc-900 transition-all duration-300 resize-none"></textarea>
@@ -446,13 +513,13 @@
 <div id="custom-cursor"></div>
 <div id="custom-cursor-dot"></div>
 
-    <button id="floating-cart" class="fixed bottom-6 left-6 z-[9999] flex items-center gap-2 bg-white/75 dark:bg-zinc-900/75 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 px-5 py-3 rounded-full shadow-2xl transform translate-y-24 opacity-0 transition-all duration-500 hover:scale-105 active:scale-95 text-blue-950 dark:text-zinc-200 font-bold text-sm cursor-pointer select-none">
+<button id="floating-cart" class="fixed bottom-6 left-6 z-[9999] flex items-center gap-2 bg-white/75 dark:bg-zinc-900/75 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 px-5 py-3 rounded-full shadow-2xl transform translate-y-24 opacity-0 transition-all duration-500 hover:scale-105 active:scale-95 text-blue-950 dark:text-zinc-200 font-bold text-sm cursor-pointer select-none">
     <span class="text-xl">🛒</span>
     <span>Обрано брендів:</span>
     <span id="cart-count" class="bg-blue-600 dark:bg-green-600 text-white text-xs px-2.5 py-1 rounded-full animate-bounce">0</span>
 </button>
 
-    <div class="fixed bottom-6 right-6 z-[99999] flex flex-col items-center gap-3">
+<div class="fixed bottom-6 right-6 z-[99999] flex flex-col items-center gap-3">
     <div id="fab-options" class="flex flex-col items-center gap-3 transition-all duration-300 translate-y-10 opacity-0 pointer-events-none scale-75">
         
         <a href="https://t.me/YourTelegramUsername" target="_blank" class="w-12 h-12 flex justify-center items-center bg-sky-500 hover:bg-sky-600 text-white text-xl rounded-full shadow-xl transition-transform duration-200 hover:scale-110 active:scale-95" title="Написати в Telegram">
@@ -469,7 +536,7 @@
     </button>
 </div>
 
-    <!-- ======================================================= -->
+<!-- ======================================================= -->
 <!-- МОДАЛЬНЕ ВІКНО ДЛЯ ЗАВАНТАЖЕННЯ ПРАЙС-ЛИСТА             -->
 <!-- ======================================================= -->
 <div id="price-modal" class="fixed inset-0 z-[100001] flex justify-center items-center p-4 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
@@ -501,7 +568,8 @@
         </form>
     </div>
 </div>
-    
-    <script src="script.js"></script>
+
+<script src="script.js"></script>
+
 </body>
 </html>
