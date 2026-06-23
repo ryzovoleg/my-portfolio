@@ -177,28 +177,33 @@ html, body, a, button, select, input, textarea, .brand-card, .faq-toggle, .servi
 #custom-cursor {
     width: 40px !important;
     height: 40px !important;
-    border: 2px solid #3b82f6 !important; /* Синє преміум-коло */
+    border: 2px solid #3b82f6 !important;
     border-radius: 50% !important;
     
-    position: fixed !important;      /* КРИТИЧНО: Без цього рядового z-index не працює! */
-    pointer-events: none !important; /* Дозволяє клікати КРІЗЬ курсор на будь-які кнопки */
-    z-index: 999999 !important;      /* Максимальний шар — летить НАД усім склом сайту */
+    position: fixed !important;
+    pointer-events: none !important;
+    z-index: 999999 !important;
     display: block !important;
+    
+    /* МИТТЄВЕ ЦЕНТРУВАННЯ: зсуває коло строго центром на кінчик мишки */
+    transform: translate(-50%, -50%) !important; 
 }
 
 /* 3. Маленька центральна точка */
 #custom-cursor-dot {
     width: 8px !important;
     height: 8px !important;
-    background-color: #3b82f6 !important; /* Синя точка */
+    background-color: #3b82f6 !important;
     border-radius: 50% !important;
     
-    position: fixed !important;      /* Теж фіксуємо в просторі */
+    position: fixed !important;
     pointer-events: none !important;
-    z-index: 999999 !important;      /* На самому верху */
+    z-index: 999999 !important;
     display: block !important;
+    
+    /* Точку теж центруємо */
+    transform: translate(-50%, -50%) !important;
 }
-
 /* 4. Розумна адаптація під Темну тему (Tailwind-style) */
 .dark #custom-cursor {
     border-color: #22c55e !important; /* Зелений неон для темної теми */
