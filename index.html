@@ -351,60 +351,6 @@
     </div>
 </section>
 
-<section class="py-16 bg-transparent relative z-10" id="logistics-section">
-    <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-3xl font-extrabold text-center text-blue-900 dark:text-green-500 mb-4 tracking-tight">
-            Логістика та доставка по Волині
-        </h2>
-        <p class="text-center text-gray-600 dark:text-zinc-400 text-sm max-w-md mx-auto mb-10">
-            Оберіть ваше місто, щоб миттєво дізнатися регулярні дні доставки гуртових замовлень.
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-            
-            <div class="flex flex-col gap-3 md:col-span-1">
-                <button class="city-btn active flex items-center justify-between p-4 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 rounded-2xl text-left text-blue-900 dark:text-zinc-200 font-bold transition-all duration-300 shadow-sm hover:scale-[1.02] focus:outline-none" data-city="lutsk">
-                    <span>📍 Луцьк & передмістя</span>
-                    <span class="text-xs bg-blue-600 dark:bg-green-600 text-white px-2.5 py-1 rounded-full">Щодня</span>
-                </button>
-                <button class="city-btn flex items-center justify-between p-4 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 rounded-2xl text-left text-blue-900 dark:text-zinc-200 font-bold transition-all duration-300 shadow-sm hover:scale-[1.02] focus:outline-none" data-city="kovel">
-                    <span>📍 Ковель</span>
-                    <span class="text-xs bg-gray-400 dark:bg-zinc-700 text-white px-2.5 py-1 rounded-full">Вт, Чт</span>
-                </button>
-                <button class="city-btn flex items-center justify-between p-4 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 rounded-2xl text-left text-blue-900 dark:text-zinc-200 font-bold transition-all duration-300 shadow-sm hover:scale-[1.02] focus:outline-none" data-city="volodymyr">
-                    <span>📍 Володимир</span>
-                    <span class="text-xs bg-gray-400 dark:bg-zinc-700 text-white px-2.5 py-1 rounded-full">Ср, Пт</span>
-                </button>
-                <button class="city-btn flex items-center justify-between p-4 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 rounded-2xl text-left text-blue-900 dark:text-zinc-200 font-bold transition-all duration-300 shadow-sm hover:scale-[1.02] focus:outline-none" data-city="novovolynsk">
-                    <span>📍 Нововолинськ</span>
-                    <span class="text-xs bg-gray-400 dark:bg-zinc-700 text-white px-2.5 py-1 rounded-full">Ср, Пт</span>
-                </button>
-            </div>
-
-            <div class="md:col-span-2 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 p-6 md:p-8 rounded-3xl shadow-xl min-h-[250px] flex flex-col justify-between transition-all duration-300 transform" id="logistic-details-card">
-                <div id="logistic-content" class="transition-opacity duration-300 opacity-100">
-                    <div class="flex items-center gap-3 border-b border-gray-200 dark:border-zinc-800 pb-4 mb-4">
-                        <span class="text-3xl">🚚</span>
-                        <div>
-                            <h3 class="text-xl font-black text-blue-950 dark:text-white" id="logistic-city-title">Луцьк & передмістя</h3>
-                            <p class="text-xs text-gray-500 dark:text-zinc-400">Власна кур'єрська служба доставки</p>
-                        </div>
-                    </div>
-                    <ul class="space-y-3 text-sm text-gray-700 dark:text-zinc-300 font-medium">
-                        <li class="flex items-center gap-2">🗓️ <span class="font-bold text-blue-900 dark:text-green-500">Дні доставки:</span> Понеділок – Субота</li>
-                        <li class="flex items-center gap-2">⏰ <span class="font-bold text-blue-900 dark:text-green-500">Час прибуття:</span> З 09:00 до 18:00 (узгоджується індивідуально)</li>
-                        <li class="flex items-center gap-2">📦 <span class="font-bold text-blue-900 dark:text-green-500">Умови:</span> Безкоштовна доставка до дверей вашого магазину чи закладу при замовленні від 1500 грн.</li>
-                    </ul>
-                </div>
-                <div class="mt-6 pt-4 border-t border-gray-200 dark:border-zinc-800 text-xs text-gray-500 dark:text-zinc-400">
-                    🔄 Графік стабільний та залізобетонний. Під замовлення клієнта возимо індивідуально.
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
 <!-- ======================================================= -->
 <!-- БЛОК: ЧАСТІ ЗАПИТАННЯ (FAQ АКОРДЕОН)                    -->
 <!-- ======================================================= -->
@@ -456,39 +402,53 @@
 </section>
 
 <!-- Контакти -->
-<div class="max-w-xl mx-auto px-4 py-10">
-    <h2 id="contacts" class="text-3xl font-extrabold text-center text-blue-900 dark:text-green-500 mb-6">Зворотній зв'язок</h2>
-    <form id="contact-form" class="bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-xl border border-white/40 dark:border-zinc-800/60 space-y-6">
-        <div>
-            <label class="block text-sm font-bold text-blue-900 dark:text-zinc-300 mb-2">Ваше ім'я</label>
-            <input type="text" id="user-name" placeholder="Введіть ім'я" required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-green-500 focus:bg-white dark:focus:bg-zinc-900 transition-all duration-300">
-        </div>
-        <>
-            <label class="block text-sm font-bold text-blue-900 dark:text-zinc-300 mb-2">Телефон або Email</label>
-            <input type="text" id="user-contact" placeholder="+380... або example@mail.com" required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-green-500 focus:bg-white dark:focus:bg-zinc-900 transition-all duration-300">
-        </div>
-        <div>
-    <label class="block text-sm font-bold text-blue-900 dark:text-zinc-300 mb-2">Який бренд вас цікавить?</label>
-    <select id="user-brand" required
-            class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-green-500 focus:bg-white dark:focus:bg-zinc-900 transition-all duration-300 cursor-pointer">
-        <option value="Загальне питання" selected>Загальне питання (Усі бренди)</option>
-        <option value="Luminarc">Luminarc (Скло)</option>
-        <option value="Wilmax">Wilmax (Порцеляна)</option>
-        <option value="Bohemia">Bohemia (Кришталь)</option>
-        <option value="Lessner">Lessner (Кухонний посуд)</option>
-        <option value="Vincent">Vincent (Кухонний посуд)</option>
-        <option value="Milika">Milika (Дизайнерське скло)</option>
-    </select>
-</div>
-        <div>
-            <label class="block text-sm font-bold text-blue-900 dark:text-zinc-300 mb-2">Ваше повідомлення</label>
-            <textarea id="user-message" rows="4" placeholder="Опишіть ваше питання або деталі замовлення..." required class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-zinc-700 bg-gray-50 dark:bg-zinc-800 text-gray-900 dark:text-zinc-100 placeholder-gray-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-green-500 focus:bg-white dark:focus:bg-zinc-900 transition-all duration-300 resize-none"></textarea>
-        </div>
-        <button type="submit" class="w-full bg-gradient-to-r from-blue-700 to-indigo-800 dark:from-green-600 dark:to-emerald-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-md hover:shadow-xl transform transition hover:-translate-y-0.5 active:translate-y-0 duration-150 cursor-pointer text-center">
-            Надіслати запит 🚀
-        </button>
-    </form>
-</div>
+<section class="py-16 bg-transparent relative z-10" id="contact">
+    <div class="max-w-xl mx-auto px-4">
+        
+        <h2 class="text-3xl font-extrabold text-center text-blue-900 dark:text-green-500 mb-8 tracking-tight">
+            Зворотній зв'язок
+        </h2>
+
+        <form id="contact-form" class="space-y-5 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border border-white/40 dark:border-zinc-800/60 p-6 md:p-8 rounded-3xl shadow-xl">
+            
+            <div>
+                <label class="block text-xs font-bold text-blue-900 dark:text-zinc-400 uppercase tracking-wider mb-1.5">Ваше ім'я</label>
+                <input type="text" id="name" required placeholder="Введіть ваше ім'я або компанію" 
+                       class="w-full px-4 py-3 bg-white/50 dark:bg-zinc-800/50 border border-gray-300 dark:border-zinc-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-green-500 text-blue-950 dark:text-white cursor-text">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-blue-900 dark:text-zinc-400 uppercase tracking-wider mb-1.5">Телефон або Email</label>
+                <input type="text" id="contact-info" required placeholder="+380... або example@mail.com" 
+                       class="w-full px-4 py-3 bg-white/50 dark:bg-zinc-800/50 border border-gray-300 dark:border-zinc-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-green-500 text-blue-950 dark:text-white cursor-text">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-blue-900 dark:text-zinc-400 uppercase tracking-wider mb-1.5">Який бренд вас цікавить?</label>
+                <select id="brand-select" class="w-full px-4 py-3 bg-white/50 dark:bg-zinc-800/50 border border-gray-300 dark:border-zinc-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-green-500 text-blue-950 dark:text-zinc-300 font-medium cursor-pointer">
+                    <option value="Загальне питання">Загальне питання (Усі бренди)</option>
+                    <option value="Luminarc">Luminarc (Французьке скло)</option>
+                    <option value="Wilmax">Wilmax (Англійська порцеляна)</option>
+                    <option value="Bohemia">Bohemia (Чеський кришталь)</option>
+                    <option value="Lessner">Lessner (Кухонний посуд)</option>
+                    <option value="Vincent">Vincent (Практичний посуд)</option>
+                    <option value="Milika">Milika (Дизайнерське скло)</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-blue-900 dark:text-zinc-400 uppercase tracking-wider mb-1.5">Ваше повідомлення</label>
+                <textarea id="message" rows="4" placeholder="Опишіть ваше питання або деталі замовлення..." 
+                          class="w-full px-4 py-3 bg-white/50 dark:bg-zinc-800/50 border border-gray-300 dark:border-zinc-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-green-500 text-blue-950 dark:text-white cursor-text resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-700 dark:bg-green-600 dark:hover:bg-green-700 text-white font-bold rounded-xl transition-all duration-200 active:scale-95 shadow-md text-sm flex justify-center items-center gap-2">
+                Надіслати запит 🚀
+            </button>
+        </form>
+
+    </div>
+</section>
 
 <!-- Підвал сайту (Footer) -->
 <footer class="py-8 bg-white dark:bg-zinc-950 border-t border-gray-100 dark:border-zinc-900 text-center transition-all duration-300">
