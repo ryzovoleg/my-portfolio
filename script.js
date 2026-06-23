@@ -283,20 +283,18 @@ if (contactForm) {
 }
 
 // =======================================================
-// БЛОК 8: КАСТОМНИЙ КУРСОР ТА МІКРОІНТЕРАКЦІЇ (ІДЕАЛЬНЕ ЦЕНТРУВАННЯ)
+// БЛОК 8: КАСТОМНИЙ КУРСОР ТА МІКРОІНТЕРАКЦІЇ (ЧИСТИЙ КОД)
 // =======================================================
 const cursor = document.getElementById('custom-cursor');
 const cursorDot = document.getElementById('custom-cursor-dot');
 
 if (cursor && cursorDot) {
     document.addEventListener('mousemove', (e) => {
-        // КРИТИЧНИЙ ФІКС: Віднімаємо 20px (половину від 40px), щоб кінчик мишки був СТРОГО ПО ЦЕНТРУ кола!
-        cursor.style.left = (e.clientX - 20) + 'px';
-        cursor.style.top = (e.clientY - 20) + 'px';
-        
-        // Віднімаємо 4px (половину від 8px) для маленької центральної точки
-        cursorDot.style.left = (e.clientX - 4) + 'px';
-        cursorDot.style.top = (e.clientY - 4) + 'px';
+        // Просто передаємо чисті координати мишки, без мінусів!
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        cursorDot.style.left = e.clientX + 'px';
+        cursorDot.style.top = e.clientY + 'px';
     });
 }
 
