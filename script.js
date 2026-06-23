@@ -742,3 +742,98 @@ if (priceForm) {
         });
     });
 }
+
+// =======================================================
+// БЛОК 20: ІНТЕРАКТИВНИЙ ГРАФІК ЛОГІСТИКИ ПО ВОЛИНІ
+// =======================================================
+const cityButtons = document.querySelectorAll('.city-btn');
+const logisticContent = document.getElementById('logistic-content');
+const logisticCityTitle = document.getElementById('logistic-city-title');
+
+// База даних логістики для міст Волині
+const logisticsData = {
+    lutsk: {
+        title: "Луцьк & передмістя",
+        days: "Понеділок – Субота",
+        time: "З 09:00 до 18:00 (узгоджується індивідуально)",
+        conditions: "Безкоштовна доставка прямо до дверей вашого магазину, складу чи закладу HoReCa при замовленні від 1500 грн."
+    },
+    kovel: {
+        title: "Ковель (та напрямок Рожище)",
+        days: "Вівторок та Четвер",
+        time: "З 11:00 до 15:00 регулярний рейс",
+        conditions: "Безкоштовна підвезення товару для постійних партнерів. Мінімальна сума міксованого замовлення брендів — 3000 грн."
+    },
+    volodymyr: {
+        title: "Володимир (напрямок Торчин)",
+        days: "Середа та П'ятниця",
+        time: "З 10:30 до 14:30 регулярний рейс",
+        conditions: "Доставка до дверей торгових точок. При замовленні від 3500 грн — доставка за наш рахунок."
+    },
+    novovolynsk: {
+        title: "Нововолинськ (та Іваничі)",
+        days: "Середа та П'ятниця",
+        time: "З 13:00 до 17:00 регулярний рейс",
+        conditions: "Формуємо замовлення під клієнта напередодні. Безкоштовна логістика при гуртових сетах від 4000 грн."
+    }
+};
+
+if (cityButtons.length > 0 && logisticContent && logisticCityTitle) {
+    cityButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Якщо кнопка вже активна — нічого не робимо
+            if (button.classList.contains('active')) return;
+
+            // Змінюємо активний стиль кнопок міст
+            cityButtons.forEach(btn => {
+                btn.classList.remove('active');
+                // Повертаємо сірий бейдж неактивним містам
+                const badge = btn.querySelector('span:last-child');
+                if (badge && btn.getAttribute('data-city') !== 'lutsk') {
+                    badge.classList.remove('bg-blue-600', 'dark:bg-green-600');
+                    badge.classList.add('bg-gray-400', 'dark:bg-zinc-700');
+                }
+            });
+            
+            button.classList.add('active');
+            // Робимо бейдж активного міста кольоровим
+            const activeBadge = button.querySelector('span:last-child');
+            if (activeBadge) {
+                activeBadge.classList.remove('bg-gray-400', 'dark:bg-zinc-700');
+                activeBadge.classList.add('bg-blue-600', 'dark:bg-green-600');
+            }
+
+            const cityKey = button.getAttribute('data-city');
+            const data = logisticsData[cityKey];
+
+            if (data) {
+                // ЕФЕКТ ПЛАВНОЇ ЗМІНИ ТЕКСТУ (Fade-out)
+                logisticContent.classList.remove('opacity-100');
+                logisticContent.classList.add('opacity-0');
+
+                setTimeout(() => {
+                    // Оновлюємо вміст табло новими даними Волині
+                    logisticContent.innerHTML = `
+                        <div class="flex items-center gap-3 border-b border-gray-200 dark:border-zinc-800 pb-4 mb-4">
+                            <span class="text-3xl">🚚</span>
+                            <div>
+                                <h3 class="text-xl font-black text-blue-950 dark:text-white" id="logistic-city-title">${data.title}</h3>
+                                <p class="text-xs text-gray-500 dark:text-zinc-400">Власна кур'єрська служба доставки</p>
+                            </div>
+                        </div>
+                        
+                        <ul class="space-y-3 text-sm text-gray-700 dark:text-zinc-300 font-medium">
+                            <li class="flex items-center gap-2">🗓️ <span class="font-bold text-blue-900 dark:text-green-500">Дні доставки:</span> ${data.days}</li>
+                            <li class="flex items-center gap-2">⏰ <span class="font-bold text-blue-900 dark:text-green-500">Час прибуття:</span> ${data.time}</li>
+                            <li class="flex items-center gap-2">📦 <span class="font-bold text-blue-900 dark:text-green-500">Умови:</span> ${data.conditions}</li>
+                        </ul>
+                    `;
+
+                    // Повертаємо видимість (Fade-in)
+                    logisticContent.classList.remove('opacity-0');
+                    logisticContent.classList.add('opacity-100');
+                }, 300); // 300 мілісекунд на красиву анімацію
+            }
+        });
+    });
+}
