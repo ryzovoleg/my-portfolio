@@ -836,3 +836,33 @@ if (cityButtons.length > 0 && logisticContent && logisticCityTitle) {
         });
     });
 }
+
+// =======================================================
+// БЛОК 21: РОЗУМНЕ «ЖИВЕ» МЕНЮ (SMART STICKY HEADER)
+// =======================================================
+let lastScrollTop = 0;
+const mainHeader = document.getElementById('main-header');
+
+if (mainHeader) {
+    window.addEventListener('scroll', () => {
+        // Отримуємо поточну позицію скролу
+        let currentScroll = window.scrollY || document.documentElement.scrollTop;
+        
+        // Якщо прокрутили нижче ніж на 80 пікселів (висота меню)
+        if (currentScroll > 80) {
+            if (currentScroll > lastScrollTop) {
+                // Скролимо вниз — ховаємо меню, зміщуючи його вгору на 100%
+                mainHeader.classList.add('-translate-y-full');
+            } else {
+                // Скролимо вгору — миттєво повертаємо меню на екран
+                mainHeader.classList.remove('-translate-y-full');
+            }
+        } else {
+            // Якщо ми на самому верху сторінки — меню завжди на місці
+            mainHeader.classList.remove('-translate-y-full');
+        }
+        
+        // Запам'ятовуємо поточний скрол для наступного кроку
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    });
+}
