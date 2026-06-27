@@ -868,19 +868,19 @@ if (mainHeader) {
 }
 
 // =======================================================
-// БЛОК 22: РОЗУМНИЙ «ЖИВИЙ» ПОШУК ПО БРЕНДАХ
+// БЛОК 22: РОЗУМНИЙ «ЖИВИЙ» ПОШУК ПО БРЕНДАХ (РЯТУВАЛЬНИЙ)
 // =======================================================
 const brandSearchInput = document.getElementById('brand-search-input');
 const searchResultsDropdown = document.getElementById('search-results-dropdown');
 
-// База даних твоїх брендів посуду для пошукової системи
+// База даних брендів (тепер без індивідуальних id, летимо на загальний блок!)
 const totalBrands = [
-    { name: "Luminarc", desc: "Французьке загартоване скло та тарілки", targetId: "luminarc-section" },
-    { name: "Wilmax", desc: "Англійська біла порцеляна преміум якості", targetId: "wilmax-section" },
-    { name: "Bohemia", desc: "Чеський елітний кришталь та келихи", targetId: "bohemia-section" },
-    { name: "Lessner", desc: "Ергономічний кухонний посуд та прибори", targetId: "lessner-section" },
-    { name: "Vincent", desc: "Практичний та надійний посуд на кожен день", targetId: "vincent-section" },
-    { name: "Milika", desc: "Яскравий дизайнерський кольоровий посуд", targetId: "milika-section" }
+    { name: "Luminarc", desc: "Французьке загартоване скло та тарілки" },
+    { name: "Wilmax", desc: "Англійська біла порцеляна преміум якості" },
+    { name: "Bohemia", desc: "Чеський елітний кришталь та келихи" },
+    { name: "Lessner", desc: "Ергономічний кухонний посуд та прибори" },
+    { name: "Vincent", desc: "Практичний та надійний посуд на кожен день" },
+    { name: "Milika", desc: "Яскравий дизайнерський кольоровий посуд" }
 ];
 
 if (brandSearchInput && searchResultsDropdown) {
@@ -888,13 +888,11 @@ if (brandSearchInput && searchResultsDropdown) {
         const query = this.value.toLowerCase().trim();
         searchResultsDropdown.innerHTML = '';
 
-        // Якщо поле порожнє — ховаємо список результатів
         if (query.length === 0) {
             searchResultsDropdown.classList.add('hidden');
             return;
         }
 
-        // Фільтруємо бренди за першими літерами
         const matchedBrands = totalBrands.filter(b => b.name.toLowerCase().includes(query));
 
         if (matchedBrands.length > 0) {
@@ -909,17 +907,15 @@ if (brandSearchInput && searchResultsDropdown) {
                     <span class="text-xs text-blue-600 dark:text-green-500 font-bold">Перейти ➔</span>
                 `;
 
-                // Подія кліку на знайдений бренд
+                // Клік переносить на загальну секцію брендів, яка у тебе вже точно є!
                 row.addEventListener('click', () => {
-                    const targetElement = document.getElementById(brand.targetId);
+                    const targetElement = document.getElementById('brands');
                     if (targetElement) {
-                        // Рахуємо відступ у -90px, щоб фіксоване меню не перекривало заголовок бренду
-                        const yOffset = -90; 
+                        const yOffset = -90; // Відступ під наше гарне меню
                         const yPosition = targetElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
                         
                         window.scrollTo({ top: yPosition, behavior: 'smooth' });
                     }
-                    // Очищаємо поле та ховаємо дропдаун після переходу
                     brandSearchInput.value = '';
                     searchResultsDropdown.classList.add('hidden');
                 });
@@ -928,7 +924,6 @@ if (brandSearchInput && searchResultsDropdown) {
             });
             searchResultsDropdown.classList.remove('hidden');
         } else {
-            // Якщо закупник ввів щось екзотичне
             const noResultRow = document.createElement('div');
             noResultRow.className = "px-4 py-4 text-xs text-gray-500 dark:text-zinc-400 text-center font-medium";
             noResultRow.innerText = "Такого бренду немає в наявності на складі 🔍";
@@ -937,7 +932,6 @@ if (brandSearchInput && searchResultsDropdown) {
         }
     });
 
-    // Розумне закриття списку, якщо клікнули в будь-яке інше місце сайту
     document.addEventListener('click', function(e) {
         if (e.target !== brandSearchInput && e.target !== searchResultsDropdown) {
             searchResultsDropdown.classList.add('hidden');
