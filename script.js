@@ -938,3 +938,50 @@ if (brandSearchInput && searchResultsDropdown) {
         }
     });
 }
+
+// =======================================================
+// БЛОК 23: ПРОГРЕС-БАР ГУРТОВОГО ЗАМОВЛЕННЯ
+// =======================================================
+let simulatedTotal = 0;
+
+function updateWholesaleProgress(amountToAdd) {
+    simulatedTotal += amountToAdd;
+    const minWholesaleLimit = 5000; 
+    
+    const progressBar = document.getElementById('wholesale-progress-bar');
+    const statusText = document.getElementById('wholesale-status-text');
+    const percentText = document.getElementById('wholesale-percent');
+
+    if (!progressBar || !statusText || !percentText) return;
+
+    let percent = Math.min((simulatedTotal / minWholesaleLimit) * 100, 100);
+    percent = Math.round(percent);
+
+    progressBar.style.width = `${percent}%`;
+    percentText.innerText = `${percent}%`;
+
+    if (simulatedTotal === 0) {
+        statusText.innerHTML = `Мінімум для безкоштовної доставки: <span class="font-black">${minWholesaleLimit} грн</span>`;
+    } else if (simulatedTotal < minWholesaleLimit) {
+        const remaining = minWholesaleLimit - simulatedTotal;
+        statusText.innerHTML = `До гуртової доставки залишилось: <span class="font-bold text-orange-600 dark:text-amber-400">${remaining} грн</span>`;
+    } else {
+        progressBar.className = "h-full bg-gradient-to-r from-green-500 to-emerald-500 shadow-[0_0_12px_rgba(34,197,94,0.6)] transition-all duration-700 animate-pulse rounded-full";
+        statusText.innerHTML = `🎉 <span class="text-green-600 dark:text-green-400 font-black">Гуртовий ліміт набрано! Доставка по Волині безкоштовна!</span>`;
+    }
+}
+
+// Запускаємо початковий стан при завантаженні сторінки
+document.addEventListener("DOMContentLoaded", () => {
+    updateWholesaleProgress(0);
+    
+    // Прив'язуємо кліки по картках брендів, щоб сума «росла», коли клієнт ними цікавиться!
+    const brandCards = document.querySelectorAll('#brands .cursor-pointer, #brands .bg-white\\/30');
+    brandCards.forEach(card => {
+        card.addEventListener('click', () => {
+            if (simulatedTotal < 5000) {
+                updateWholesaleProgress(1250); // Додає по 1250 грн за кожен клік для тесту
+            }
+        });
+    });
+});
