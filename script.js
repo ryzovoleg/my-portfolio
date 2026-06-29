@@ -437,20 +437,24 @@ function updateSlider(targetIndex) {
     });
 }
 
-function startAutoCycle() {
-    clearInterval(autoSlideTimer);
-    autoSlideTimer = setInterval(() => { updateSlider(activeSlideIndex + 1); }, 5000);
-}
+const brandCards = document.querySelectorAll('#brands .cursor-pointer, #brands .bg-white\\/30');
+    brandCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // 1. Оновлюємо прогрес-бар
+            if (simulatedTotal < 5000) {
+                updateWholesaleProgress(1250);
+            }
+            
+            // 2. Силою знаходимо кошик, змиваємо клас hidden і додаємо flex (щоб він точно з'явився)
+            const floatingCart = document.getElementById('floating-cart');
+            if (floatingCart) {
+                floatingCart.classList.remove('hidden');
+                floatingCart.style.display = 'flex'; // залізобетонне відображення
+            }
+        });
+    });
 
-if (nextSlideBtn) {
-    nextSlideBtn.addEventListener('click', () => { updateSlider(activeSlideIndex + 1); startAutoCycle(); });
-}
-if (prevSlideBtn) {
-    prevSlideBtn.addEventListener('click', () => { updateSlider(activeSlideIndex - 1); startAutoCycle(); });
-}
-sliderDots.forEach((dot, index) => {
-    dot.addEventListener('click', () => { updateSlider(index); startAutoCycle(); });
-});
+
 if (sliderDots.length > 0) {
     sliderDots[0].classList.add('w-6');
     startAutoCycle();
@@ -981,7 +985,7 @@ document.addEventListener("DOMContentLoaded", () => {
         card.addEventListener('click', () => {
             if (simulatedTotal < 5000) {
                 updateWholesaleProgress(1250); // Додає по 1250 грн за кожен клік для тесту
-                
+
                 brandCards.forEach(card => {
         card.addEventListener('click', () => {
             if (simulatedTotal < 5000) {
