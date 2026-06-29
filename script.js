@@ -981,6 +981,20 @@ document.addEventListener("DOMContentLoaded", () => {
         card.addEventListener('click', () => {
             if (simulatedTotal < 5000) {
                 updateWholesaleProgress(1250); // Додає по 1250 грн за кожен клік для тесту
+                
+                brandCards.forEach(card => {
+        card.addEventListener('click', () => {
+            if (simulatedTotal < 5000) {
+                updateWholesaleProgress(1250);
+            }
+            
+            // 🟢 ДОДАЄМО ЦІ 3 РЯДКИ, ЩОБ КОШИК З'ЯВЛЯВСЯ:
+            const floatingCart = document.getElementById('floating-cart');
+            if (floatingCart) {
+                floatingCart.classList.remove('hidden');
+            }
+        });
+    });
             }
         });
     });
