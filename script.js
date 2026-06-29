@@ -467,40 +467,52 @@ const floatingCart = document.getElementById('floating-cart');
 const cartCountElement = document.getElementById('cart-count');
 
 function toggleBrandInCart(brandName, buttonElement) {
+    const cartCountElement = document.getElementById('cart-count');
+    const floatingCart = document.getElementById('floating-cart');
+
+    if (!selectedBrandsList) {
+        var selectedBrandsList = []; // захист, якщо масив створено десь вище
+    }
+
     const index = selectedBrandsList.indexOf(brandName);
-    
+
     if (index === -1) {
         selectedBrandsList.push(brandName);
-        buttonElement.textContent = "✓ Додано";
-        buttonElement.classList.remove('bg-blue-600', 'dark:bg-zinc-800');
-        buttonElement.classList.add('bg-emerald-600', 'dark:bg-emerald-600');
-        showPremiumToast(`Бренд ${brandName} додано до вашого запиту! 🛒`);
+        if (buttonElement) {
+            buttonElement.textContent = "✓ Додано";
+            buttonElement.classList.remove('bg-blue-600', 'dark:bg-zinc-800');
+            buttonElement.classList.add('bg-emerald-600', 'dark:bg-emerald-600');
+        }
+        if (typeof showPremiumToast === "function") {
+            showPremiumToast(`Бренд ${brandName} додано до вашого запиту! 🛒`);
+        }
     } else {
         selectedBrandsList.splice(index, 1);
-        buttonElement.textContent = "+ Додати до запиту";
-        buttonElement.classList.remove('bg-emerald-600', 'dark:bg-emerald-600');
-        buttonElement.classList.add('bg-blue-600', 'dark:bg-zinc-800');
-        showPremiumToast(`Бренд ${brandName} видалено із запиту.`);
-    }
-    
-    if (cartCountElement) cartCountElement.textContent = selectedBrandsList.length;
-    
-    if (floatingCart) {
-        if (selectedBrandsList.length > 0) {
-            floatingCart.classList.remove('translate-y-24', 'opacity-0');
-            floatingCart.classList.add('translate-y-0', 'opacity-100');
-        } else {
-            floatingCart.classList.remove('translate-y-0', 'opacity-100');
-            floatingCart.classList.add('translate-y-24', 'opacity-0');
+        if (buttonElement) {
+            buttonElement.textContent = "+ Додати до запиту";
+            buttonElement.classList.remove('bg-emerald-600', 'dark:bg-emerald-600');
+            buttonElement.classList.add('bg-blue-600', 'dark:bg-zinc-800');
+        }
+        if (typeof showPremiumToast === "function") {
+            showPremiumToast(`Бренд ${brandName} видалено із запиту.`);
         }
     }
-}
 
-if (floatingCart) {
-    floatingCart.addEventListener('click', () => {
-        const contactSection = document.getElementById('contacts');
-        if (contactSection) { contactSection.scrollIntoView({ behavior: 'smooth' }); }
-    });
+    // Оновлюємо цифру в кошику
+    if (cartCountElement) {
+        cartCountElement.textContent = selectedBrandsList.length;
+    }
+
+    // Показуємо або ховаємо плаваючий кошик
+    if (floatingCart) {
+        if (selectedBrandsList.length > 0) {
+            floatingCart.classList.remove('hidden');
+            floatingCart.style.display = 'flex';
+        } else {
+            floatingCart.classList.add('hidden');
+            floatingCart.style.display = 'none';
+        }
+    }
 }
 
 // =======================================================
