@@ -466,54 +466,6 @@ if (sliderDots.length > 0) {
 const floatingCart = document.getElementById('floating-cart');
 const cartCountElement = document.getElementById('cart-count');
 
-function toggleBrandInCart(brandName, buttonElement) {
-    const cartCountElement = document.getElementById('cart-count');
-    const floatingCart = document.getElementById('floating-cart');
-
-    if (!selectedBrandsList) {
-        var selectedBrandsList = []; // захист, якщо масив створено десь вище
-    }
-
-    const index = selectedBrandsList.indexOf(brandName);
-
-    if (index === -1) {
-        selectedBrandsList.push(brandName);
-        if (buttonElement) {
-            buttonElement.textContent = "✓ Додано";
-            buttonElement.classList.remove('bg-blue-600', 'dark:bg-zinc-800');
-            buttonElement.classList.add('bg-emerald-600', 'dark:bg-emerald-600');
-        }
-        if (typeof showPremiumToast === "function") {
-            showPremiumToast(`Бренд ${brandName} додано до вашого запиту! 🛒`);
-        }
-    } else {
-        selectedBrandsList.splice(index, 1);
-        if (buttonElement) {
-            buttonElement.textContent = "+ Додати до запиту";
-            buttonElement.classList.remove('bg-emerald-600', 'dark:bg-emerald-600');
-            buttonElement.classList.add('bg-blue-600', 'dark:bg-zinc-800');
-        }
-        if (typeof showPremiumToast === "function") {
-            showPremiumToast(`Бренд ${brandName} видалено із запиту.`);
-        }
-    }
-
-    // Оновлюємо цифру в кошику
-    if (cartCountElement) {
-        cartCountElement.textContent = selectedBrandsList.length;
-    }
-
-    // Показуємо або ховаємо плаваючий кошик
-    if (floatingCart) {
-        if (selectedBrandsList.length > 0) {
-            floatingCart.classList.remove('hidden');
-            floatingCart.style.display = 'flex';
-        } else {
-            floatingCart.classList.add('hidden');
-            floatingCart.style.display = 'none';
-        }
-    }
-}
 
 function toggleBrandInCart(brandName, buttonElement) {
     const cartCountElement = document.getElementById('cart-count');
