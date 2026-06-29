@@ -515,6 +515,80 @@ function toggleBrandInCart(brandName, buttonElement) {
     }
 }
 
+function toggleBrandInCart(brandName, buttonElement) {
+    const cartCountElement = document.getElementById('cart-count');
+    const floatingCart = document.getElementById('floating-cart');
+
+    // Перевіряємо, який саме масив у тебе створений глобально
+    if (typeof selectedBrandsList === 'undefined') {
+        if (typeof selectedBrands !== 'undefined') {
+            window.selectedBrandsList = selectedBrands; // якщо він називається selectedBrands
+        } else {
+            if (!window.selectedBrandsList) window.selectedBrandsList = []; // якщо взагалі немає - створюємо
+        }
+    }
+
+    // Робота з масивом (сумісна і з Set, і з Array)
+    let isAdded = false;
+    if (typeof window.selectedBrandsList.has === 'function') {
+        // Якщо це Set (колекція)
+        if (window.selectedBrandsList.has(brandName)) {
+            window.selectedBrandsList.delete(brandName);
+        } else {
+            window.selectedBrandsList.add(brandName);
+            isAdded = true;
+        }
+    } else {
+        // Якщо це звичайний масив Array
+        const index = window.selectedBrandsList.indexOf(brandName);
+        if (index === -1) {
+            window.selectedBrandsList.push(brandName);
+            isAdded = true;
+        } else {
+            window.selectedBrandsList.splice(index, 1);
+        }
+    }
+
+    // Міняємо зовнішній вигляд кнопки
+    if (buttonElement) {
+        if (isAdded) {
+            buttonElement.textContent = "✓ Додано";
+            buttonElement.classList.remove('bg-blue-600', 'dark:bg-zinc-800');
+            buttonElement.classList.add('bg-emerald-600', 'dark:bg-emerald-600');
+        } else {
+            buttonElement.textContent = "+ Додати до запиту";
+            buttonElement.classList.remove('bg-emerald-600', 'dark:bg-emerald-600');
+            buttonElement.classList.add('bg-blue-600', 'dark:bg-zinc-800');
+        }
+    }
+
+    // Виводимо сповіщення
+    if (typeof showPremiumToast === "function") {
+        showPremiumToast(isAdded ? `Бренд ${brandName} додано до вашого запиту! 🛒` : `Бренд ${brandName} видалено із запиту.`);
+    }
+
+    // Рахуємо кількість елементів
+    const currentSize = typeof window.selectedBrandsList.size !== 'undefined' ? window.selectedBrandsList.size : window.selectedBrandsList.length;
+
+    // Оновлюємо цифру в кошику
+    if (cartCountElement) {
+        cartCountElement.textContent = currentSize;
+    }
+
+    // Повністю переписуємо класи кошика, змиваючи Tailwind-приховування
+    if (floatingCart) {
+        if (currentSize > 0) {
+            floatingCart.classList.remove('hidden', 'opacity-0', 'translate-y-24');
+            floatingCart.classList.add('opacity-100', 'translate-y-0');
+            floatingCart.style.setProperty('display', 'flex', 'important');
+        } else {
+            floatingCart.classList.remove('opacity-100', 'translate-y-0');
+            floatingCart.classList.add('hidden', 'opacity-0', 'translate-y-24');
+            floatingCart.style.setProperty('display', 'none', 'important');
+        }
+    }
+}
+
 // =======================================================
 // БЛОК 15: НЕОНОВИЙ ТРЕКЕР СКРОЛУ (PROGRESS BAR)
 // =======================================================
