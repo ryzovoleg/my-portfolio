@@ -1016,29 +1016,38 @@ function updateWholesaleProgress(amountToAdd) {
 // Запускаємо початковий стан при завантаженні сторінки
 document.addEventListener("DOMContentLoaded", () => {
     updateWholesaleProgress(0);
-    
-    // Прив'язуємо кліки по картках брендів, щоб сума «росла», коли клієнт ними цікавиться!
-    const brandCards = document.querySelectorAll('#brands .cursor-pointer, #brands .bg-white\\/30');
-    brandCards.forEach(card => {
-        card.addEventListener('click', () => {
-            if (simulatedTotal < 5000) {
-                updateWholesaleProgress(1250); // Додає по 1250 грн за кожен клік для тесту
-
-                brandCards.forEach(card => {
-        card.addEventListener('click', () => {
-            if (simulatedTotal < 5000) {
-                updateWholesaleProgress(1250);
-            }
-            
-            // 🟢 ДОДАЄМО ЦІ 3 РЯДКИ, ЩОБ КОШИК З'ЯВЛЯВСЯ:
-            const floatingCart = document.getElementById('floating-cart');
-            if (floatingCart) {
-                floatingCart.classList.remove('hidden');
-            }
-        });
     });
-            }
-        });
+    
+    // Оновлюємо початковий стан прогрес-бару
+updateWholesaleProgress(0);
+
+// Переприв'язуємо кліки на картки/кнопки брендів
+const brandCards = document.querySelectorAll('#brands .cursor-pointer, #brands button');
+brandCards.forEach(card => {
+    card.addEventListener('click', function(e) {
+        // Захист: якщо клікнули на кнопку додавання
+        let brandName = "";
+        
+        // Шукаємо заголовок або назву бренду поруч безпечно
+        const h3Element = card.querySelector('h3') || card.closest('.slide')?.querySelector('h3') || card.parentElement?.querySelector('h3');
+        if (h3Element) {
+            brandName = h3Element.textContent.trim();
+        } else {
+            // Якщо h3 не знайшли, беремо назву просто з тексту кнопки або сусіднього елемента
+            brandName = card.textContent.includes('Додати') ? "Посуд" : card.textContent.trim();
+        }
+
+        // 1. Рухаємо прогрес-бар гурту
+        if (typeof simulatedTotal !== 'undefined' && simulatedTotal < 5000) {
+            updateWholesaleProgress(1250);
+        }
+        
+        // 2. Викликаємо нашу основну функцію кошика, яку ми вилікували минулого разу
+        if (typeof toggleBrandInCart === 'function' && brandName) {
+            // Передаємо чисту назву бренду і саму кнопку, якщо клікнули на неї
+            const btn = card.tagName === 'BUTTON' ? card : card.querySelector('button');
+            toggleBrandInCart(brandName, btn);
+        }
     });
 });
 
