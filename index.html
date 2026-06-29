@@ -26,19 +26,22 @@
     <link rel="stylesheet" href="style.css">
   
     <style>
-    /* Повертаємо стандартний курсор абсолютно для всього, включаючи кнопки та форми */
-    body, html, input, button, select, textarea, a, .cursor-pointer, [role="button"], button *, signup-submit {
-        cursor: auto !important;
-    }
-    /* Якщо це клікабельні елементи — силою ставимо палець/руку */
-    a, button, .cursor-pointer, [role="button"] {
-        cursor: pointer !important;
-    }
-    /* Повністю ховаємо старі неробочі крапки */
-    #custom-cursor, #custom-cursor-dot {
-        display: none !important;
-    }
-</style>
+        /* Повертаємо рідний курсор абсолютно для всього на сайті */
+        *, body, html, input, button, select, textarea, a, .cursor-pointer, [role="button"], button * {
+            cursor: auto !important;
+        }
+        /* Для всіх клікабельних штук — ставимо палець */
+        a, button, .cursor-pointer, [role="button"], .bg-blue-600, #brands button {
+            cursor: pointer !important;
+        }
+        /* Повністю нейтралізуємо старі неробочі крапки */
+        #custom-cursor, #custom-cursor-dot {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+    </style>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
