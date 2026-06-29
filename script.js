@@ -985,3 +985,37 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+// =======================================================
+// БЛОК 24: РОЗУМНИЙ НЕОНОВИЙ ІНДИКАТОР РОБОЧОГО ЧАСУ
+// =======================================================
+function initWorkStatus() {
+    const statusContainer = document.getElementById('work-status');
+    if (!statusContainer) return;
+
+    const now = new Date();
+    const currentHour = now.getHours(); // Отримуємо поточну годину (0-23)
+
+    // Графік роботи: з 9 ранку до 18 вечора
+    const isWorkingHours = currentHour >= 9 && currentHour < 18;
+
+    if (isWorkingHours) {
+        // Зелений неоновий статус для робочого часу
+        statusContainer.innerHTML = `
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-green-500 animate-ping absolute"></span>
+            <span class="relative inline-block w-2.5 h-2.5 rounded-full bg-green-500 shadow-[0_0_8px_#22c55e]"></span>
+            <span class="text-green-600 dark:text-green-400 font-bold">Зараз працюємо. Склад у Луцьку відвантажує замовлення!</span>
+        `;
+    } else {
+        // Помаранчевий/сірий статус для неробочого часу
+        statusContainer.innerHTML = `
+            <span class="inline-block w-2.5 h-2.5 rounded-full bg-amber-400 shadow-[0_0_6px_#fbbf24]"></span>
+            <span class="text-gray-500 dark:text-zinc-400 font-medium">Приймаємо замовлення 24/7. Оформимо завтра з 09:00!</span>
+        `;
+    }
+}
+
+// Запускаємо перевірку часу відразу при завантаженні сторінки
+document.addEventListener("DOMContentLoaded", () => {
+    initWorkStatus();
+});
