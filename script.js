@@ -466,12 +466,11 @@ if (sliderDots.length > 0) {
 const floatingCart = document.getElementById('floating-cart');
 const cartCountElement = document.getElementById('cart-count');
 
-
 function toggleBrandInCart(brandName, buttonElement) {
     const cartCountElement = document.getElementById('cart-count');
     const floatingCart = document.getElementById('floating-cart');
 
-    // 🎯 Перевіряємо та використовуємо ТВОЮ рідну колекцію selectedBrands
+    // 🎯 Перевіряємо та використовуємо колекцію selectedBrands
     if (typeof selectedBrands === 'undefined' || !selectedBrands) {
         window.selectedBrands = new Set();
     }
@@ -516,32 +515,9 @@ function toggleBrandInCart(brandName, buttonElement) {
         updateWholesaleProgressFromCart(currentCount * 1500);
     }
 
-    // 📦 Показуємо або ховаємо плаваючий кошик
+    // 📦 Показуємо або ховаємо плаваючий кошик із примусовим flex для надійності
     if (floatingCart) {
         if (currentCount > 0) {
-            floatingCart.classList.remove('hidden');
-        } else {
-            floatingCart.classList.add('hidden');
-        }
-    }
-}
-
-    // Виводимо сповіщення
-    if (typeof showPremiumToast === "function") {
-        showPremiumToast(isAdded ? `Бренд ${brandName} додано до вашого запиту! 🛒` : `Бренд ${brandName} видалено із запиту.`);
-    }
-
-    // Рахуємо кількість елементів
-    const currentSize = typeof window.selectedBrandsList.size !== 'undefined' ? window.selectedBrandsList.size : window.selectedBrandsList.length;
-
-    // Оновлюємо цифру в кошику
-    if (cartCountElement) {
-        cartCountElement.textContent = currentSize;
-    }
-
-    // Повністю переписуємо класи кошика, змиваючи Tailwind-приховування
-    if (floatingCart) {
-        if (currentSize > 0) {
             floatingCart.classList.remove('hidden', 'opacity-0', 'translate-y-24');
             floatingCart.classList.add('opacity-100', 'translate-y-0');
             floatingCart.style.setProperty('display', 'flex', 'important');
@@ -551,6 +527,7 @@ function toggleBrandInCart(brandName, buttonElement) {
             floatingCart.style.setProperty('display', 'none', 'important');
         }
     }
+}
 
 // =======================================================
 // БЛОК 15: НЕОНОВИЙ ТРЕКЕР СКРОЛУ (PROGRESS BAR)
@@ -993,12 +970,9 @@ if (brandSearchInput && searchResultsDropdown) {
 }
 
 // =======================================================
-// БЛОК 23: ПРОГРЕС-БАР ГУРТОВОГО ЗАМОВЛЕННЯ
+// БЛОК 23: ОНОВЛЕНИЙ ПРОГРЕС-БАР ГУРТОВОГО ЗАМОВЛЕННЯ
 // =======================================================
-let simulatedTotal = 0;
-
-function updateWholesaleProgress(amountToAdd) {
-    simulatedTotal += amountToAdd;
+function updateWholesaleProgressFromCart(totalMoney) {
     const minWholesaleLimit = 5000; 
     
     const progressBar = document.getElementById('wholesale-progress-bar');
@@ -1007,16 +981,16 @@ function updateWholesaleProgress(amountToAdd) {
 
     if (!progressBar || !statusText || !percentText) return;
 
-    let percent = Math.min((simulatedTotal / minWholesaleLimit) * 100, 100);
+    let percent = Math.min((totalMoney / minWholesaleLimit) * 100, 100);
     percent = Math.round(percent);
 
     progressBar.style.width = `${percent}%`;
     percentText.innerText = `${percent}%`;
 
-    if (simulatedTotal === 0) {
+    if (totalMoney === 0) {
         statusText.innerHTML = `Мінімум для безкоштовної доставки: <span class="font-black">${minWholesaleLimit} грн</span>`;
-    } else if (simulatedTotal < minWholesaleLimit) {
-        const remaining = minWholesaleLimit - simulatedTotal;
+    } else if (totalMoney < minWholesaleLimit) {
+        const remaining = minWholesaleLimit - totalMoney;
         statusText.innerHTML = `До гуртової доставки залишилось: <span class="font-bold text-orange-600 dark:text-amber-400">${remaining} грн</span>`;
     } else {
         progressBar.className = "h-full bg-gradient-to-r from-green-500 to-emerald-500 shadow-[0_0_12px_rgba(34,197,94,0.6)] transition-all duration-700 animate-pulse rounded-full";
@@ -1024,42 +998,11 @@ function updateWholesaleProgress(amountToAdd) {
     }
 }
 
-// Запускаємо початковий стан при завантаженні сторінки
+// Ініціалізація початкового стану при завантаженні сторінки всередині спільного DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
-    updateWholesaleProgress(0);
-    });
-
-    // Оновлюємо початковий стан прогрес-бару
-updateWholesaleProgress(0);
-
-// Переприв'язуємо кліки на картки/кнопки брендів
-const brandCards = document.querySelectorAll('#brands .cursor-pointer, #brands button');
-brandCards.forEach(card => {
-    card.addEventListener('click', function(e) {
-        // Захист: якщо клікнули на кнопку додавання
-        let brandName = "";
-        
-        // Шукаємо заголовок або назву бренду поруч безпечно
-        const h3Element = card.querySelector('h3') || card.closest('.slide')?.querySelector('h3') || card.parentElement?.querySelector('h3');
-        if (h3Element) {
-            brandName = h3Element.textContent.trim();
-        } else {
-            // Якщо h3 не знайшли, беремо назву просто з тексту кнопки або сусіднього елемента
-            brandName = card.textContent.includes('Додати') ? "Посуд" : card.textContent.trim();
-        }
-
-        // 1. Рухаємо прогрес-бар гурту
-        if (typeof simulatedTotal !== 'undefined' && simulatedTotal < 5000) {
-            updateWholesaleProgress(1250);
-        }
-        
-        // 2. Викликаємо нашу основну функцію кошика, яку ми вилікували минулого разу
-        if (typeof toggleBrandInCart === 'function' && brandName) {
-            // Передаємо чисту назву бренду і саму кнопку, якщо клікнули на неї
-            const btn = card.tagName === 'BUTTON' ? card : card.querySelector('button');
-            toggleBrandInCart(brandName, btn);
-        }
-    });
+    if (typeof updateWholesaleProgressFromCart === 'function') {
+        updateWholesaleProgressFromCart(0);
+    }
 });
 
 // =======================================================
