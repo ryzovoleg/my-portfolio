@@ -471,37 +471,21 @@ function toggleBrandInCart(brandName, buttonElement) {
     const cartCountElement = document.getElementById('cart-count');
     const floatingCart = document.getElementById('floating-cart');
 
-    // Перевіряємо, який саме масив у тебе створений глобально
-    if (typeof selectedBrandsList === 'undefined') {
-        if (typeof selectedBrands !== 'undefined') {
-            window.selectedBrandsList = selectedBrands; // якщо він називається selectedBrands
-        } else {
-            if (!window.selectedBrandsList) window.selectedBrandsList = []; // якщо взагалі немає - створюємо
-        }
+    // 🎯 Перевіряємо та використовуємо ТВОЮ рідну колекцію selectedBrands
+    if (typeof selectedBrands === 'undefined' || !selectedBrands) {
+        window.selectedBrands = new Set();
     }
 
-    // Робота з масивом (сумісна і з Set, і з Array)
+    // Додаємо або видаляємо бренд із колекції Set
     let isAdded = false;
-    if (typeof window.selectedBrandsList.has === 'function') {
-        // Якщо це Set (колекція)
-        if (window.selectedBrandsList.has(brandName)) {
-            window.selectedBrandsList.delete(brandName);
-        } else {
-            window.selectedBrandsList.add(brandName);
-            isAdded = true;
-        }
+    if (selectedBrands.has(brandName)) {
+        selectedBrands.delete(brandName);
     } else {
-        // Якщо це звичайний масив Array
-        const index = window.selectedBrandsList.indexOf(brandName);
-        if (index === -1) {
-            window.selectedBrandsList.push(brandName);
-            isAdded = true;
-        } else {
-            window.selectedBrandsList.splice(index, 1);
-        }
+        selectedBrands.add(brandName);
+        isAdded = true;
     }
 
-    // Міняємо зовнішній вигляд кнопки
+    // 🎨 Міняємо вигляд кнопки
     if (buttonElement) {
         if (isAdded) {
             buttonElement.textContent = "✓ Додано";
@@ -513,6 +497,34 @@ function toggleBrandInCart(brandName, buttonElement) {
             buttonElement.classList.add('bg-blue-600', 'dark:bg-zinc-800');
         }
     }
+
+    // 💬 Показуємо фірмове сповіщення
+    if (typeof showPremiumToast === "function") {
+        showPremiumToast(isAdded ? `Бренд ${brandName} додано до вашого запиту! 🛒` : `Бренд ${brandName} видалено із запиту.`);
+    }
+
+    // 🔢 Рахуємо кількість брендів
+    const currentCount = selectedBrands.size;
+
+    // 🛒 Оновлюємо цифру на кошику
+    if (cartCountElement) {
+        cartCountElement.textContent = currentCount;
+    }
+
+    // 📈 Рухаємо прогрес-бар гурту (1 бренд = 1500 грн)
+    if (typeof updateWholesaleProgressFromCart === 'function') {
+        updateWholesaleProgressFromCart(currentCount * 1500);
+    }
+
+    // 📦 Показуємо або ховаємо плаваючий кошик
+    if (floatingCart) {
+        if (currentCount > 0) {
+            floatingCart.classList.remove('hidden');
+        } else {
+            floatingCart.classList.add('hidden');
+        }
+    }
+}
 
     // Виводимо сповіщення
     if (typeof showPremiumToast === "function") {
@@ -539,7 +551,6 @@ function toggleBrandInCart(brandName, buttonElement) {
             floatingCart.style.setProperty('display', 'none', 'important');
         }
     }
-}
 
 // =======================================================
 // БЛОК 15: НЕОНОВИЙ ТРЕКЕР СКРОЛУ (PROGRESS BAR)
@@ -1017,7 +1028,7 @@ function updateWholesaleProgress(amountToAdd) {
 document.addEventListener("DOMContentLoaded", () => {
     updateWholesaleProgress(0);
     });
-    
+
     // Оновлюємо початковий стан прогрес-бару
 updateWholesaleProgress(0);
 
