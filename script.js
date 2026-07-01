@@ -515,18 +515,16 @@ function toggleBrandInCart(brandName, buttonElement) {
         updateWholesaleProgressFromCart(currentCount * 1500);
     }
 
-    // 📦 Показуємо або ховаємо плаваючий кошик із примусовим flex для надійності
-    if (floatingCart) {
-        if (currentCount > 0) {
-            floatingCart.classList.remove('hidden', 'opacity-0', 'translate-y-24');
-            floatingCart.classList.add('opacity-100', 'translate-y-0');
-            floatingCart.style.setProperty('display', 'flex', 'important');
-        } else {
-            floatingCart.classList.remove('opacity-100', 'translate-y-0');
-            floatingCart.classList.add('hidden', 'opacity-0', 'translate-y-24');
-            floatingCart.style.setProperty('display', 'none', 'important');
-        }
+    // 📦 Керуємо видимістю кошика через display
+if (floatingCart) {
+    if (currentCount > 0) {
+        // Якщо бренди є — вмикаємо режим flex
+        floatingCart.style.display = 'flex';
+    } else {
+        // Якщо кошик порожній — повністю ховаємо
+        floatingCart.style.display = 'none';
     }
+}
 }
 
 // =======================================================
