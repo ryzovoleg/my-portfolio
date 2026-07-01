@@ -457,7 +457,7 @@ const brandCards = document.querySelectorAll('#brands .cursor-pointer, #brands .
 
 if (sliderDots.length > 0) {
     sliderDots[0].classList.add('w-6');
-    startAutoCycle();
+  //  startAutoCycle();
 }
 
 // =======================================================
