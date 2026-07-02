@@ -437,6 +437,32 @@ function updateSlider(targetIndex) {
     });
 }
 
+// 🎠 Обробники кліків для стрілочок слайдера
+if (nextSlideBtn) {
+    nextSlideBtn.addEventListener('click', () => {
+        updateSlider(activeSlideIndex + 1);
+    });
+}
+
+if (prevSlideBtn) {
+    prevSlideBtn.addEventListener('click', () => {
+        updateSlider(activeSlideIndex - 1);
+    });
+}
+
+// 🎠 Обробники кліків для стрілочок слайдера
+if (nextSlideBtn) {
+    nextSlideBtn.addEventListener('click', () => {
+        updateSlider(activeSlideIndex + 1);
+    });
+}
+
+if (prevSlideBtn) {
+    prevSlideBtn.addEventListener('click', () => {
+        updateSlider(activeSlideIndex - 1);
+    });
+}
+
 const brandCards = document.querySelectorAll('#brands .cursor-pointer, #brands .bg-white\\/30');
     brandCards.forEach(card => {
         card.addEventListener('click', () => {
