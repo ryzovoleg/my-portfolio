@@ -462,6 +462,19 @@ if (prevSlideBtn) {
         updateSlider(activeSlideIndex - 1);
     });
 }
+// Функція для запуску автоматичного гортання
+function startAutoSlide() {
+    // Очищаємо старий таймер, якщо він раптом був запущений
+    clearInterval(autoSlideTimer); 
+    
+    // Запускаємо новий таймер на 5000 мілісекунд (5 секунд)
+    autoSlideTimer = setInterval(() => {
+        updateSlider(activeSlideIndex + 1);
+    }, 5000);
+}
+
+// Запускаємо автогортання відразу при завантаженні сторінки
+startAutoSlide();
 
 const brandCards = document.querySelectorAll('#brands .cursor-pointer, #brands .bg-white\\/30');
     brandCards.forEach(card => {
