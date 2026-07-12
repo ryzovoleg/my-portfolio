@@ -164,19 +164,25 @@ const matchesCategory =
         const card = document.createElement('div');
         card.className = "brand-card scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-white/40 dark:border-zinc-800/60 text-center flex flex-col justify-between items-center font-bold text-blue-900 dark:text-zinc-200 min-h-[120px] transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer";
         
-        card.innerHTML = `
+        
+        `;
+        
+        card.addEventLicard.innerHTML = `
+            card.innerHTML = `
+            ${brand.isNew ? '<span class="inline-block bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-0.5 rounded mb-1 mr-1">Новинка</span>' : ''}
+    ${brand.isPopular ? '<span class="inline-block bg-orange-400 text-orange-900 text-xs font-bold px-2 py-0.5 rounded mb-1">Популярно</span>' : ''}
             <p class="text-lg tracking-wide mt-2">${brand.name}</p>
             <button class="add-to-cart-btn mt-3 text-xs bg-blue-600 dark:bg-zinc-800 hover:bg-blue-700 dark:hover:bg-green-600 text-white dark:text-zinc-300 dark:hover:text-white px-4 py-2 rounded-xl transition-all duration-200 shadow-sm font-medium active:scale-95">
                 + Додати до запиту
             </button>
         `;
-        
-        card.addEventListener('click', () => {
+
+            stener('click', () => {
             const modal = document.getElementById('service-modal');
             const modalTitle = document.getElementById('modal-title');
             const modalText = document.getElementById('modal-text');
             
-            if (modal && modalTitle && modalText) {
+            if (modal && modalTitle && modalText) { 
                 modalTitle.innerText = `Бренд ${brand.name}`;
                 modalText.innerText = brand.desc + " Ми пропонуємо найкращі оптові ціни на цей бренд, швидку логістику та повний пакет документів для вашого бізнесу на Волині.";
                 modal.classList.add('active');
