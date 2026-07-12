@@ -124,8 +124,8 @@ let currentSearchQuery = '';
 const brandsData = [
     { name: "Luminarc", category: "glass", desc: "Французький бренд ударостійкого скла. Посуд Luminarc витримує різкі перепади температур, підходить для мікрохвильовок та посудомийних машин. Ідеальний вибір для щоденного використання та HoReCa." },
     { name: "Wilmax", category: "porcelain", desc: "Англійський преміальний білий порцеляновий посуд. Вироби Wilmax мають витончений дизайн, глазуроване покриття, стійкі до сколів та відмінно утримують тепло страв." },
-    { name: "Bohemia", category: "glass", desc: "Легендарний чеський кришталь та богемське скло. Витончені келихи, фужери та вази, що славляться своєю ідеальною прозорістю, тонким дзвоном та розкішним огранюванням." },
-    { name: "Lessner", category: "cookware", desc: "Високоякісний кухонний посуд та кухонне приладдя з нержавіючої сталі. Каструлі, сковорідки та ножі Lessner — це ергономічність, довговічність та висока теплопровідність." },
+    { name: "Bohemia", category: "glass", isNew: true, desc: "Легендарний чеський кришталь та богемське скло. Витончені келихи, фужери та вази, що славляться своєю ідеальною прозорістю, тонким дзвоном та розкішним огранюванням." },
+    { name: "Lessner", category: "cookware", isPopular: true, desc: "Високоякісний кухонний посуд та кухонне приладдя з нержавіючої сталі. Каструлі, сковорідки та ножі Lessner — це ергономічність, довговічність та висока теплопровідність." },
     { name: "Vincent", category: "cookware", desc: "Практичний та доступний кухонний посуд для кожної оселі. Надійні матеріали, сучасний дизайн та оптимальне співвідношення ціни та якості для комфортного приготування їжі." },
     { name: "Milika", category: "glass", desc: "Сучасний бренд скляного посуду з яскравими дизайнерськими принтами. Салатники, чашки та тарілки Milika додадуть затишку та стильних акцентів будь-якому інтер'єру." }
 ];
@@ -141,7 +141,11 @@ function renderBrands() {
     
     // Фільтруємо масив ОДНОЧАСНО за двома параметрами
     const filteredBrands = brandsData.filter(brand => {
-        const matchesCategory = currentFilter === 'all' || brand.category === currentFilter;
+const matchesCategory = 
+    currentFilter === 'all' || 
+    (currentFilter === 'new' && brand.isNew) || 
+    (currentFilter === 'popular' && brand.isPopular) || 
+    brand.category === currentFilter;
         const matchesSearch = brand.name.toLowerCase().includes(currentSearchQuery.toLowerCase());
         return matchesCategory && matchesSearch;
     });
@@ -790,7 +794,7 @@ if (priceForm) {
             // ⚠️ ВСТАВ СВОЄ ПОСИЛАННЯ НА GOOGLE ДИСК СТРОГО МІЖ ОДИНАРНИМИ ЛАПКАМИ:
             window.open('https://drive.google.com/drive/folders/1EVfvymVDZPVoTHhTu2lDQn1AkgbrJJ9t', '_blank');
             
-            if (priceModal && priceModalBody) {
+            if (updateProductsModalBody) {
                 priceModal.classList.add('opacity-0', 'pointer-events-none');
                 priceModalBody.classList.remove('scale-100');
                 priceModalBody.classList.add('scale-90');
