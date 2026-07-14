@@ -162,7 +162,7 @@ const matchesCategory =
     
     filteredBrands.forEach(brand => {
         const card = document.createElement('div');
-        card.className = "brand-card scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-white/40 dark:border-zinc-800/60 text-center flex flex-col justify-between items-center font-bold text-blue-900 dark:text-zinc-200 min-h-[120px] transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer";
+        card.className = "brand-card scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-5 rounded-2xl shadow-sm";
         
         
             card.innerHTML = `
@@ -174,7 +174,7 @@ const matchesCategory =
             </button>
         `;
 
-            stener('click', () => {
+            card.addEventListener('click', () => {
             const modal = document.getElementById('service-modal');
             const modalTitle = document.getElementById('modal-title');
             const modalText = document.getElementById('modal-text');
