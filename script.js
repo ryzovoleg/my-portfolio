@@ -162,7 +162,7 @@ const matchesCategory =
     
     filteredBrands.forEach(brand => {
         const card = document.createElement('div');
-        card.className = "group brand-card scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-5 rounded-2xl shadow-sm";
+        card.className = "cursor-pointer select-none group brand-card scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-5 rounded-2xl shadow-sm";
         
         
             card.innerHTML = `
