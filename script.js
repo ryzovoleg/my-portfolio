@@ -120,6 +120,7 @@ let selectedBrandsList = []; // Наш оптовий кошик
 // ТРЕКЕРИ СТАНУ: Запам'ятовуємо, що вибрав і що ввів користувач
 let currentFilter = 'all';
 let currentSearchQuery = '';
+let simulatedTotal = 0;
 
 const brandsData = [
     { name: "Luminarc", category: "glass", desc: "Французький бренд ударостійкого скла. Посуд Luminarc витримує різкі перепади температур, підходить для мікрохвильовок та посудомийних машин. Ідеальний вибір для щоденного використання та HoReCa." },
