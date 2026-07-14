@@ -165,9 +165,6 @@ const matchesCategory =
         card.className = "brand-card scroll-anim bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-5 rounded-2xl shadow-sm border border-white/40 dark:border-zinc-800/60 text-center flex flex-col justify-between items-center font-bold text-blue-900 dark:text-zinc-200 min-h-[120px] transition-all duration-300 transform hover:scale-105 hover:shadow-md cursor-pointer";
         
         
-        `;
-        
-        card.addEventLicard.innerHTML = `
             card.innerHTML = `
             ${brand.isNew ? '<span class="inline-block bg-yellow-400 text-yellow-900 text-xs font-bold px-2 py-0.5 rounded mb-1 mr-1">Новинка</span>' : ''}
     ${brand.isPopular ? '<span class="inline-block bg-orange-400 text-orange-900 text-xs font-bold px-2 py-0.5 rounded mb-1">Популярно</span>' : ''}
