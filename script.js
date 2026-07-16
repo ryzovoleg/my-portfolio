@@ -1,3 +1,21 @@
+const translations = {
+    ua: {
+        services: "Що я пропоную",
+        brands: "Бренди",
+        about: "Про мене",
+        contacts: "Контакти",
+        greeting: "Привіт, я Олег!",
+        heroSubtitle: "Оптові постачання посуду"
+    },
+    ru: {
+        services: "Что я предлагаю",
+        brands: "Бренды",
+        about: "Обо мне",
+        contacts: "Контакты",
+        greeting: "Привет, я Олег!",
+        heroSubtitle: "Оптовые поставки посуды"
+    }
+};
 // =======================================================
 // БЛОК 1: РОЗУМНА ТЕМНА ТЕМА (ТАЙЛВІНД-READY)
 // =======================================================
@@ -1083,3 +1101,26 @@ function initWorkStatus() {
 document.addEventListener("DOMContentLoaded", () => {
     initWorkStatus();
 });
+
+// Знаходимо кнопки перемикання мов
+const langUaBtn = document.getElementById('lang-ua');
+const langRuBtn = document.getElementById('lang-ru');
+
+// Знаходимо елементи меню
+const navServices = document.getElementById('nav-services');
+const navBrands = document.getElementById('nav-brands');
+const navAbout = document.getElementById('nav-about');
+const navContacts = document.getElementById('nav-contacts');
+
+// Функція зміни мови
+function changeLanguage(lang) {
+    // Оновлюємо тексти в меню
+    navServices.textContent = translations[lang].services;
+    navBrands.textContent = translations[lang].brands;
+    navAbout.textContent = translations[lang].about;
+    navContacts.textContent = translations[lang].contacts;
+}
+
+// Вішаємо слухачі подій на кнопки
+langUaBtn.addEventListener('click', () => changeLanguage('ua'));
+langRuBtn.addEventListener('click', () => changeLanguage('ru'));
