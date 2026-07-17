@@ -1112,6 +1112,7 @@ const navBrands = document.getElementById('nav-brands');
 const navAbout = document.getElementById('nav-about');
 const navContacts = document.getElementById('nav-contacts');
 const greetingText = document.getElementById('greeting-text');
+const heroSubtitle = document.getElementById('hero-subtitle'); // Додай цей рядок на 1115
 
 // Функція зміни мови
 function changeLanguage(lang) {
@@ -1121,6 +1122,7 @@ function changeLanguage(lang) {
     navAbout.textContent = translations[lang].about;
     navContacts.textContent = translations[lang].contacts;
     greetingText.textContent = translations[lang].greeting;
+    heroSubtitle.textContent = translations[lang].heroSubtitle;
 }
 
 // Вішаємо слухачі подій на кнопки
