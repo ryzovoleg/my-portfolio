@@ -1128,3 +1128,34 @@ function changeLanguage(lang) {
 // Вішаємо слухачі подій на кнопки
 langUaBtn.addEventListener('click', () => changeLanguage('ua'));
 langRuBtn.addEventListener('click', () => changeLanguage('ru'));
+
+// Функція для завантаження та відображення товарів 📦
+function loadProducts() {
+  fetch('products.json')
+    .then(response => response.json())
+    .then(products => {
+      const container = document.getElementById('products-container');
+      container.innerHTML = '';
+
+      products.forEach(product => {
+        const productCard = `
+          <div class="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-xl p-4 shadow-md flex flex-col justify-between">
+            <img src="${product.image}" alt="${product.title}" class="w-full h-48 object-cover rounded-lg mb-4">
+            <div>
+              <span class="text-xs text-blue-600 dark:text-green-400 font-semibold">${product.category}</span>
+              <h3 class="text-lg font-bold text-gray-900 dark:text-white mt-1">${product.title}</h3>
+              <p class="text-xl font-extrabold text-gray-800 dark:text-gray-200 mt-2">${product.price}</p>
+            </div>
+            <button class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+              Замовити 🛒
+            </button>
+          </div>
+        `;
+        container.innerHTML += productCard;
+      });
+    })
+    .catch(error => console.error('Помилка завантаження товарів:', error));
+}
+
+// Викликаємо функцію 🚀
+loadProducts();
