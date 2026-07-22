@@ -1146,7 +1146,7 @@ function loadProducts() {
               <h3 class="text-lg font-bold text-gray-900 dark:text-white mt-1">${product.title}</h3>
               <p class="text-xl font-extrabold text-gray-800 dark:text-gray-200 mt-2">${product.price}</p>
             </div>
-            <button class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+            <button onclick="addToCart('${product.title}')" class="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
               Замовити 🛒
             </button>
           </div>
