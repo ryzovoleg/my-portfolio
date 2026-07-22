@@ -1183,22 +1183,47 @@ function addToCart(title) {
     updateCartUI();
 }
 
-// Обробка натискання на кнопку "Оформити замовлення" 📱
+// Знаходимо елементи модального вікна 🪟
+const modal = document.getElementById('messenger-modal');
+const closeModalBtn = document.getElementById('close-modal-btn');
+
+// Показуємо вікно при натисканні на "Оформити замовлення" 🛒
 document.getElementById('send-order-btn')?.addEventListener('click', () => {
     if (cart.length === 0) return;
+    modal.classList.remove('hidden');
+});
 
-    // Формуємо текст повідомлення з переліком обраних товарів
+// Закриття вікна ❌
+closeModalBtn?.addEventListener('click', () => {
+    modal.classList.add('hidden');
+});
+
+// Функція формування тексту замовлення 📝
+function getOrderText() {
     let message = "Доброго дня! Я хочу зробити замовлення посуду:\n\n";
     cart.forEach((item, index) => {
         message += `${index + 1}. ${item}\n`;
     });
     message += "\nБудь ласка, уточніть наявність та деталі.";
+    return encodeURIComponent(message);
+}
 
-    // Закодовуємо текст для посилання
-    const encodedMessage = encodeURIComponent(message);
-    
-    // Посилання на WhatsApp/Telegram (відкриває додаток із вже готовим текстом)
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    
-    window.open(whatsappUrl, '_blank');
+// Кліки по кнопках месенджерів 📲
+document.getElementById('btn-whatsapp')?.addEventListener('click', () => {
+    const text = getOrderText();
+    window.open(`https://wa.me/380500149104?text=${text}`, '_blank');
+    modal.classList.add('hidden');
+});
+
+document.getElementById('btn-telegram')?.addEventListener('click', () => {
+    const text = getOrderText();
+    // Для Telegram можна також використати пряме посилання на юзернейм, якщо він є
+    window.open(`https://t.me/share/url?url=&text=${text}`, '_blank');
+    modal.classList.add('hidden');
+});
+
+document.getElementById('btn-viber')?.addEventListener('click', () => {
+    const text = getOrderText();
+    window.open(`viber://forward?text=${text}`, '_blank');
+    modal.classList.add('hidden');
 });
