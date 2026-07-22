@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "title": "Набір тарілок Luminarc",
+    "price": "1250 грн",
+    "category": "Тарілки",
+    "image": "photo.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Келихи для вина Wilmax",
+    "price": "890 грн",
+    "category": "Келихи",
+    "image": "preview.jpg"
+  }
+]
