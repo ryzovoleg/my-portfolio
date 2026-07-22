@@ -1159,3 +1159,46 @@ function loadProducts() {
 
 // Викликаємо функцію 🚀
 loadProducts();
+
+// Масив для збереження обраних товарів 🛍️
+let cart = [];
+const phoneNumber = "380500149104"; // Твій номер без знака + для посилання
+
+// Функція оновлення вигляду кошика 🔄
+function updateCartUI() {
+    const cartBar = document.getElementById('cart-bar');
+    const cartCount = document.getElementById('cart-count');
+    
+    if (cart.length > 0) {
+        cartBar.classList.remove('hidden');
+        cartCount.textContent = cart.length;
+    } else {
+        cartBar.classList.add('hidden');
+    }
+}
+
+// Функція додавання товару в кошик ➕
+function addToCart(title) {
+    cart.push(title);
+    updateCartUI();
+}
+
+// Обробка натискання на кнопку "Оформити замовлення" 📱
+document.getElementById('send-order-btn')?.addEventListener('click', () => {
+    if (cart.length === 0) return;
+
+    // Формуємо текст повідомлення з переліком обраних товарів
+    let message = "Доброго дня! Я хочу зробити замовлення посуду:\n\n";
+    cart.forEach((item, index) => {
+        message += `${index + 1}. ${item}\n`;
+    });
+    message += "\nБудь ласка, уточніть наявність та деталі.";
+
+    // Закодовуємо текст для посилання
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Посилання на WhatsApp/Telegram (відкриває додаток із вже готовим текстом)
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, '_blank');
+});
