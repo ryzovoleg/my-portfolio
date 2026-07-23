@@ -1184,46 +1184,37 @@ function addToCart(title) {
 }
 
 // Знаходимо елементи модального вікна 🪟
-const modal = document.getElementById('messenger-modal');
+const messengerModal = document.getElementById('messenger-modal');
 const closeModalBtn = document.getElementById('close-modal-btn');
 
 // Показуємо вікно при натисканні на "Оформити замовлення" 🛒
 document.getElementById('send-order-btn')?.addEventListener('click', () => {
     if (cart.length === 0) return;
-    modal.classList.remove('hidden');
+    messengerModal.classList.remove('hidden');
 });
 
 // Закриття вікна ❌
 closeModalBtn?.addEventListener('click', () => {
-    modal.classList.add('hidden');
+    messengerModal.classList.add('hidden');
 });
 
-// Функція формування тексту замовлення 📝
-function getOrderText() {
-    let message = "Доброго дня! Я хочу зробити замовлення посуду:\n\n";
-    cart.forEach((item, index) => {
-        message += `${index + 1}. ${item}\n`;
-    });
-    message += "\nБудь ласка, уточніть наявність та деталі.";
-    return encodeURIComponent(message);
-}
+// ... далі функція getOrderText() залишається без змін ...
 
-// Кліки по кнопках месенджерів 📲
+// У кнопках месенджерів також міняємо modal на messengerModal:
 document.getElementById('btn-whatsapp')?.addEventListener('click', () => {
     const text = getOrderText();
     window.open(`https://wa.me/380500149104?text=${text}`, '_blank');
-    modal.classList.add('hidden');
+    messengerModal.classList.add('hidden');
 });
 
 document.getElementById('btn-telegram')?.addEventListener('click', () => {
     const text = getOrderText();
-    // Для Telegram можна також використати пряме посилання на юзернейм, якщо він є
     window.open(`https://t.me/share/url?url=&text=${text}`, '_blank');
-    modal.classList.add('hidden');
+    messengerModal.classList.add('hidden');
 });
 
 document.getElementById('btn-viber')?.addEventListener('click', () => {
     const text = getOrderText();
     window.open(`viber://forward?text=${text}`, '_blank');
-    modal.classList.add('hidden');
+    messengerModal.classList.add('hidden');
 });
