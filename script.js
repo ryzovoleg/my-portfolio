@@ -202,6 +202,12 @@ const matchesCategory =
                 modalTitle.innerText = `Бренд ${brand.name}`;
                 modalText.innerText = brand.desc + " Ми пропонуємо найкращі оптові ціни на цей бренд, швидку логістику та повний пакет документів для вашого бізнесу на Волині.";
                 modal.classList.add('active');
+                const closeBtn = modal.querySelector('.modal-close-btn');
+if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+    });
+}
             }
         });
         
