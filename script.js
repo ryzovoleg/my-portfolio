@@ -530,7 +530,7 @@ if (sliderDots.length > 0) {
 // =======================================================
 const floatingCart = document.getElementById('floating-cart');
 const cartCountElement = document.getElementById('cart-count');
-
+function updateWholesaleProgress() {}
 function toggleBrandInCart(brandName, buttonElement) {
     const cartCountElement = document.getElementById('cart-count');
     const floatingCart = document.getElementById('floating-cart');
